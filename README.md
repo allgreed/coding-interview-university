@@ -163,3 +163,8 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
     If some of the lectures are too mathy, you can jump down to the bottom and
     watch the discrete mathematics videos to get the background knowledge.
 
+<!-- Todo: redo the license -->
+<!-- Todo: Move prerequisitires to course -->
+<!-- Todo: Customized this README -->
+<!-- Todo: Shoutout for jwsham -->
+<!-- Todo: Say where's what -> code / todos / extras -->
