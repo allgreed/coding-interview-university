@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 // ****************************
 // Utility
@@ -68,16 +67,19 @@ int* Vector__index(Vector* vector, int index)
     return (vector->data + index);
 }
 
-void negativeIndexCheck(int index)
+void Vector__negativeIndexCheck(int index)
 {
     if (index < 0)
         exit(3);
 }
 
-bool isOutOfBounds(Vector* vector ,int number)
+void Vector__set(Vector* vector, int index, int value)
 {
+    Vector__negativeIndexCheck(index);
 
+    *(Vector__index(vector, index)) = value;
 }
+
 
 // ****************************
 // Basic operations
@@ -86,7 +88,7 @@ bool isOutOfBounds(Vector* vector ,int number)
 
 int Vector_at(Vector* vector, int index)
 {
-    negativeIndexCheck(index);
+    Vector__negativeIndexCheck(index);
 
     if (( index >= vector->size ))
         exit(2);
@@ -94,14 +96,21 @@ int Vector_at(Vector* vector, int index)
     return *(Vector__index(vector, index));
 }
 
-void Vector_set(Vector* vector, int index, int value)
+// ****************************
+// Getters
+// ****************************
+
+int Vector_size(Vector* vector)
 {
-    negativeIndexCheck(index);
+    return vector->size;
+}
 
-    // if out of capacity -> resize
-    // Pointer by reference, not by value?
+int Vector_capacity(Vector* vector)
+{
+    return vector->capacity;
+}
 
-    *(Vector__index(vector, index)) = value;
-
-    vector->size = index + 1;
+bool Vector_isEmpty(Vector* vector)
+{
+    return (Vector_size(vector) == 0);
 }

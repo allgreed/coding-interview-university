@@ -1,6 +1,7 @@
 #ifndef PROJECT_ARRAY_H
 #define PROJECT_ARRAY_H
 
+#include <stdbool.h>
 /*
 EXIT CODES:
     0 - OK
@@ -27,7 +28,13 @@ Vector* Vector_init_of_size();
 void Vector_destroy(Vector* vector);
 
 // Basic operations
-void Vector_set(Vector* vector, int index, int value);
 int Vector_at(Vector* vector, int index);
+
+// Getters
+int Vector_size(Vector* vector);
+int Vector_capacity(Vector* vector);
+bool Vector_isEmpty(Vector* vector);
+
+// Dervied
 
 #endif  // PROJECT_ARRAY_H

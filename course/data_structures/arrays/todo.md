@@ -6,13 +6,13 @@
     - [x] [Jagged Arrays (video)](https://www.youtube.com/watch?v=1jtrQqYpt7g)
     - [x] [Resizing arrays (video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Resizable-arrays/149042/177108-4.html)
 - [ ] Implement a vector (mutable array with automatic resizing):
-    - [ ] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
+    - [x] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
     - [x] new raw data array with allocated memory
         - can allocate int array under the hood, just not use its features
         - [ ] start with 16, or if starting number is greater, use power of 2 - 16, 32, 64, 128
-    - [ ] size() - number of items
-    - [ ] capacity() - number of items it can hold
-    - [ ] is_empty()
+    - [x] size() - number of items
+    - [x] capacity() - number of items it can hold
+    - [x] is_empty()
     - [x] at(index) - returns item at given index, blows up if index out of bounds
     - [ ] push(item)
     - [ ] pop() - remove from end, return value
