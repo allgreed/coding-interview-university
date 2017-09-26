@@ -1,19 +1,19 @@
 ### Implement an automatically resizing vector.
 
-- [ ] Description:
-    - [ ] [UC Berkeley CS61B - Linear and Multi-Dim Arrays (video)](https://archive.org/details/ucberkeley_webcast_Wp8oiO_CZZE) (Start watching from 15m 32s)
-    - [ ] [Dynamic Arrays (video)](https://www.coursera.org/learn/data-structures/lecture/EwbnV/dynamic-arrays)
+- [x] Description:
+    - [x] [UC Berkeley CS61B - Linear and Multi-Dim Arrays (video)](https://archive.org/details/ucberkeley_webcast_Wp8oiO_CZZE) (Start watching from 15m 32s)
+    - [x] [Dynamic Arrays (video)](https://www.coursera.org/learn/data-structures/lecture/EwbnV/dynamic-arrays)
     - [x] [Jagged Arrays (video)](https://www.youtube.com/watch?v=1jtrQqYpt7g)
-    - [ ] [Resizing arrays (video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Resizable-arrays/149042/177108-4.html)
+    - [x] [Resizing arrays (video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Resizable-arrays/149042/177108-4.html)
 - [ ] Implement a vector (mutable array with automatic resizing):
     - [ ] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
-    - [ ] new raw data array with allocated memory
+    - [x] new raw data array with allocated memory
         - can allocate int array under the hood, just not use its features
-        - start with 16, or if starting number is greater, use power of 2 - 16, 32, 64, 128
+        - [ ] start with 16, or if starting number is greater, use power of 2 - 16, 32, 64, 128
     - [ ] size() - number of items
     - [ ] capacity() - number of items it can hold
     - [ ] is_empty()
-    - [ ] at(index) - returns item at given index, blows up if index out of bounds
+    - [x] at(index) - returns item at given index, blows up if index out of bounds
     - [ ] push(item)
     - [ ] pop() - remove from end, return value
     - [ ] delete(index) - delete item at index, shifting all trailing elements left

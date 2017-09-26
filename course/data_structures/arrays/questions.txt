@@ -7,3 +7,5 @@ Struct does not exist as a type, therefore "struct" before each occurrence of NA
 1. How to make function inline?
 
 Don't think about it. The compiler does it for you.
+
+2. Weird header error -> redefined consts. Why did they happen?

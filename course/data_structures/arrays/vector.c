@@ -1,13 +1,8 @@
+#include "vector.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-
-// Convert this to enum
-/*
-Exit codes:
-0 - OK
-1 - failed malloc
-2 - out of bounds array access
-*/
+#include <stdbool.h>
 
 // ****************************
 // Utility
@@ -26,87 +21,87 @@ void* allocate(int size)
 
 int toNearestGreaterBinaryPower(int input)
 {
-    
+
 }
 
 // ****************************
-// Vector implementation
+// Create and destroy
 // ****************************
 
-typedef struct
+Vector* Vector_init_default()
 {
-    int capacity;
-    int size;
-    int* tab;
-} Vector;
+    const int SIZE = 16;
+    return Vector_init_of_size(SIZE);
+}
 
-Vector* Vector_init(int size)
+Vector* Vector_init_of_size(int size)
 {
     // Creates vector container
     Vector* vector = allocate(sizeof(Vector));
 
     // Default parameters
-    vector->tab = allocate(sizeof(int) * size);
+    vector->data = allocate(sizeof(int) * size);
     vector->capacity = size;
     vector->size = 0;
 
     return vector;
 }
 
-Vector* Vector_init_default()
-{
-    const int SIZE = 16;
-    return Vector_init(SIZE);
-}
-
 void Vector_destroy(Vector* vector)
 {
-    free(vector->tab);
+    free(vector->data);
     free(vector);
 }
 
-void _Vector_resize(Vector* vector)
+// ****************************
+// Private utilities
+// ****************************
+
+void Vector__resize(Vector* vector)
 {
 
 }
 
-int* _Vector_index(Vector* vector, int index)
+
+int* Vector__index(Vector* vector, int index)
 {
-    return (vector->tab + index);
+    return (vector->data + index);
 }
+
+void negativeIndexCheck(int index)
+{
+    if (index < 0)
+        exit(3);
+}
+
+bool isOutOfBounds(Vector* vector ,int number)
+{
+
+}
+
+// ****************************
+// Basic operations
+// ****************************
+
 
 int Vector_at(Vector* vector, int index)
 {
-    if (( index >= vector->size ) || ( index < 0 ))
+    negativeIndexCheck(index);
+
+    if (( index >= vector->size ))
         exit(2);
 
-    return *(_Vector_index(vector, index));
+    return *(Vector__index(vector, index));
 }
 
 void Vector_set(Vector* vector, int index, int value)
 {
-    if (index < 0)
-        exit(2);
+    negativeIndexCheck(index);
 
     // if out of capacity -> resize
     // Pointer by reference, not by value?
 
-    *(_Vector_index(vector, index)) = value;
+    *(Vector__index(vector, index)) = value;
 
     vector->size = index + 1;
-}
-
-// ****************************
-// Main
-// ****************************
-
-int main()
-{
-    Vector* vector = Vector_init_default();
-
-    Vector_set(vector, 5, 8);
-    printf("%d\n", Vector_at(vector, 5));
-
-    Vector_destroy(vector);
-    return 0;
 }
