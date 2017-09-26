@@ -47,16 +47,39 @@ void getterTest()
     Vector_destroy(vector);
 }
 
+void pushTest()
+{
+    Vector* vector = Vector_init_default();
+
+    Vector_push(vector, 58);
+
+    assert(Vector_at(vector, 0) == 58);
+    assert(Vector_size(vector) == 1);
+
+    Vector_destroy(vector);
+}
+
+void popTest()
+{
+    Vector* vector = Vector_init_default();
+
+    Vector_push(vector, 58);
+    int tmp = Vector_pop(vector);
+
+    assert(tmp == 58);
+    assert(Vector_isEmpty(vector) == true);
+
+    Vector_destroy(vector);
+}
+
 int main()
 {
     creationTest();
     AtTest();
     getterTest();
+    pushTest();
+    popTest();
 
     printf("All tests passed!\n");
     return 0;
 }
-
-    // Vector_set(vector, 5, 8);
-    // assert(Vector_at(vector, 5) == 8);
-// 

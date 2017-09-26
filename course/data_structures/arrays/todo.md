@@ -14,8 +14,8 @@
     - [x] capacity() - number of items it can hold
     - [x] is_empty()
     - [x] at(index) - returns item at given index, blows up if index out of bounds
-    - [ ] push(item)
-    - [ ] pop() - remove from end, return value
+    - [x] push(item)
+    - [x] pop() - remove from end, return value
     - [ ] delete(index) - delete item at index, shifting all trailing elements left
     - [ ] insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right
     - [ ] prepend(item) - can use insert above at index 0

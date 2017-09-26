@@ -80,11 +80,23 @@ void Vector__set(Vector* vector, int index, int value)
     *(Vector__index(vector, index)) = value;
 }
 
+void Vector__inc(Vector* vector)
+{
+    // commmit resizing if needed
+
+    vector->size++;
+}
+
+void Vector__dec(Vector* vector)
+{
+    // commmit resizing if needed
+
+    vector->size--;
+}
 
 // ****************************
 // Basic operations
 // ****************************
-
 
 int Vector_at(Vector* vector, int index)
 {
@@ -94,6 +106,19 @@ int Vector_at(Vector* vector, int index)
         exit(2);
 
     return *(Vector__index(vector, index));
+}
+
+void Vector_push(Vector* vector, int item)
+{
+    Vector__inc(vector);
+    Vector__set(vector, vector->size-1, item);
+}
+
+int Vector_pop(Vector* vector)
+{
+    int retval = Vector_at(vector, vector->size-1);
+    Vector__dec(vector);
+    return retval;
 }
 
 // ****************************
@@ -109,6 +134,10 @@ int Vector_capacity(Vector* vector)
 {
     return vector->capacity;
 }
+
+// ****************************
+// Derived
+// ****************************
 
 bool Vector_isEmpty(Vector* vector)
 {

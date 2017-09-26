@@ -29,12 +29,21 @@ void Vector_destroy(Vector* vector);
 
 // Basic operations
 int Vector_at(Vector* vector, int index);
+int Vector_pop(Vector* vector);
+void Vector_push(Vector* vector, int item);
+
+// delete, insert
 
 // Getters
 int Vector_size(Vector* vector);
 int Vector_capacity(Vector* vector);
-bool Vector_isEmpty(Vector* vector);
 
-// Dervied
+// resizing
+
+// Derived
+bool Vector_isEmpty(Vector* vector);
+// prepend
+// remove
+// find
 
 #endif  // PROJECT_ARRAY_H
