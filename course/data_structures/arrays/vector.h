@@ -2,6 +2,8 @@
 #define PROJECT_ARRAY_H
 
 #include <stdbool.h>
+#include <stdlib.h>
+
 /*
 EXIT CODES:
     0 - OK
@@ -31,8 +33,8 @@ void Vector_destroy(Vector* vector);
 int Vector_at(Vector* vector, int index);
 int Vector_pop(Vector* vector);
 void Vector_push(Vector* vector, int item);
-
-// delete, insert
+void Vector_delete(Vector* vector, int index);
+void Vector_insert(Vector* vector, int index, int value);
 
 // Getters
 int Vector_size(Vector* vector);

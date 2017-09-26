@@ -1,7 +1,6 @@
 #include "vector.h"
 
 #include <stdio.h>
-#include <stdlib.h>
 
 // ****************************
 // Utility
@@ -119,6 +118,30 @@ int Vector_pop(Vector* vector)
     int retval = Vector_at(vector, vector->size-1);
     Vector__dec(vector);
     return retval;
+}
+
+void Vector_insert(Vector* vector, int index, int value)
+{
+    Vector__inc(vector);
+
+    int* tmp = allocate(sizeof(int) * (vector->size - index));
+
+    for(int i = 0; i < (vector->size - index - 1); i++)
+        *(tmp + i) = Vector_at(vector, index + i); 
+
+    Vector__set(vector, index, value);
+
+    for(int i = 0; i < (vector->size - index - 1); i++)
+    {
+        Vector__set(vector, index+i+1, *(tmp + i));
+    }
+
+    free(tmp);
+}
+
+void Vector_delete(Vector* vector, int index)
+{
+
 }
 
 // ****************************

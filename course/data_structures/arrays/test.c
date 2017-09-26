@@ -72,6 +72,46 @@ void popTest()
     Vector_destroy(vector);
 }
 
+void insertTest()
+{
+    Vector* vector = Vector_init_default();
+
+    Vector_push(vector, 58);
+    Vector_push(vector, 64);
+    Vector_push(vector, 4);
+
+    Vector_insert(vector, 1, 105);
+
+    assert(Vector_at(vector, 0) == 58);
+    assert(Vector_at(vector, 1) == 105);
+    assert(Vector_at(vector, 2) == 64);
+    assert(Vector_at(vector, 3) == 4);
+
+    assert(Vector_size(vector) == 4);
+
+    Vector_destroy(vector);
+}
+
+void deleteTest()
+{
+    Vector* vector = Vector_init_default();
+
+    Vector_push(vector, 58);
+    Vector_push(vector, 105);
+    Vector_push(vector, 64);
+    Vector_push(vector, 4);
+
+    Vector_delete(vector, 1);
+
+    assert(Vector_at(vector, 0) == 58);
+    assert(Vector_at(vector, 1) == 64);
+    assert(Vector_at(vector, 2) == 4);
+
+    assert(Vector_size(vector) == 3);
+
+    Vector_destroy(vector);
+}
+
 int main()
 {
     creationTest();
@@ -79,6 +119,8 @@ int main()
     getterTest();
     pushTest();
     popTest();
+    insertTest();
+    deleteTest();
 
     printf("All tests passed!\n");
     return 0;
