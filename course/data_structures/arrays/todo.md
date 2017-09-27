@@ -21,7 +21,7 @@
     - [x] prepend(item) - can use insert above at index 0
     - [ ] remove(item) - looks for value and removes index holding it (even if in multiple places)
     - [x] find(item) - looks for value and returns first index with that value, -1 if not found
-    - [ ] resize(new_capacity) // private function
+    - [x] resize(new_capacity) // private function
         - when you reach capacity, resize to double the size
         - when popping an item, if size is 1/4 of capacity, resize to half
 - [ ] Time

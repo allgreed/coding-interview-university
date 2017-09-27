@@ -143,17 +143,35 @@ void findTest()
     Vector_destroy(vector);
 }
 
+void resizeTest()
+{
+    Vector* vector = Vector_init_default();
+
+    for (int i = 0; i < 16; i++)
+        Vector_push(vector, 4);
+
+    assert(Vector_capacity(vector) == 32);
+
+    // for (int i = 0; i < 12; i++)
+    //     Vector_pop(vector);
+
+    // assert(Vector_capacity(vector) == 8);
+
+    Vector_destroy(vector);
+}
+
 int main()
 {
-    creationTest();
-    AtTest();
-    getterTest();
-    pushTest();
-    popTest();
-    insertTest();
-    deleteTest();
-    prependTest();
-    findTest();
+    // creationTest();
+    // AtTest();
+    // getterTest();
+    // pushTest();
+    // popTest();
+    // insertTest();
+    // deleteTest();
+    // prependTest();
+    // findTest();
+    resizeTest();
 
     printf("All tests passed!\n");
     return 0;

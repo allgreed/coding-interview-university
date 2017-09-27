@@ -17,6 +17,17 @@ void* allocate(int size)
         return retval;
 }
 
+// @size [bytes]
+void* reallocate(int* pointer, int size)
+{
+    void* retval = realloc(pointer, size);
+
+    if (retval == NULL)
+        exit(1);
+    else
+        return retval;
+}
+
 int toNearestGreaterBinaryPower(int input)
 {
 
@@ -55,42 +66,62 @@ void Vector_destroy(Vector* vector)
 // Private utilities
 // ****************************
 
-void Vector__resize(Vector* vector)
+void Vector__resize(Vector* vector, int desiredCapacity)
 {
-
+    vector->data = reallocate(vector->data, desiredCapacity * sizeof(int));
+    vector->capacity = desiredCapacity;
 }
 
+void Vector__expand(Vector* vector)
+{
+    Vector__resize(vector, Vector_capacity(vector) * 2);
+}
+
+void Vector__shrink(Vector* vector)
+{
+    Vector__resize(vector, Vector_capacity(vector) / 2);
+}
 
 int* Vector__index(Vector* vector, int index)
 {
     return (vector->data + index);
 }
 
-void Vector__negativeIndexCheck(int index)
+void Vector__runIndexChecks(Vector* vector,int index)
 {
+    // Negative index
     if (index < 0)
         exit(3);
+
+    // Out of bounds access
+    if ( index >= vector->size )
+        exit(2);
 }
 
 void Vector__set(Vector* vector, int index, int value)
 {
-    Vector__negativeIndexCheck(index);
-
     *(Vector__index(vector, index)) = value;
+}
+
+int Vector__get(Vector* vector, int index)
+{
+    return *(Vector__index(vector, index));
 }
 
 void Vector__inc(Vector* vector)
 {
-    // commmit resizing if needed
-
     vector->size++;
+
+    if(Vector_size(vector) == Vector_capacity(vector))
+        Vector__expand(vector);
 }
 
 void Vector__dec(Vector* vector)
 {
-    // commmit resizing if needed
-
     vector->size--;
+
+    if(Vector_size(vector) <= Vector_capacity(vector) / 4)
+        Vector__shrink(vector);
 }
 
 // ****************************
@@ -99,12 +130,16 @@ void Vector__dec(Vector* vector)
 
 int Vector_at(Vector* vector, int index)
 {
-    Vector__negativeIndexCheck(index);
-
-    if (( index >= vector->size ))
-        exit(2);
+    Vector__runIndexChecks(vector, index);
 
     return *(Vector__index(vector, index));
+}
+
+void Vector_update(Vector* vector,int index, int value)
+{
+    Vector__runIndexChecks(vector, index);
+
+    Vector__set(vector, index, value);
 }
 
 void Vector_push(Vector* vector, int item)
@@ -115,7 +150,7 @@ void Vector_push(Vector* vector, int item)
 
 int Vector_pop(Vector* vector)
 {
-    int retval = Vector_at(vector, vector->size-1);
+    int retval = Vector__get(vector, vector->size-1);
     Vector__dec(vector);
     return retval;
 }
@@ -125,7 +160,7 @@ void Vector_insert(Vector* vector, int index, int value)
     Vector__inc(vector);
 
     for(int i = Vector_size(vector); i > index; i--)
-        Vector__set(vector, i, Vector_at(vector, i - 1));
+        Vector__set(vector, i, Vector__get(vector, i - 1));
 
     Vector__set(vector, index, value);
 }
@@ -133,7 +168,7 @@ void Vector_insert(Vector* vector, int index, int value)
 void Vector_delete(Vector* vector, int index)
 {
     for(int i = index; i < Vector_size(vector) - 1; i++)
-        Vector__set(vector, i, Vector_at(vector, i + 1));
+        Vector__set(vector, i, Vector__get(vector, i + 1));
 
     Vector__dec(vector);
 }
@@ -169,10 +204,7 @@ void Vector_prepend(Vector* vector, int value)
 int Vector_find(Vector* vector, int value)
 {
     for(int i = 0; i < Vector_size(vector); i++)
-    {
-        if (Vector_at(vector, i) == value)
-            return i;
-    }
+        if (Vector__get(vector, i) == value) return i;
 
     return -1;
 }
