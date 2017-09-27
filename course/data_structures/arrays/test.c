@@ -152,10 +152,10 @@ void resizeTest()
 
     assert(Vector_capacity(vector) == 32);
 
-    // for (int i = 0; i < 12; i++)
-    //     Vector_pop(vector);
+    for (int i = 0; i < 12; i++)
+        Vector_pop(vector);
 
-    // assert(Vector_capacity(vector) == 8);
+    assert(Vector_capacity(vector) == 8);
 
     Vector_destroy(vector);
 }
