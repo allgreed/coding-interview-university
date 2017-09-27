@@ -5,7 +5,7 @@
     - [x] [Dynamic Arrays (video)](https://www.coursera.org/learn/data-structures/lecture/EwbnV/dynamic-arrays)
     - [x] [Jagged Arrays (video)](https://www.youtube.com/watch?v=1jtrQqYpt7g)
     - [x] [Resizing arrays (video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Resizable-arrays/149042/177108-4.html)
-- [ ] Implement a vector (mutable array with automatic resizing):
+- [x] Implement a vector (mutable array with automatic resizing):
     - [x] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
     - [x] new raw data array with allocated memory
         - can allocate int array under the hood, just not use its features
@@ -19,7 +19,7 @@
     - [x] delete(index) - delete item at index, shifting all trailing elements left
     - [x] insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right
     - [x] prepend(item) - can use insert above at index 0
-    - [ ] remove(item) - looks for value and removes index holding it (even if in multiple places)
+    - [x] remove(item) - looks for value and removes index holding it (even if in multiple places)
     - [x] find(item) - looks for value and returns first index with that value, -1 if not found
     - [x] resize(new_capacity) // private function
         - when you reach capacity, resize to double the size

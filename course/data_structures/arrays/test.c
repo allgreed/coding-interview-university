@@ -160,18 +160,39 @@ void resizeTest()
     Vector_destroy(vector);
 }
 
+void removeTest()
+{
+    Vector* vector = Vector_init_default();
+
+    Vector_push(vector, 5);
+    Vector_push(vector, 4);
+    Vector_push(vector, 7);
+    Vector_push(vector, 3);
+    Vector_push(vector, 7);
+
+    Vector_remove(vector, 7);
+
+    assert(Vector_at(vector, 0) == 5);
+    assert(Vector_at(vector, 1) == 4);
+    assert(Vector_at(vector, 2) == 3);
+    assert(Vector_size(vector) == 3);
+
+    Vector_destroy(vector);
+}
+
 int main()
 {
-    // creationTest();
-    // AtTest();
-    // getterTest();
-    // pushTest();
-    // popTest();
-    // insertTest();
-    // deleteTest();
-    // prependTest();
-    // findTest();
+    creationTest();
+    AtTest();
+    getterTest();
+    pushTest();
+    popTest();
+    insertTest();
+    deleteTest();
+    prependTest();
+    findTest();
     resizeTest();
+    removeTest();
 
     printf("All tests passed!\n");
     return 0;

@@ -208,3 +208,21 @@ int Vector_find(Vector* vector, int value)
 
     return -1;
 }
+
+void Vector_remove(Vector* vector, int value)
+{
+    int removedItems = 0;
+
+    for(int i = 0; i < (Vector_size(vector) - removedItems); i++)
+    {
+        if (Vector_at(vector, i) == value)
+        {
+            removedItems++;
+            Vector__dec(vector);
+        }
+
+        Vector__set(vector, i, Vector__get(vector, i + removedItems));
+    }
+
+    Vector__dec(vector);
+}

@@ -40,12 +40,10 @@ void Vector_insert(Vector* vector, int index, int value);
 int Vector_size(Vector* vector);
 int Vector_capacity(Vector* vector);
 
-// resizing
-
 // Derived
 bool Vector_isEmpty(Vector* vector);
 void Vector_prepend(Vector* vector, int value);
 int Vector_find(Vector* vector, int value);
-// remove
+void Vector_remove(Vector* vector, int value);
 
 #endif  // PROJECT_ARRAY_H
