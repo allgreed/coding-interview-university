@@ -44,8 +44,8 @@ int Vector_capacity(Vector* vector);
 
 // Derived
 bool Vector_isEmpty(Vector* vector);
-// prepend
+void Vector_prepend(Vector* vector, int value);
+int Vector_find(Vector* vector, int value);
 // remove
-// find
 
 #endif  // PROJECT_ARRAY_H

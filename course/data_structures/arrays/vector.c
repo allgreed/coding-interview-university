@@ -160,3 +160,19 @@ bool Vector_isEmpty(Vector* vector)
 {
     return (Vector_size(vector) == 0);
 }
+
+void Vector_prepend(Vector* vector, int value)
+{
+    Vector_insert(vector, 0, value);
+}
+
+int Vector_find(Vector* vector, int value)
+{
+    for(int i = 0; i < Vector_size(vector); i++)
+    {
+        if (Vector_at(vector, i) == value)
+            return i;
+    }
+
+    return -1;
+}
