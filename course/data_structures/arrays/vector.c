@@ -124,24 +124,18 @@ void Vector_insert(Vector* vector, int index, int value)
 {
     Vector__inc(vector);
 
-    int* tmp = allocate(sizeof(int) * (vector->size - index));
-
-    for(int i = 0; i < (vector->size - index - 1); i++)
-        *(tmp + i) = Vector_at(vector, index + i); 
+    for(int i = Vector_size(vector); i > index; i--)
+        Vector__set(vector, i, Vector_at(vector, i - 1));
 
     Vector__set(vector, index, value);
-
-    for(int i = 0; i < (vector->size - index - 1); i++)
-    {
-        Vector__set(vector, index+i+1, *(tmp + i));
-    }
-
-    free(tmp);
 }
 
 void Vector_delete(Vector* vector, int index)
 {
+    for(int i = index; i < Vector_size(vector) - 1; i++)
+        Vector__set(vector, i, Vector_at(vector, i + 1));
 
+    Vector__dec(vector);
 }
 
 // ****************************
