@@ -9,3 +9,15 @@ Struct does not exist as a type, therefore "struct" before each occurrence of NA
 Don't think about it. The compiler does it for you.
 
 2. Weird header error -> redefined consts. Why did they happen?
+
+3. How does this work ???
+
+input--;
+input |= input >> 1;
+input |= input >> 2;
+input |= input >> 4;
+input |= input >> 8;
+input |= input >> 16;
+input++;
+
+// Returns nearest greater binary power

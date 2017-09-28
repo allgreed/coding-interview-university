@@ -164,10 +164,16 @@ void removeTest()
 {
     Vector* vector = Vector_init_default();
 
+    Vector_push(vector, 7);
+    Vector_push(vector, 7);
     Vector_push(vector, 5);
     Vector_push(vector, 4);
     Vector_push(vector, 7);
+    Vector_push(vector, 7);
     Vector_push(vector, 3);
+    Vector_push(vector, 7);
+    Vector_push(vector, 5);
+    Vector_push(vector, 7);
     Vector_push(vector, 7);
 
     Vector_remove(vector, 7);
@@ -175,7 +181,9 @@ void removeTest()
     assert(Vector_at(vector, 0) == 5);
     assert(Vector_at(vector, 1) == 4);
     assert(Vector_at(vector, 2) == 3);
-    assert(Vector_size(vector) == 3);
+    assert(Vector_at(vector, 3) == 5);
+
+    assert(Vector_size(vector) == 4);
 
     Vector_destroy(vector);
 }

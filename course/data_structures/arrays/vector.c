@@ -30,7 +30,20 @@ void* reallocate(int* pointer, int size)
 
 int toNearestGreaterBinaryPower(int input)
 {
+    input = abs(input);
 
+    if(input == 0)
+        return 1;
+
+    input--;
+    input |= input >> 1;
+    input |= input >> 2;
+    input |= input >> 4;
+    input |= input >> 8;
+    input |= input >> 16;
+    input++;
+
+    return input;
 }
 
 // ****************************
@@ -45,6 +58,8 @@ Vector* Vector_init_default()
 
 Vector* Vector_init_of_size(int size)
 {
+    size = toNearestGreaterBinaryPower(size);
+
     // Creates vector container
     Vector* vector = allocate(sizeof(Vector));
 
@@ -87,6 +102,11 @@ int* Vector__index(Vector* vector, int index)
     return (vector->data + index);
 }
 
+bool Vector__isIndexWithinBounds(Vector* vector, int index)
+{
+    return (index < vector->size);
+}
+
 void Vector__runIndexChecks(Vector* vector,int index)
 {
     // Negative index
@@ -94,8 +114,12 @@ void Vector__runIndexChecks(Vector* vector,int index)
         exit(3);
 
     // Out of bounds access
-    if ( index >= vector->size )
+    if ( !Vector__isIndexWithinBounds(vector, index) )
+    {
+        printf("Index %d\n", index);
         exit(2);
+    }
+
 }
 
 void Vector__set(Vector* vector, int index, int value)
@@ -213,16 +237,22 @@ void Vector_remove(Vector* vector, int value)
 {
     int removedItems = 0;
 
-    for(int i = 0; i < (Vector_size(vector) - removedItems); i++)
+    for(int i = 0; i < Vector_size(vector) - removedItems; i++)
     {
-        if (Vector_at(vector, i) == value)
+
+        while (Vector__isIndexWithinBounds(vector, i+removedItems) &&
+        (Vector__get(vector, i+removedItems) == value) )
         {
             removedItems++;
-            Vector__dec(vector);
         }
+
+        // Handling remove item tail
+        if(!Vector__isIndexWithinBounds(vector, i+removedItems))
+            break;
 
         Vector__set(vector, i, Vector__get(vector, i + removedItems));
     }
 
-    Vector__dec(vector);
+    for(int i = 0; i < removedItems; i++)
+        Vector__dec(vector);
 }

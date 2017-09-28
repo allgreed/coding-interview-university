@@ -167,11 +167,16 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 <!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
 <!-- Todo: Some kind of generator for assignements -->
-<!-- Todo: Unit testing C -->
-<!-- Todo: Unit testing C++ -->
-<!-- Todo: Implementations in other languages? -->
-<!-- Todo: Learn make basics -->
 <!-- Todo: Rename todo.md to sth else -->
+
+<!-- Todo: Unit testing C -->
+<!-- Todo: Automated complexity tests -->
+
+<!-- Todo: Unit testing C++ -->
+
+<!-- Todo: Implementations in other languages? -->
+
+<!-- Todo: Learn make basics -->
 <!-- Todo: Exec script "echo $?" if exit code != 0, print it! -->
 
 I've removed all the non-free links or those that I consider of little value.
