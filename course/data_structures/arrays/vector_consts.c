@@ -1,0 +1,9 @@
+#include "vector.h"
+
+const int VECTOR_EXIT_FAILED_ALLOCATION = 1;
+const int VECTOR_EXIT_OUT_OF_BOUNDS = 2;
+const int VECTOR_EXIT_NEGATIVE_INDEX = 3;
+
+const int VECTOR_DEFAULT_CAPACITY = 16;
+const int VECTOR_GROWTH_FACTOR = 2;
+const int VECTOR_SHRINK_FACTOR = 4;

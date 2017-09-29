@@ -12,7 +12,10 @@ void* allocate(int size)
     void* retval = malloc(size);
 
     if (retval == NULL)
-        exit(1);
+    {
+        fprintf( stderr, "Failed allocation with malloc\n");
+        exit(VECTOR_EXIT_FAILED_ALLOCATION);
+    }
     else
         return retval;
 }
@@ -23,7 +26,10 @@ void* reallocate(int* pointer, int size)
     void* retval = realloc(pointer, size);
 
     if (retval == NULL)
-        exit(1);
+    {
+        fprintf( stderr, "Failed allocation with realloc\n");
+        exit(VECTOR_EXIT_FAILED_ALLOCATION);
+    }
     else
         return retval;
 }
@@ -52,7 +58,7 @@ int toNearestGreaterBinaryPower(int input)
 
 Vector* Vector_init_default()
 {
-    const int SIZE = 16;
+    const int SIZE = VECTOR_DEFAULT_CAPACITY;
     return Vector_init_of_size(SIZE);
 }
 
@@ -89,12 +95,12 @@ void Vector__resize(Vector* vector, int desiredCapacity)
 
 void Vector__expand(Vector* vector)
 {
-    Vector__resize(vector, Vector_capacity(vector) * 2);
+    Vector__resize(vector, Vector_capacity(vector) * VECTOR_GROWTH_FACTOR);
 }
 
 void Vector__shrink(Vector* vector)
 {
-    Vector__resize(vector, Vector_capacity(vector) / 2);
+    Vector__resize(vector, Vector_capacity(vector) / VECTOR_GROWTH_FACTOR);
 }
 
 int* Vector__index(Vector* vector, int index)
@@ -111,13 +117,16 @@ void Vector__runIndexChecks(Vector* vector,int index)
 {
     // Negative index
     if (index < 0)
-        exit(3);
+    {
+        fprintf( stderr, "Negative index access attempt: %d\n", index);
+        exit(VECTOR_EXIT_NEGATIVE_INDEX);
+    }
 
     // Out of bounds access
     if ( !Vector__isIndexWithinBounds(vector, index) )
     {
-        printf("Index %d\n", index);
-        exit(2);
+        fprintf( stderr, "Out of bounds index access attempt: %d\n", index);
+        exit(VECTOR_EXIT_OUT_OF_BOUNDS);
     }
 
 }
@@ -144,7 +153,7 @@ void Vector__dec(Vector* vector)
 {
     vector->size--;
 
-    if(Vector_size(vector) <= Vector_capacity(vector) / 4)
+    if(Vector_size(vector) <= Vector_capacity(vector) / VECTOR_SHRINK_FACTOR)
         Vector__shrink(vector);
 }
 
@@ -191,6 +200,7 @@ void Vector_insert(Vector* vector, int index, int value)
 
 void Vector_delete(Vector* vector, int index)
 {
+
     for(int i = index; i < Vector_size(vector) - 1; i++)
         Vector__set(vector, i, Vector__get(vector, i + 1));
 

@@ -1,6 +1,5 @@
 #include "vector.h"
 
-// IO
 #include <stdio.h>
 #include <assert.h>
 

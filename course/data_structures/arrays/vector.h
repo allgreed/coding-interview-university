@@ -4,18 +4,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-/*
-EXIT CODES:
-    0 - OK
-    1 - failed memory allocation
-    2 - out of bounds array access
-    3 - negative index array access
-*/
-// refactor to const int EXIT_CODE_${}
+extern const int VECTOR_EXIT_OK;
+extern const int VECTOR_EXIT_FAILED_ALLOCATION;
+extern const int VECTOR_EXIT_OUT_OF_BOUNDS;
+extern const int VECTOR_EXIT_NEGATIVE_INDEX;
 
-// const int DEFAULT_CAPACITY = 16;
-// const int GROWTH_FACTOR = 2;
-// const int SHRINK_FACTOR = 4;
+extern const int VECTOR_DEFAULT_CAPACITY;
+extern const int VECTOR_GROWTH_FACTOR;
+extern const int VECTOR_SHRINK_FACTOR;
 
 typedef struct
 {
