@@ -163,7 +163,6 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Answer all C question in arrays -->
 
-<!-- Todo: redo the license -->
 <!-- Todo: Move prerequisitires to course -->
 <!-- Todo: Customized this README -->
 <!-- Todo: Shoutout for jwasham -->

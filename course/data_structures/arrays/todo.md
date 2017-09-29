@@ -30,3 +30,8 @@
 - [x] Space
     - contiguous in memory, so proximity helps performance
     - space needed = (array capacity, which is >= n) * size of item, but even if 2n, still O(n)
+
+- [ ] Implement in:
+    - [x] C
+    - [ ] C++
+    - [ ] C++ with builtin types
