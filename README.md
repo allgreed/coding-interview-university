@@ -161,22 +161,21 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
     If some of the lectures are too mathy, you can jump down to the bottom and
     watch the discrete mathematics videos to get the background knowledge.
 
-<!-- Answer all C question in arrays -->
-
 <!-- Todo: Move prerequisitires to course -->
 <!-- Todo: Customized this README -->
 <!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
+
+<!-- Todo: Answer all C question in arrays -->
+
 <!-- Todo: Some kind of generator for assignements -->
-<!-- Todo: Rename todo.md to sth else -->
-
-<!-- Todo: Unit testing C -->
-<!-- Todo: Automated complexity tests -->
 <!-- Todo: Learn make basics -->
-
+<!-- Todo: Unit testing C -->
 <!-- Todo: Unit testing C++ -->
+<!-- Todo: Propper generator for assignements -->
 
 <!-- Todo: Implementations in other languages? -->
 <!-- Todo: Exec script "echo $?" if exit code != 0, print it! -->
 
+<!-- Difference from original -->
 I've removed all the non-free links or those that I consider of little value.

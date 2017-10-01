@@ -1,7 +1,14 @@
+#mkdir stuff name
+# cd stuff name
+
+touch questions.md;
+touch contents.md;
+
 mkdir c;
+cd c;
 touch unit.c;
 
 # STUFF_NAME -> .c .h _consts.c
-
-touch questions.md;
-touch #niby todo.md, ale nie do końca
+cd ..
+# STUFF_NAME -> .cpp .hpp
+touch unit.cpp

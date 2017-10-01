@@ -153,7 +153,7 @@ void Vector__dec(Vector* vector)
 {
     vector->size--;
 
-    if(Vector_size(vector) <= Vector_capacity(vector) / VECTOR_SHRINK_FACTOR)
+    if(Vector_size(vector) <= Vector_capacity(vector) / VECTOR_SHRINK_TRIGGER)
         Vector__shrink(vector);
 }
 
@@ -173,19 +173,6 @@ void Vector_update(Vector* vector,int index, int value)
     Vector__runIndexChecks(vector, index);
 
     Vector__set(vector, index, value);
-}
-
-void Vector_push(Vector* vector, int item)
-{
-    Vector__inc(vector);
-    Vector__set(vector, vector->size-1, item);
-}
-
-int Vector_pop(Vector* vector)
-{
-    int retval = Vector__get(vector, vector->size-1);
-    Vector__dec(vector);
-    return retval;
 }
 
 void Vector_insert(Vector* vector, int index, int value)
@@ -265,4 +252,16 @@ void Vector_remove(Vector* vector, int value)
 
     for(int i = 0; i < removedItems; i++)
         Vector__dec(vector);
+}
+
+void Vector_push(Vector* vector, int item)
+{
+    Vector_insert(vector, Vector_size(vector), item);
+}
+
+int Vector_pop(Vector* vector)
+{
+    int retval = Vector__get(vector, Vector_size(vector) - 1);
+    Vector_delete(vector, Vector_size(vector) - 1);
+    return retval;
 }
