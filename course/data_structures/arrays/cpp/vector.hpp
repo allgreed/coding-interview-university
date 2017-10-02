@@ -3,44 +3,29 @@
 // Warning: this library may throw
 #include <stdexcept>
 
-#include <iostream>
-
-extern const int VECTOR_DEFAULT_CAPACITY;
-extern const int VECTOR_GROWTH_FACTOR;
-extern const int VECTOR_SHRINK_TRIGGER;
-
-// todo: Add a const to disable sanity checks
-// todo: retval in pop ??? -> maybe add unsafeAt
-// todo: redo max_index & end
-// todo: Try to refactor throwing messages to be dynamic
-
-// todo: Add an exception test for index ch
-// todo: Refactor this with a testing framework
-
-// todo: get rid of this awfull extern consts
-// todo: how to allow template'ing and seperate header from implementation
+const int VECTOR_DEFAULT_CAPACITY = 16;
+const int VECTOR_GROWTH_FACTOR = 2;
+const int VECTOR_SHRINK_TRIGGER = 4;
 
 template <typename T>
 class Vector
 {
 protected:
-    int capacity = 16;
+    int capacity;
     int size = 0;
     T* data = nullptr;
-    
-protected:
-    int _toNearestGreaterBinaryPower(int desiredCapacity);
 
-    void _runIndexChecks(int index);
-    int _maxIndex();
+protected:
+    void runIndexChecks(int index);
+    void resize(int desiredCapacity);
+    int endIndex();
 
     void _dec();
     void _inc();
 
-    // resize
 public:
-    Vector();
     Vector(int desiredCapacity);
+    Vector();
     ~Vector();
 
     // Basic getters-setters
@@ -64,3 +49,8 @@ public:
     // Advanced
     void remove(T value);
 };
+
+#include "vector.cpp"
+
+// todo: Add an exception test for index ch
+// todo: Refactor this with a testing framework

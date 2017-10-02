@@ -1,95 +1,53 @@
-#include "vector.hpp"
+#pragma region Utilities
 
-// ****************************
-// Utility
-// ****************************
-
-// @size [bytes]
-// void* reallocate(int* pointer, int size)
-// {
-//     void* retval = realloc(pointer, size);
-
-//     if (retval == NULL)
-//     {
-//         fprintf( stderr, "Failed allocation with realloc\n");
-//         exit(VECTOR_EXIT_FAILED_ALLOCATION);
-//     }
-//     else
-//         return retval;
-// }
-
-template <typename T> int Vector<T>::_toNearestGreaterBinaryPower(int desiredCapacity)
+template <typename T> void Vector<T>::resize(int desiredCapacity)
 {
-    int actualCapacity = abs(desiredCapacity);
+    T* old = data;
 
-    if(actualCapacity == 0)
-        return 1;
+    data = new T[desiredCapacity];
 
-    actualCapacity--;
-    actualCapacity |= actualCapacity >> 1;
-    actualCapacity |= actualCapacity >> 2;
-    actualCapacity |= actualCapacity >> 4;
-    actualCapacity |= actualCapacity >> 8;
-    actualCapacity |= actualCapacity >> 16;
-    actualCapacity++;
+    for(int i = 0; i <= endIndex(); i++)
+        data[i]=old[i];
 
-    return actualCapacity;
+    delete[] old;
+
+    capacity = desiredCapacity;
 }
 
-template <typename T> int Vector<T>::_maxIndex()
+template <typename T> int Vector<T>::endIndex()
 {
     return (size - 1);
 }
 
-template <typename T> void Vector<T>::_inc()
-{
-    size++;
-
-//     if(Vector_size(vector) == Vector_capacity(vector))
-//         Vector__expand(vector);
-}
-
-template <typename T> void Vector<T>::_dec()
-{
-    size--;
-
-//     if(Vector_size(vector) <= Vector_capacity(vector) / VECTOR_SHRINK_TRIGGER)
-//         Vector__shrink(vector);
-}
-
-// ****************************
-// Private utilities
-// ****************************
-
-// void Vector__resize(Vector* vector, int desiredCapacity)
-// {
-//     vector->data = reallocate(vector->data, desiredCapacity * sizeof(int));
-//     vector->capacity = desiredCapacity;
-// }
-
-// void Vector__expand(Vector* vector)
-// {
-//     Vector__resize(vector, Vector_capacity(vector) * VECTOR_GROWTH_FACTOR);
-// }
-
-// void Vector__shrink(Vector* vector)
-// {
-//     Vector__resize(vector, Vector_capacity(vector) / VECTOR_GROWTH_FACTOR);
-// }
-
-// }
+#pragma endregion
 
 #pragma region Create and destroy
 
-template <typename T> Vector<T>::Vector()
+template <typename T> Vector<T>::Vector() : Vector(16)
 {
-    data = new T[capacity];
+
 }
 
 template <typename T> Vector<T>::Vector(int desiredCapacity)
 {
-    capacity = _toNearestGreaterBinaryPower(desiredCapacity);
-    Vector();
+    auto toNearestGreaterBinaryPower= [](int desiredCapacity) -> int
+    {
+        int actualCapacity = abs(desiredCapacity);
+
+        actualCapacity--;
+        actualCapacity |= actualCapacity >> 1;
+        actualCapacity |= actualCapacity >> 2;
+        actualCapacity |= actualCapacity >> 4;
+        actualCapacity |= actualCapacity >> 8;
+        actualCapacity |= actualCapacity >> 16;
+        actualCapacity++;
+
+        return actualCapacity;
+    };
+
+    capacity = toNearestGreaterBinaryPower(desiredCapacity);
+
+    data = new T[capacity];
 }
 
 template <typename T> Vector<T>::~Vector()
@@ -101,33 +59,26 @@ template <typename T> Vector<T>::~Vector()
 
 #pragma region Getters & setters
 
-template <typename T> void Vector<T>::_runIndexChecks(int index)
+template <typename T> void Vector<T>::runIndexChecks(int index)
 {
     if (index < 0)
-    {
-        std::cerr << "ERR: Negative index access attempt: index was " << index << std::endl;
         throw std::out_of_range("Negative index access attempt");
-    }
 
-    if ( index > _maxIndex() )
-    {
-        std::cerr << "ERR: Out of bounds access attempt"
-        << ", max: "  << _maxIndex()
-        << ", was: " << index << std::endl;
+
+    if ( index > endIndex() )
         throw std::invalid_argument("Out of bounds access attempt");
-    }
 }
 
 template <typename T> T Vector<T>::at(int index)
 {
-    _runIndexChecks(index);
+    runIndexChecks(index);
 
     return data[index];
 }
 
 template <typename T> void Vector<T>::update_at(int index, T value)
 {
-    _runIndexChecks(index);
+    runIndexChecks(index);
 
     data[index] = value;
 }
@@ -148,17 +99,25 @@ template <typename T> int Vector<T>::whatCapacity()
 
 template <typename T> void Vector<T>::delete_at(int index)
 {
-    for(int i = index; i < _maxIndex(); i++)
+    for(int i = index; i < endIndex(); i++)
         update_at(i, at(i + 1));
 
-    _dec();
+    size--;
+
+    if(size <= capacity / VECTOR_SHRINK_TRIGGER)
+        resize(capacity / VECTOR_GROWTH_FACTOR);
 }
 
 template <typename T> void Vector<T>::insert_at(int index, T value)
 {
-    _inc();
+    size++;
 
-    for(int i = _maxIndex(); i > index; i--)
+    if(capacity == 0)
+        resize(1);
+    else if(size == capacity)
+        resize(capacity * VECTOR_GROWTH_FACTOR);
+
+    for(int i = endIndex(); i > index; i--)
         update_at(i, at(i - 1));
 
     update_at(index, value);
@@ -175,14 +134,14 @@ template <typename T> bool Vector<T>::isEmpty()
 
 template <typename T> T Vector<T>::pop()
 {
-    int retval = at(_maxIndex());
-    delete_at(_maxIndex());
+    int retval = at(endIndex());
+    delete_at(endIndex());
     return retval;
 }
 
 template <typename T> void Vector<T>::push(T value)
 {
-    insert_at(_maxIndex()+1, value);
+    insert_at(endIndex()+1, value);
 }
 
 
@@ -193,7 +152,7 @@ template <typename T> void Vector<T>::prepend(T value)
 
 template <typename T> int Vector<T>::find(T value)
 {
-    for(int i = 0; i <= _maxIndex(); i++)
+    for(int i = 0; i <= endIndex(); i++)
         if (at(i) == value) return i;
 
     return -1;
@@ -209,9 +168,9 @@ template <typename T> void Vector<T>::remove(T value)
     int searchIndex=0;
     int nextValidItemIndex = 0;
 
-    auto nd_find = [&removedItems, this, value, &nextValidItemIndex, &searchIndex]() -> int
+    auto findNextValidItem = [&]() -> int
     {
-        for(int i = searchIndex; i <= _maxIndex(); i++)
+        for(int i = searchIndex; i <= endIndex(); i++)
         {
             if (at(i) != value)
             {
@@ -226,7 +185,7 @@ template <typename T> void Vector<T>::remove(T value)
         return -1;
     };
 
-    while(nd_find() != -1)
+    while(findNextValidItem() != -1)
     {
         update_at(copyingIndex, at(nextValidItemIndex));
         copyingIndex++;
@@ -236,6 +195,3 @@ template <typename T> void Vector<T>::remove(T value)
     size -= removedItems;
 }
 #pragma endregion
-
-
-template class Vector<int>;

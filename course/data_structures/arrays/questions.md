@@ -16,6 +16,10 @@ Don't think about it. The compiler does it for you.
 
 Because `#include` just pastes the file contents, therefore 2 `.o` files are generated with exactly the same consts definitions and the linker can't process it :c
 
+#### Another solution
+
+When working with templates it's best not to split headers and implementation [to allow template specification for all types] which also solves this problem ^^
+
 ### How does this work ???
 
 ```c

@@ -157,22 +157,31 @@ void removeTest()
     assert(vector.whatSize() == 4);
 }
 
+void zeroCapacityUsabilityTest()
+{
+    Vector<int> vector(0);
 
-// void resizeTest()
-// {
-//     Vector<int> vector;
+    vector.push(5);
+    int retval = vector.pop();
 
-//     for (int i = 0; i < 16; i++)
-//         vector.push(4);
+    assert(retval == 5);
+}
 
-//     assert(vector.capacity(vector) == 32);
+void resizeTest()
+{
+    Vector<int> vector;
 
-//     for (int i = 0; i < 12; i++)
-//         vector.pop(vector);
+    for (int i = 0; i < 16; i++)
+        vector.push(1234567890);
 
-//     assert(vector.capacity(vector) == 8);
+    assert(vector.whatCapacity() == 32);
 
-// }
+    for (int i = 0; i < 12; i++)
+        vector.pop();
+
+    assert(vector.whatCapacity() == 8);
+
+}
 
 int main()
 {
@@ -183,7 +192,7 @@ int main()
     updateTest();
     deleteTest();
 
-    // resizeTest();
+    resizeTest();
 
     isEmptyTest();
     pushTest();
@@ -192,6 +201,8 @@ int main()
     findTest();
 
     removeTest();
+
+    zeroCapacityUsabilityTest();
 
     std::cout << "All tests passed!" << std::endl;
     return 0;
