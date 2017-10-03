@@ -51,6 +51,3 @@ public:
 };
 
 #include "vector.cpp"
-
-// todo: Add an exception test for index ch
-// todo: Refactor this with a testing framework
