@@ -19,7 +19,7 @@ void init_of_size_test()
 {
     Vector<int> vector(20);
 
-    assert(vector.whatCapacity() == 32);
+    assert(vector.whatCapacity() == 20);
 }
 
 void insertTest()
@@ -168,16 +168,10 @@ void resizeTest()
 {
     Vector<int> vector;
 
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 17; i++)
         vector.push(1234567890);
 
     assert(vector.whatCapacity() == 32);
-
-    for (int i = 0; i < 12; i++)
-        vector.pop();
-
-    assert(vector.whatCapacity() == 8);
-
 }
 
 int main()

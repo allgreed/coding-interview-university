@@ -34,7 +34,7 @@ Finished @: dd/mm/yy hh:mm
     - contiguous in memory, so proximity helps performance
     - space needed = (array capacity, which is >= n) * size of item, but even if 2n, still O(n)
 
-- [ ] Implement in:
+- [x] Implement in:
     - [x] C
-    - [ ] C++
-    - [ ] C++ with builtin types
+    - [x] C++
+    - [x] C++ with builtin types

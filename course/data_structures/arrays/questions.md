@@ -33,3 +33,11 @@ input |= input >> 8;
 input |= input >> 16;
 input++;
 ```
+
+## C++ STL
+
+### How does this work?
+
+```cpp
+vector.erase( std::remove( vector.begin(), vector.end(), value ), vector.end() );
+```

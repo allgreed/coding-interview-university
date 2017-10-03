@@ -141,6 +141,7 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Todo: Unit testing C++ -->
 <!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->
+<!-- Testing exceptions -->
 
 <!-- Todo: Propper generator for assignements -->
 
