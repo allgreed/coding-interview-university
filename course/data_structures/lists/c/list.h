@@ -16,7 +16,7 @@ typedef ListNode List;
 
 // Create and destroy
 List* List_init();
-void List_destroy(List* list); // this will be fun xD -> maybe recurance
+void List_destroy(List* list);
 
 // Basic operations
 void List_insert(List* list, int index, int value);

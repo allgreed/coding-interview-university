@@ -49,7 +49,7 @@ ListNode* ListNode_at_index(List* list, int index)
 {
     ListNode* node = list;
 
-    for(int i = 0; i <= index ; i++)
+    for(int i = -1; i < index ; i++)
     {
         // if(ListNode_is_last(node))
             // blow up
@@ -66,7 +66,7 @@ ListNode* ListNode_at_index(List* list, int index)
 
 List* List_init()
 {
-    return ListNode_create(0);
+    return ListNode_create(1);
 }
 
 void List_destroy(List* list)
@@ -81,7 +81,7 @@ void List_destroy(List* list)
 
 void List_insert(List* list, int index, int value)
 {
-    ListNode* previous = ListNode_at_index(list, index);
+    ListNode* previous = ListNode_at_index(list, --index);
     ListNode* node = ListNode_create(value);
     node->next = previous->next;
     previous->next = node;

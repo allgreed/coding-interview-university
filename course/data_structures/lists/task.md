@@ -20,11 +20,12 @@ Finished @: yyyy-mm-dd hh:mm
     - [Pointers to Pointers](https://www.eskimo.com/~scs/cclass/int/sx8.html)
 - [ ] implement (I did with tail pointer & without):
     - [ ] size() - returns number of data elements in list
-    - [ ] value_at(index) - returns the value of the nth item (starting at 0 for first)
+    - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
 <!-- add make -->
-    - [ ] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
+    - [x] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
     - [ ] erase(index) - removes node at given index
 <!-- add testing framework -->
+<!-- todo get rid of these shitty warnings -->
     - [ ] push_front(value) - adds an item to the front of the list
     - [ ] pop_front() - remove front item and return its value
     - [ ] push_back(value) - adds an item at the end
