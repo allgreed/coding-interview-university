@@ -6,7 +6,7 @@
     - [Queue](#queue)
     - [Hash table](#hash-table)
 
-<!-- Do 30.09, 14:00 -->
+<!-- Do 30.10, 14:00 -->
 
 - [More Knowledge](#more-knowledge)
     - [Binary search](#binary-search)

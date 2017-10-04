@@ -165,7 +165,7 @@ template <typename T> void Vector<T>::remove(T value)
 {
     int removedItems = 0;
     int copyingIndex = 0;
-    int searchIndex=0;
+    int searchIndex = 0;
     int nextValidItemIndex = 0;
 
     auto findNextValidItem = [&]() -> int

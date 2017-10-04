@@ -1,5 +1,8 @@
 ## Prerequisite Knowledge
 
+Started @: 2017-10-04 01:39
+Finished @: yyyy-mm-dd hh:mm
+
 - [ ] **Learn C**
     - C is everywhere. You'll see examples in books, lectures, videos, *everywhere* while you're studying.
     - [ ] [C Programming Language, Vol 2](https://www.amazon.com/Programming-Language-Brian-W-Kernighan/dp/0131103628)

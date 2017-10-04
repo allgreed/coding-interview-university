@@ -124,15 +124,13 @@ You don't need to memorize the guts of every algorithm.
 
 Write code on a whiteboard or paper, not a computer. Test with some sample inputs. Then test it out on a computer.
 
-<!-- Todo: Customized this README -->
+<!-- Todo: Customized this README -> above -->
 <!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
 
 <!-- Rename course to sth else -->
 
-<!-- Todo: Answer all C question in arrays -->
-
-<!-- Todo: Some kind of generator for assignements -->
+<!-- Todo: Answer all  question in arrays -->
 
 <!-- Todo: Learn make basics -->
 
@@ -150,3 +148,9 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Difference from original -->
 I've removed all the non-free links or those that I consider of little value.
+
+## How to create new assignment
+
+<!-- Add instructions here -->
+
+<!-- Todo: Craft shell script to generate new assignemts -->

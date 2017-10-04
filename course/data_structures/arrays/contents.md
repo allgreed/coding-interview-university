@@ -1,7 +1,7 @@
 ### Implement an automatically resizing vector.
 
-Started @: dd/mm/yy hh:mm
-Finished @: dd/mm/yy hh:mm
+Started @: yyyy-mm-dd hh:mm
+Finished @: 2017-10-04 00:07
 
 - [x] Description:
     - [x] [UC Berkeley CS61B - Linear and Multi-Dim Arrays (video)](https://archive.org/details/ucberkeley_webcast_Wp8oiO_CZZE) (Start watching from 15m 32s)
