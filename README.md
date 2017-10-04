@@ -153,4 +153,3 @@ I've removed all the non-free links or those that I consider of little value.
 
 <!-- Add instructions here -->
 
-<!-- Todo: Craft shell script to generate new assignemts -->
