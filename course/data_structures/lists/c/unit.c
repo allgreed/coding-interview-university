@@ -23,10 +23,41 @@ void getAndSetTest()
     List_destroy(list);
 }
 
-// remove test
-    // add 2 stuff
-    // remove first
-    // is at(0) == firstStuff ?
+void eraseTest()
+{
+    List* list = List_init();
+
+    List_insert(list, 0, 123456);
+    List_insert(list, 0, -123456);
+
+    List_erase(list, 0);
+
+    assert(List_at(list, 0) == 123456);
+
+    List_destroy(list);
+}
+
+
+void emptyTest()
+{
+    List* list = List_init();
+
+    assert(List_empty(list));
+
+    List_insert(list, 0, 498);
+    List_insert(list, 0, 0);
+    List_insert(list, 0, -49450);
+
+    assert(!List_empty(list));
+
+    List_erase(list, 0);
+    List_erase(list, 0);
+    List_erase(list, 0);
+
+    assert(List_empty(list));
+
+    List_destroy(list);
+}
 
 // size test
     // is size 0 ?
@@ -36,16 +67,11 @@ void getAndSetTest()
     // is size 1?
 
 
-// empty test
-    // is empty ?
-    // add 3 item
-    // is not empty?
-    // remove 3 item
-    // is empty?
-
 int main()
 {
     getAndSetTest();
+    eraseTest();
+    emptyTest();
 
     printf("All tests passed!\n");
     return 0;

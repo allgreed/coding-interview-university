@@ -19,7 +19,10 @@ List* List_init();
 void List_destroy(List* list);
 
 // Basic operations
-void List_insert(List* list, int index, int value);
+bool List_empty(List* list);
 int List_at(List* list, int index);
+
+void List_insert(List* list, int index, int value);
+void List_erase(List* list, int index);
 
 #endif  // PROJECT_LINKED_LIST_H

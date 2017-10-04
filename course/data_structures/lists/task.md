@@ -19,8 +19,8 @@ Finished @: yyyy-mm-dd hh:mm
     This page is just to get a grasp on ptr to ptr. I don't recommend this list traversal style. Readability and maintainability suffer due to cleverness.
     - [Pointers to Pointers](https://www.eskimo.com/~scs/cclass/int/sx8.html)
 - [ ] implement (I did with tail pointer & without):
-    - [ ] size() - returns number of data elements in list
     - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
+    - [ ] empty() - bool returns true if empty
 <!-- add make -->
     - [x] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
     - [ ] erase(index) - removes node at given index
@@ -33,9 +33,9 @@ Finished @: yyyy-mm-dd hh:mm
 
     - [ ] front() - get value of front item
     - [ ] back() - get value of end item
-    - [ ] empty() - bool returns true if empty
     - [ ] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
 
+    - [ ] size() - returns number of data elements in list
     - [ ] reverse() - reverses the list
     - [ ] remove_value(value) - removes the first item in the list with this value
 - [ ] Implement in:
@@ -45,3 +45,5 @@ Finished @: yyyy-mm-dd hh:mm
 - [ ] Doubly-linked List
     - [Description (video)](https://www.coursera.org/learn/data-structures/lecture/jpGKD/doubly-linked-lists)
     - No need to implement
+
+<!-- Update template if necessary -->

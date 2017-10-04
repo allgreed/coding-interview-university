@@ -82,12 +82,25 @@ void List_destroy(List* list)
 void List_insert(List* list, int index, int value)
 {
     ListNode* previous = ListNode_at_index(list, --index);
-    ListNode* node = ListNode_create(value);
-    node->next = previous->next;
-    previous->next = node;
+    ListNode* newNode = ListNode_create(value);
+    newNode->next = previous->next;
+    previous->next = newNode;
 }
 
 int List_at(List* list, int index)
 {
     return ListNode_at_index(list, index)->value;
+}
+
+bool List_empty(List* list)
+{
+    return (ListNode_is_last(list));
+}
+
+void List_erase(List* list, int index)
+{
+    ListNode* previous = ListNode_at_index(list, --index);
+    ListNode* erasedNode = previous->next;
+    previous->next = erasedNode->next;
+    ListNode_destroy(erasedNode);
 }
