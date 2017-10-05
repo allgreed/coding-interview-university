@@ -137,10 +137,7 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
     <!-- Test case detection -->
     <!-- Test suite per file -->
     <!-- Assert like behavior, but on failure report also actual value -->
-
-<!-- Todo: Unit testing C++ -->
-<!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->
-<!-- Testing exceptions -->
+    <!-- https://stackoverflow.com/questions/65820/unit-testing-c-code -->
 
 <!-- Todo: Propper generator for assignements -->
 

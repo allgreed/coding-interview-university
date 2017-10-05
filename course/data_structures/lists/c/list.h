@@ -39,4 +39,8 @@ int List_back(List* list);
 int List_front(List* list);
 int List_value_n_from_end(List* list, int reverseIndex);
 
+// Advanced
+void List_reverse(List* list);
+void List_remove_value(List* list, int value);
+
 #endif  // PROJECT_LINKED_LIST_H

@@ -48,7 +48,11 @@ bool ListNode_is_last(ListNode* node)
 ListNode* ListNode_at_index(List* list, int index)
 {
 
-    // negative index check
+    if(index < 0)
+    {
+        fprintf(stderr, "Negative index access attempt\n");
+        exit(LIST_EXIT_NEGATIVE_INDEX);
+    }
 
     ListNode* node = list;
 
@@ -186,3 +190,7 @@ int List_value_n_from_end(List* list, int reverseIndex)
     int index = List_endIndex(list) - reverseIndex;
     return List_at(list, index);
 }
+
+// Expand this to be implementation -> write some tests
+void List_reverse(List* list);
+void List_remove_value(List* list, int value);

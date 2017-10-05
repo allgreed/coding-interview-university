@@ -10,10 +10,10 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] [CS 61B - Linked Lists 2 (video)](https://archive.org/details/ucberkeley_webcast_-c4I3gFYe3w)
 - [ ] [C Code (video)](https://www.youtube.com/watch?v=QN6FPiD0Gzo)
         - not the whole video, just portions about Node struct and memory allocation.
-- [ ] Linked List vs Arrays:
+- [x] Linked List vs Arrays:
     - [Core Linked Lists Vs Arrays (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/rjBs9/core-linked-lists-vs-arrays)
     - [In The Real World Linked Lists Vs Arrays (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/QUaUd/in-the-real-world-lists-vs-arrays)
-- [ ] [why you should avoid linked lists (video)](https://www.youtube.com/watch?v=YQs6IC-vgmo)
+- [x] [why you should avoid linked lists (video)](https://www.youtube.com/watch?v=YQs6IC-vgmo)
 - [ ] Gotcha: you need pointer to pointer knowledge:
     (for when you pass a pointer to a function that may change the address where that pointer points)
     This page is just to get a grasp on ptr to ptr. I don't recommend this list traversal style. Readability and maintainability suffer due to cleverness.
@@ -40,8 +40,11 @@ Finished @: yyyy-mm-dd hh:mm
     <!-- Finally improve make [from Makefile 3] :D -->
     <!-- http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ -->
     - [ ] C++
+    <!-- Todo: Unit testing C++ -->
+    <!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->
+    <!-- Testing exceptions -->
     - [ ] C++ with builtin types
-- [ ] Doubly-linked List
+- [x] Doubly-linked List
     - [Description (video)](https://www.coursera.org/learn/data-structures/lecture/jpGKD/doubly-linked-lists)
     - No need to implement
 
