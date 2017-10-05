@@ -28,18 +28,16 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] pop_front() - remove front item and return its value
     - [x] push_back(value) - adds an item at the end
     - [x] pop_back() - removes end item and returns its value
-<!-- todo: add testing framework -->
-
-    - [ ] front() - get value of front item
-    - [ ] back() - get value of end item
-    - [ ] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
-<!-- todo get rid of these shitty warnings -->
+    - [x] front() - get value of front item
+    - [x] back() - get value of end item
+    - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
 
     - [ ] reverse() - reverses the list
     - [ ] remove_value(value) - removes the first item in the list with this value
+<!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:
     - [ ] C
-    <!-- Improve make :D -->
+    <!-- Finally improve make [from Makefile 3] :D -->
     <!-- http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ -->
     - [ ] C++
     - [ ] C++ with builtin types

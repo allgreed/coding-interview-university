@@ -170,3 +170,19 @@ int List_pop_back(List* list)
     List_erase(list, endIndex);
     return retval;
 }
+
+int List_back(List* list)
+{
+    return List_at(list, List_endIndex(list));
+}
+
+int List_front(List* list)
+{
+    return List_at(list, 0);
+}
+
+int List_value_n_from_end(List* list, int reverseIndex)
+{
+    int index = List_endIndex(list) - reverseIndex;
+    return List_at(list, index);
+}

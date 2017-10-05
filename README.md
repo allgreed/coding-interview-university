@@ -130,12 +130,13 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Rename course to sth else -->
 
-<!-- Todo: Answer all  question in arrays -->
-
-<!-- Todo: Learn make basics -->
+<!-- Todo: Answer all question in arrays -->
+<!-- Todo: Answer all question in lists -->
 
 <!-- Todo: Unit testing C -->
-<!-- https://libcheck.github.io/check/doc/check_html/check_3.html -->
+    <!-- Test case detection -->
+    <!-- Test suite per file -->
+    <!-- Assert like behavior, but on failure report also actual value -->
 
 <!-- Todo: Unit testing C++ -->
 <!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->
@@ -144,7 +145,6 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 <!-- Todo: Propper generator for assignements -->
 
 <!-- Todo: Implementations in other languages? -->
-<!-- Todo: Exec script "echo $?" if exit code != 0, print it! -->
 
 <!-- Difference from original -->
 I've removed all the non-free links or those that I consider of little value.

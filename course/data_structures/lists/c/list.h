@@ -32,8 +32,11 @@ void List_erase(List* list, int index);
 
 void List_push_front(List* list, int value);
 int List_pop_front(List* list);
-
 void List_push_back(List* list, int value);
 int List_pop_back(List* list);
+
+int List_back(List* list);
+int List_front(List* list);
+int List_value_n_from_end(List* list, int reverseIndex);
 
 #endif  // PROJECT_LINKED_LIST_H

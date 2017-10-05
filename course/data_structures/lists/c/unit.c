@@ -118,6 +118,38 @@ void backPushPopTest()
     List_destroy(list);
 }
 
+void backFrontGetterTest()
+{
+    List* list = List_init();
+
+    List_push_front(list, 3333);
+    List_push_front(list, 2222);
+    List_push_front(list, 1111);
+
+    assert(List_back(list) == 3333);
+    assert(List_front(list) == 1111);
+
+    List_destroy(list);
+}
+
+void List_value_n_from_end_test()
+{
+    List* list = List_init();
+
+    List_push_front(list, 6);
+    List_push_front(list, 5);
+    List_push_front(list, 4);
+    List_push_front(list, 3);
+    List_push_front(list, 2);
+    List_push_front(list, 1);
+
+    assert(List_value_n_from_end(list, 2) == 4);
+    assert(List_value_n_from_end(list, 1) == 5);
+    assert(List_value_n_from_end(list, 0) == 6);
+
+    List_destroy(list);
+}
+
 int main()
 {
     getAndSetTest();
@@ -127,6 +159,9 @@ int main()
 
     frontPushPopTest();
     backPushPopTest();
+
+    backFrontGetterTest();
+    List_value_n_from_end_test();
 
     printf("All tests passed!\n");
     return 0;
