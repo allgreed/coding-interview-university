@@ -1,8 +1,8 @@
 
 - [Algorithmic complexity / Big-O / Asymptotic analysis](#algorithmic-complexity--big-o--asymptotic-analysis)
 - [Data Structures](#data-structures)
-    - [Linked Lists](#linked-lists)
     - [Stack](#stack)
+    <!-- Add a prepush hook / standalone script that clears all the .out files -->
     - [Queue](#queue)
     - [Hash table](#hash-table)
 

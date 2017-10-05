@@ -20,26 +20,27 @@ Finished @: yyyy-mm-dd hh:mm
     - [Pointers to Pointers](https://www.eskimo.com/~scs/cclass/int/sx8.html)
 - [ ] implement (I did with tail pointer & without):
     - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
-    - [ ] empty() - bool returns true if empty
-<!-- add make -->
+    - [x] empty() - bool returns true if empty
     - [x] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
-    - [ ] erase(index) - removes node at given index
-<!-- add testing framework -->
-<!-- todo get rid of these shitty warnings -->
-    - [ ] push_front(value) - adds an item to the front of the list
-    - [ ] pop_front() - remove front item and return its value
-    - [ ] push_back(value) - adds an item at the end
-    - [ ] pop_back() - removes end item and returns its value
+    - [x] erase(index) - removes node at given index
+    - [x] size() - returns number of data elements in list
+    - [x] push_front(value) - adds an item to the front of the list
+    - [x] pop_front() - remove front item and return its value
+    - [x] push_back(value) - adds an item at the end
+    - [x] pop_back() - removes end item and returns its value
+<!-- todo: add testing framework -->
 
     - [ ] front() - get value of front item
     - [ ] back() - get value of end item
     - [ ] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
+<!-- todo get rid of these shitty warnings -->
 
-    - [ ] size() - returns number of data elements in list
     - [ ] reverse() - reverses the list
     - [ ] remove_value(value) - removes the first item in the list with this value
 - [ ] Implement in:
     - [ ] C
+    <!-- Improve make :D -->
+    <!-- http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ -->
     - [ ] C++
     - [ ] C++ with builtin types
 - [ ] Doubly-linked List

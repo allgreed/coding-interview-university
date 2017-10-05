@@ -37,7 +37,6 @@ void eraseTest()
     List_destroy(list);
 }
 
-
 void emptyTest()
 {
     List* list = List_init();
@@ -59,19 +58,75 @@ void emptyTest()
     List_destroy(list);
 }
 
-// size test
-    // is size 0 ?
-    // add 2 items
-    // is size 1?
-    // remove 1 item
-    // is size 1?
+void frontPushPopTest()
+{
+    List* list = List_init();
 
+    List_push_front(list, 123);
+    List_push_front(list, -123);
+
+    assert(List_at(list, 0) == -123);
+    assert(List_at(list, 1) == 123);
+
+    int tmp = List_pop_front(list);
+    assert(tmp == -123);
+
+    tmp = List_pop_front(list);
+    assert(tmp == 123);
+
+    assert(List_empty(list));
+
+    List_destroy(list);
+}
+
+void sizeTest()
+{
+    List* list = List_init();
+
+    assert(List_size(list) == 0);
+
+    List_push_front(list, 111);
+    List_push_front(list, 222);
+
+    assert(List_size(list) == 2);
+
+    List_pop_front(list);
+
+    assert(List_size(list) == 1);
+
+    List_destroy(list);
+}
+
+void backPushPopTest()
+{
+    List* list = List_init();
+
+    List_push_back(list, 456);
+    List_push_back(list, -654);
+
+    assert(List_at(list, 0) == 456);
+    assert(List_at(list, 1) == -654);
+
+    int tmp = List_pop_back(list);
+    assert(tmp == -654);
+
+    tmp = List_pop_back(list);
+    assert(tmp == 456);
+
+    assert(List_empty(list));
+
+    List_destroy(list);
+}
 
 int main()
 {
     getAndSetTest();
     eraseTest();
     emptyTest();
+    sizeTest();
+
+    frontPushPopTest();
+    backPushPopTest();
 
     printf("All tests passed!\n");
     return 0;

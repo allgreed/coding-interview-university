@@ -4,6 +4,8 @@
 #include <stdbool.h>
 
 extern const int LIST_EXIT_FAILED_ALLOCATION;
+extern const int LIST_EXIT_OUT_OF_BOUNDS;
+extern const int LIST_EXIT_NEGATIVE_INDEX;
 
 typedef struct
 {
@@ -21,8 +23,17 @@ void List_destroy(List* list);
 // Basic operations
 bool List_empty(List* list);
 int List_at(List* list, int index);
+int List_size(List* list);
 
 void List_insert(List* list, int index, int value);
 void List_erase(List* list, int index);
+
+// Derived
+
+void List_push_front(List* list, int value);
+int List_pop_front(List* list);
+
+void List_push_back(List* list, int value);
+int List_pop_back(List* list);
 
 #endif  // PROJECT_LINKED_LIST_H
