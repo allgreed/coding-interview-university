@@ -90,9 +90,9 @@ List* List_init()
 
 void List_destroy(List* list)
 {
-    ListNode* next, * this;
+    ListNode* next;
 
-    for(this = list; !ListNode_is_last(this); this = next)
+    for(ListNode* this = list; !ListNode_is_last(this); this = next)
     {
         next = this->next;
         ListNode_destroy(this);
@@ -102,14 +102,6 @@ void List_destroy(List* list)
 // ****************************
 // Basic operations
 // ****************************
-
-void List_insert(List* list, int index, int value)
-{
-    ListNode* previous = ListNode_at_index(list, --index);
-    ListNode* newNode = ListNode_create(value);
-    newNode->next = previous->next;
-    previous->next = newNode;
-}
 
 int List_at(List* list, int index)
 {
@@ -127,9 +119,17 @@ bool List_empty(List* list)
     return (ListNode_is_last(list));
 }
 
-void List_erase(List* list, int index)
+void List_insert(List* list, int index, int value)
 {
     ListNode* previous = ListNode_at_index(list, --index);
+    ListNode* newNode = ListNode_create(value);
+    newNode->next = previous->next;
+    previous->next = newNode;
+}
+
+void List_erase(List* list, int index)
+{
+    ListNode* previous = ListNode_at_index(list, index - 1);
     ListNode* erasedNode = previous->next;
     previous->next = erasedNode->next;
     ListNode_destroy(erasedNode);

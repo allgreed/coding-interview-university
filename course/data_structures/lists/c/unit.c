@@ -30,6 +30,10 @@ void eraseTest()
     List_insert(list, 0, 123456);
     List_insert(list, 0, -123456);
 
+    // Just make sure that the list is in correct order
+    assert(List_at(list, 0) == -123456);
+    assert(List_at(list, 1) == 123456);
+
     List_erase(list, 0);
 
     assert(List_at(list, 0) == 123456);
