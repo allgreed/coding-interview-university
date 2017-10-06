@@ -30,7 +30,7 @@ ListNode* ListNode_create(int value)
     ListNode* node = allocate(sizeof(ListNode));
 
     node->value = value;
-    node->next = NULL;
+    node->next = (void *) NULL;
 
     return node;
 }
@@ -48,7 +48,7 @@ bool ListNode_is_last(ListNode* node)
 ListNode* ListNode_at_index(List* list, int index)
 {
 
-    if(index < 0)
+    if(index < -1)
     {
         fprintf(stderr, "Negative index access attempt\n");
         exit(LIST_EXIT_NEGATIVE_INDEX);
@@ -90,14 +90,12 @@ List* List_init()
 
 void List_destroy(List* list)
 {
-    ListNode* next;
-    ListNode* this = list;
+    ListNode* next, * this;
 
-    while(!ListNode_is_last(this))
+    for(this = list; !ListNode_is_last(this); this = next)
     {
         next = this->next;
         ListNode_destroy(this);
-        this = next;
     }
 }
 
@@ -115,6 +113,12 @@ void List_insert(List* list, int index, int value)
 
 int List_at(List* list, int index)
 {
+    if(index == -1)
+    {
+        fprintf(stderr, "Negative index access attempt\n");
+        exit(LIST_EXIT_NEGATIVE_INDEX);
+    }
+
     return ListNode_at_index(list, index)->value;
 }
 
@@ -134,13 +138,9 @@ void List_erase(List* list, int index)
 int List_size(List* list)
 {
     int size = 0;
-    ListNode* node = list;
 
-    while(!ListNode_is_last(node))
-    {
-        node = node->next;
+    for(ListNode* node = list; !ListNode_is_last(node); node = node->next)
         size++;
-    }
 
     return size;
 }
