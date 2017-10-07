@@ -1,8 +1,20 @@
+#config
+
+PROJECT=list
+
 CC=gcc
 CFLAGS=
+HEADERSUFFIX=.h
+SOURCESUFFIX=.c
 
-list: list.c list_consts.c unit.c
-	# compile
-	$(CC) list.c list_consts.c unit.c $(CFLAGS)
-	# run
+# main
+
+DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))
+FILES := $(wildcard $(addsuffix $(SOURCESUFFIX), *))
+
+$(PROJECT): $(FILES) $(DEPS)
+	$(CC) $(FILES) $(CFLAGS)
 	./a.out
+
+	@# clean a.out
+	@rm a.out

@@ -154,6 +154,29 @@ void List_value_n_from_end_test()
     List_destroy(list);
 }
 
+void reverseTest()
+{
+    List* list = List_init();
+
+    List_push_back(list, 45);
+    List_push_back(list, 89);
+    List_push_back(list, -48);
+    List_push_back(list, 23);
+    List_push_back(list, 0);
+    List_push_back(list, -8);
+
+    List_reverse(list);
+
+    assert(List_at(list, 0) == -8);
+    assert(List_at(list, 1) == 0);
+    assert(List_at(list, 2) == 23);
+    assert(List_at(list, 3) == -48);
+    assert(List_at(list, 4) == 89);
+    assert(List_at(list, 5) == 45);
+
+    List_destroy(list);
+}
+
 int main()
 {
     getAndSetTest();
@@ -166,6 +189,8 @@ int main()
 
     backFrontGetterTest();
     List_value_n_from_end_test();
+
+    // reverseTest();
 
     printf("All tests passed!\n");
     return 0;

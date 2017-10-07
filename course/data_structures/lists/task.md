@@ -29,10 +29,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] back() - get value of end item
     - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
 
-<!-- Finally improve make [from Makefile 3] :D -->
-<!-- http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/ -->
-    - [ ] reverse() - reverses the list
     - [ ] remove_value(value) - removes the first item in the list with this value
+    - [ ] reverse() - reverses the list
 <!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:
     - [ ] C

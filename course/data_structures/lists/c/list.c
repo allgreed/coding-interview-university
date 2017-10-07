@@ -191,6 +191,10 @@ int List_value_n_from_end(List* list, int reverseIndex)
     return List_at(list, index);
 }
 
+void List_reverse(List* list)
+{
+    
+}
+
 // Expand this to be implementation -> write some tests
-void List_reverse(List* list);
 void List_remove_value(List* list, int value);
