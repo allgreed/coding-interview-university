@@ -28,8 +28,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] front() - get value of front item
     - [x] back() - get value of end item
     - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
-
-    - [ ] remove_value(value) - removes the first item in the list with this value
+    - [x] remove_value(value) - removes the first item in the list with this value
+    
     - [ ] reverse() - reverses the list
 <!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:

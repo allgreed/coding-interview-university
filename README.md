@@ -132,6 +132,7 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Todo: Answer all question in arrays -->
 <!-- Todo: Answer all question in lists -->
+<!-- Todo: Vector -> memcopy -->
 
 <!-- Todo: Unit testing C -->
     <!-- Test case detection -->

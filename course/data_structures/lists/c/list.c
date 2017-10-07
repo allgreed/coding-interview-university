@@ -75,6 +75,13 @@ int List_endIndex(List* list)
     return List_size(list) - 1;
 }
 
+void ListNode_erase(ListNode** preErasedNodeNextReference)
+{
+    ListNode* erasedNode = *preErasedNodeNextReference;
+    *preErasedNodeNextReference = erasedNode->next;
+    ListNode_destroy(erasedNode);
+}
+
 // ****************************
 // Create and destroy
 // ****************************
@@ -129,10 +136,7 @@ void List_insert(List* list, int index, int value)
 
 void List_erase(List* list, int index)
 {
-    ListNode* previous = ListNode_at_index(list, index - 1);
-    ListNode* erasedNode = previous->next;
-    previous->next = erasedNode->next;
-    ListNode_destroy(erasedNode);
+    ListNode_erase(&ListNode_at_index(list, index - 1)->next);
 }
 
 int List_size(List* list)
@@ -191,10 +195,38 @@ int List_value_n_from_end(List* list, int reverseIndex)
     return List_at(list, index);
 }
 
-void List_reverse(List* list)
+void List_remove_value(List* list, int value)
 {
-    
+    for(ListNode** nodeNextReference = &list->next;
+        *nodeNextReference != NULL;
+        nodeNextReference = &((*nodeNextReference)->next))
+    {
+        if ((*nodeNextReference)->value == value)
+        {
+            ListNode_erase(nodeNextReference);
+            break;
+        }
+    }
 }
 
-// Expand this to be implementation -> write some tests
-void List_remove_value(List* list, int value);
+void List_reverse(List* list)
+{
+    if (List_size(list) < 2)
+        return;
+
+    ListNode* prev = ListNode_at_index(list, 0);
+    ListNode* first = prev;
+    ListNode* next = ListNode_at_index(list, 1);
+    ListNode* this;
+
+    while(next != NULL)
+    {
+        next = this->next;
+        this->next = prev;
+        prev = this;
+        this = next;
+    }
+
+    first->next = NULL;
+    list->next = this;
+}

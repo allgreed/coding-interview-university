@@ -177,6 +177,32 @@ void reverseTest()
     List_destroy(list);
 }
 
+void List_remove_value_test()
+{
+    List* list = List_init();
+
+    // List_remove_value(list, 1000000);
+
+    List_push_back(list, -600);
+    List_push_back(list, 2);
+    List_push_back(list, 1000000);
+
+    List_remove_value(list, 1000000);
+
+    assert(List_at(list, 0) == -600);
+    assert(List_at(list, 1) == 2);
+    assert(List_size(list) == 2);
+
+    List_push_front(list, 5);
+    List_remove_value(list, 5);
+
+    assert(List_at(list, 0) == -600);
+    assert(List_at(list, 1) == 2);
+    assert(List_size(list) == 2);
+
+    List_destroy(list);
+}
+
 int main()
 {
     getAndSetTest();
@@ -190,7 +216,8 @@ int main()
     backFrontGetterTest();
     List_value_n_from_end_test();
 
-    // reverseTest();
+    List_remove_value_test();
+    reverseTest();
 
     printf("All tests passed!\n");
     return 0;
