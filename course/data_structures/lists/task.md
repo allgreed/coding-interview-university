@@ -5,7 +5,7 @@ Finished @: yyyy-mm-dd hh:mm
 
 
 - [ ] Description:
-    - [ ] [Singly Linked Lists (video)](https://www.coursera.org/learn/data-structures/lecture/kHhgK/3singly-linked-lists)
+    - [x] [Singly Linked Lists (video)](https://www.coursera.org/learn/data-structures/lecture/kHhgK/3singly-linked-lists)
     - [ ] [CS 61B - Linked Lists 1 (video)](https://archive.org/details/ucberkeley_webcast_htzJdKoEmO0)
     - [ ] [CS 61B - Linked Lists 2 (video)](https://archive.org/details/ucberkeley_webcast_-c4I3gFYe3w)on.
 - [x] Linked List vs Arrays:
@@ -29,8 +29,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] back() - get value of end item
     - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
     - [x] remove_value(value) - removes the first item in the list with this value
-    
-    - [ ] reverse() - reverses the list
+    - [x] reverse() - reverses the list
 <!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:
     - [ ] C

@@ -1,8 +1,6 @@
 #include "vector.hpp"
 
-
 #include <iostream>
-
 #include <assert.h>
 
 // Create and destroy

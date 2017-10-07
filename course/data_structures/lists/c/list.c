@@ -211,6 +211,8 @@ void List_remove_value(List* list, int value)
 
 void List_reverse(List* list)
 {
+    // redo to pointer2pointer
+    
     if (List_size(list) < 2)
         return;
 
