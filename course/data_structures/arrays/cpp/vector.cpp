@@ -163,35 +163,23 @@ template <typename T> int Vector<T>::find(T value)
 #pragma region Advanced
 template <typename T> void Vector<T>::remove(T value)
 {
-    int removedItems = 0;
-    int copyingIndex = 0;
-    int searchIndex = 0;
-    int nextValidItemIndex = 0;
-
-    auto findNextValidItem = [&]() -> int
+    auto isExistNextValidItem = [&](int searchIndex) -> int
     {
-        for(int i = searchIndex; i <= endIndex(); i++)
-        {
+        for(int i = searchIndex + 1; i <= endIndex(); i++)
             if (at(i) != value)
-            {
-                nextValidItemIndex = i;
-                searchIndex = nextValidItemIndex + 1;
                 return i;
-            }
-
-            removedItems++;
-        }
 
         return -1;
     };
 
-    while(findNextValidItem() != -1)
-    {
+    int copyingIndex = 0;
+
+    for (int nextValidItemIndex = 0;
+        (nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1;
+         copyingIndex++)
         update_at(copyingIndex, at(nextValidItemIndex));
-        copyingIndex++;
-    }
 
     // bookkeeping
-    size -= removedItems;
+    size = copyingIndex;
 }
 #pragma endregion
