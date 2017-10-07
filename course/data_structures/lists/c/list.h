@@ -7,11 +7,13 @@ extern const int LIST_EXIT_FAILED_ALLOCATION;
 extern const int LIST_EXIT_OUT_OF_BOUNDS;
 extern const int LIST_EXIT_NEGATIVE_INDEX;
 
-typedef struct
+typedef struct ListNode
 {
     int value;
     struct ListNode* next;
 } ListNode;
+
+extern ListNode* const LIST_NULL;
 
 // To prevent leaking implementation details 
 typedef ListNode List;

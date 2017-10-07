@@ -14,7 +14,7 @@ Finished @: yyyy-mm-dd hh:mm
     (for when you pass a pointer to a function that may change the address where that pointer points)
     This page is just to get a grasp on ptr to ptr. I don't recommend this list traversal style. Readability and maintainability suffer due to cleverness.
     - [Pointers to Pointers](https://www.eskimo.com/~scs/cclass/int/sx8.html)
-- [ ] implement (I did with tail pointer & without):
+- [x] implement (I did with tail pointer & without):
     - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
     - [x] empty() - bool returns true if empty
     - [x] insert(index, value) - insert value at index, so current item at that index is pointed to by new item at index
@@ -31,7 +31,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] reverse() - reverses the list
 <!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:
-    - [ ] C
+    - [x] C
     - [ ] C++
     <!-- Todo: Unit testing C++ -->
     <!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->

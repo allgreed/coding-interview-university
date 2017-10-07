@@ -27,10 +27,10 @@ void* allocate(int size)
 
 ListNode* ListNode_create(int value)
 {
-    ListNode* node = allocate(sizeof(ListNode));
+    ListNode* node = (ListNode*) allocate(sizeof(ListNode));
 
     node->value = value;
-    node->next = (void *) NULL;
+    node->next = LIST_NULL;
 
     return node;
 }
@@ -42,7 +42,7 @@ void ListNode_destroy(ListNode* node)
 
 bool ListNode_is_last(ListNode* node)
 {
-    return (node->next == NULL);
+    return (node->next == LIST_NULL);
 }
 
 ListNode* ListNode_at_index(List* list, int index)
@@ -88,9 +88,9 @@ void ListNode_erase(ListNode** preErasedNodeNextReference)
 
 List* List_init()
 {
-    List* list = allocate(sizeof(List));
+    List* list = (List*) allocate(sizeof(List));
 
-    list->next = NULL;
+    list->next = LIST_NULL;
 
     return list;
 }
@@ -198,38 +198,26 @@ int List_value_n_from_end(List* list, int reverseIndex)
 void List_remove_value(List* list, int value)
 {
     for(ListNode** nodeNextReference = &list->next;
-        *nodeNextReference != NULL;
+        *nodeNextReference != LIST_NULL;
         nodeNextReference = &((*nodeNextReference)->next))
-    {
+
         if ((*nodeNextReference)->value == value)
-        {
-            ListNode_erase(nodeNextReference);
-            break;
-        }
-    }
+            return ListNode_erase(nodeNextReference);
 }
 
 void List_reverse(List* list)
 {
-    // redo to pointer2pointer
-    
-    if (List_size(list) < 2)
+    // Quit if reverse is not required => list empty or contains only 1 element
+    if (list->next == LIST_NULL || list->next->next == LIST_NULL)
         return;
 
-    ListNode* prev = list;
-    ListNode* this = ListNode_at_index(list, 0);
+    ListNode* this = list->next;
+    list->next = LIST_NULL;
 
-    ListNode* first = this;
-    ListNode* next = this;
-
-    while(next != NULL)
+    for(ListNode* next; next != LIST_NULL; this = next)
     {
         next = this->next;
-        this->next = prev;
-        prev = this;
-        this = next;
+        this->next = list->next;
+        list->next = this;
     }
-
-    first->next = NULL;
-    list->next = prev;
 }
