@@ -178,7 +178,7 @@ template <typename T> void Vector<T>::remove(T value)
     while ((nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1)
     {
         update_at(copyingIndex, at(nextValidItemIndex));
-        copyingIndex++
+        copyingIndex++;
     }
 
     // bookkeeping
