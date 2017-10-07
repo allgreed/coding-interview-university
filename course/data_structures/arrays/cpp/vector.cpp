@@ -98,8 +98,7 @@ template <typename T> int Vector<T>::whatCapacity()
 
 template <typename T> void Vector<T>::delete_at(int index)
 {
-    for(int i = index; i < endIndex(); i++)
-        update_at(i, at(i + 1));
+    std::memmove(data + index, data + index + 1, sizeof(T) * (endIndex() - index) );
 
     size--;
 
@@ -116,8 +115,7 @@ template <typename T> void Vector<T>::insert_at(int index, T value)
     else if(size == capacity)
         resize(capacity * VECTOR_GROWTH_FACTOR);
 
-    for(int i = endIndex(); i > index; i--)
-        update_at(i, at(i - 1));
+    std::memmove(data + index + 1, data + index, sizeof(T) * (endIndex() - index) );
 
     update_at(index, value);
 }
