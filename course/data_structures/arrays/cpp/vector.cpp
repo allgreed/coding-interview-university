@@ -174,7 +174,7 @@ template <typename T> void Vector<T>::remove(T value)
 
     int copyingIndex = 0;
 
-    for (int nextValidItemIndex = 0;
+    for (int nextValidItemIndex = -1;
         (nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1;
          copyingIndex++)
         update_at(copyingIndex, at(nextValidItemIndex));
