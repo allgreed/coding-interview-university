@@ -102,7 +102,7 @@ void prependTest()
 
 void removeTest()
 {
-    const int CASE_FACTOR = 250;
+    const int CASE_FACTOR = 100;
 
     printf("Starting removeTest():\n");
 

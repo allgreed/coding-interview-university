@@ -173,11 +173,13 @@ template <typename T> void Vector<T>::remove(T value)
     };
 
     int copyingIndex = 0;
+    int nextValidItemIndex = -1;
 
-    for (int nextValidItemIndex = -1;
-        (nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1;
-         copyingIndex++)
+    while ((nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1)
+    {
         update_at(copyingIndex, at(nextValidItemIndex));
+        copyingIndex++
+    }
 
     // bookkeeping
     size = copyingIndex;
