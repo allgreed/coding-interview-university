@@ -173,6 +173,7 @@ void reverseTest()
     assert(List_at(list, 3) == -48);
     assert(List_at(list, 4) == 89);
     assert(List_at(list, 5) == 45);
+    assert(List_size(list) == 6);
 
     List_destroy(list);
 }
@@ -181,7 +182,7 @@ void List_remove_value_test()
 {
     List* list = List_init();
 
-    // List_remove_value(list, 1000000);
+    List_remove_value(list, 1000000);
 
     List_push_back(list, -600);
     List_push_back(list, 2);
@@ -194,6 +195,7 @@ void List_remove_value_test()
     assert(List_size(list) == 2);
 
     List_push_front(list, 5);
+
     List_remove_value(list, 5);
 
     assert(List_at(list, 0) == -600);

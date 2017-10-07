@@ -155,8 +155,10 @@ void removeTest()
 
 int main()
 {
-    // pushTest();
-    // prependTest();
+    printf("CLOCKS_PER_SEC: %ld\n", CLOCKS_PER_SEC);
+
+    pushTest();
+    prependTest();
     removeTest();
 
     return 0;

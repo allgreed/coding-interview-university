@@ -124,21 +124,20 @@ You don't need to memorize the guts of every algorithm.
 
 Write code on a whiteboard or paper, not a computer. Test with some sample inputs. Then test it out on a computer.
 
+<!-- Todo: Answer all question in arrays -->
+<!-- Todo: Answer all question in lists -->
+
 <!-- Todo: Customized this README -> above -->
 <!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
 
 <!-- Rename course to sth else -->
 
-<!-- Todo: Answer all question in arrays -->
-<!-- Todo: Answer all question in lists -->
-<!-- Todo: Vector -> memcopy -->
-
 <!-- Todo: Unit testing C -->
-    <!-- Test case detection -->
-    <!-- Test suite per file -->
-    <!-- Assert like behavior, but on failure report also actual value -->
-    <!-- https://stackoverflow.com/questions/65820/unit-testing-c-code -->
+<!-- Test case detection -->
+<!-- Test suite per file -->
+<!-- Assert like behavior, but on failure report also actual value and line -->
+<!-- https://stackoverflow.com/questions/65820/unit-testing-c-code -->
 
 <!-- Todo: Propper generator for assignements -->
 

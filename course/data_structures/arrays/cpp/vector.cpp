@@ -1,17 +1,16 @@
+#include <cstring>
+
 #pragma region Utilities
 
 template <typename T> void Vector<T>::resize(int desiredCapacity)
 {
     T* old = data;
-
+    
     data = new T[desiredCapacity];
-
-    for(int i = 0; i <= endIndex(); i++)
-        data[i]=old[i];
-
-    delete[] old;
-
     capacity = desiredCapacity;
+
+    std::memcpy(data, old, sizeof(T) * size);
+    delete[] old;
 }
 
 template <typename T> int Vector<T>::endIndex()
@@ -163,7 +162,7 @@ template <typename T> int Vector<T>::find(T value)
 #pragma region Advanced
 template <typename T> void Vector<T>::remove(T value)
 {
-    auto isExistNextValidItem = [&](int searchIndex) -> int
+    auto findNextValidItemFrom = [&value, this](int searchIndex) -> int
     {
         for(int i = searchIndex + 1; i <= endIndex(); i++)
             if (at(i) != value)
@@ -175,7 +174,7 @@ template <typename T> void Vector<T>::remove(T value)
     int copyingIndex = 0;
     int nextValidItemIndex = -1;
 
-    while ((nextValidItemIndex = isExistNextValidItem(nextValidItemIndex)) != -1)
+    while ((nextValidItemIndex = findNextValidItemFrom(nextValidItemIndex)) != -1)
     {
         update_at(copyingIndex, at(nextValidItemIndex));
         copyingIndex++;

@@ -214,10 +214,11 @@ void List_reverse(List* list)
     if (List_size(list) < 2)
         return;
 
-    ListNode* prev = ListNode_at_index(list, 0);
-    ListNode* first = prev;
-    ListNode* next = ListNode_at_index(list, 1);
-    ListNode* this;
+    ListNode* prev = list;
+    ListNode* this = ListNode_at_index(list, 0);
+
+    ListNode* first = this;
+    ListNode* next = this;
 
     while(next != NULL)
     {
@@ -228,5 +229,5 @@ void List_reverse(List* list)
     }
 
     first->next = NULL;
-    list->next = this;
+    list->next = prev;
 }
