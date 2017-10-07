@@ -100,11 +100,64 @@ void prependTest()
     printf("%lf - clocks for *10k prepends per prepend\n", (double)(end[2] - start[2]) / FINAL_SAMPLE);
 }
 
+void removeTest()
+{
+    const int CASE_FACTOR = 250;
+
+    printf("Starting removeTest():\n");
+
+    clock_t start[3], end[3];
+    Vector* vector;
+
+    vector = Vector_init_default();
+    for(int i=0; i < INITIAL_SAMPLE / CASE_FACTOR; i++)
+        Vector_push(vector, 7);
+
+    start[0] = clock();
+
+    Vector_remove(vector, 7);
+
+    end[0] = clock();
+
+    Vector_destroy(vector);
+    vector = Vector_init_default();
+    for(int i=0; i < MEDIAN_SAMPLE / CASE_FACTOR; i++)
+        Vector_push(vector, 2);
+
+    start[1] = clock();
+
+    Vector_remove(vector, 7);
+
+    end[1] = clock();
+
+    Vector_destroy(vector);
+    vector = Vector_init_default();
+    for(int i=0; i < FINAL_SAMPLE / CASE_FACTOR; i++)
+    {
+        if(i % 2)
+            Vector_push(vector, 2);
+        else
+            Vector_push(vector, 7);
+    }
+
+    start[2] = clock();
+
+    Vector_remove(vector, 7);
+
+    end[2] = clock();
+
+    Vector_destroy(vector);
+
+    printf("%lf - clocks for basic remove\n", ((double)(end[0] - start[0])));
+    printf("%lf - clocks for *100 remove\n", (double)(end[1] - start[1]));
+    printf("%lf - clocks for *10k remove\n", (double)(end[2] - start[2]));
+}
 
 int main()
 {
-    pushTest();
-    prependTest();
+    // pushTest();
+    // prependTest();
+    removeTest();
 
     return 0;
 }
