@@ -13,7 +13,7 @@ typedef struct ListNode
     struct ListNode* next;
 } ListNode;
 
-extern ListNode* const LIST_NULL;
+extern ListNode* const LIST_NULLPTR;
 
 // To prevent leaking implementation details 
 typedef ListNode List;

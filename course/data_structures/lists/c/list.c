@@ -30,7 +30,7 @@ ListNode* ListNode_create(int value)
     ListNode* node = (ListNode*) allocate(sizeof(ListNode));
 
     node->value = value;
-    node->next = LIST_NULL;
+    node->next = LIST_NULLPTR;
 
     return node;
 }
@@ -42,7 +42,7 @@ void ListNode_destroy(ListNode* node)
 
 bool ListNode_is_last(ListNode* node)
 {
-    return (node->next == LIST_NULL);
+    return (node->next == LIST_NULLPTR);
 }
 
 ListNode* ListNode_at_index(List* list, int index)
@@ -90,7 +90,7 @@ List* List_init()
 {
     List* list = (List*) allocate(sizeof(List));
 
-    list->next = LIST_NULL;
+    list->next = LIST_NULLPTR;
 
     return list;
 }
@@ -198,7 +198,7 @@ int List_value_n_from_end(List* list, int reverseIndex)
 void List_remove_value(List* list, int value)
 {
     for(ListNode** nodeNextReference = &list->next;
-        *nodeNextReference != LIST_NULL;
+        *nodeNextReference != LIST_NULLPTR;
         nodeNextReference = &((*nodeNextReference)->next))
 
         if ((*nodeNextReference)->value == value)
@@ -208,13 +208,13 @@ void List_remove_value(List* list, int value)
 void List_reverse(List* list)
 {
     // Quit if reverse is not required => list empty or contains only 1 element
-    if (list->next == LIST_NULL || list->next->next == LIST_NULL)
+    if (list->next == LIST_NULLPTR || list->next->next == LIST_NULLPTR)
         return;
 
     ListNode* this = list->next;
-    list->next = LIST_NULL;
+    list->next = LIST_NULLPTR;
 
-    for(ListNode* next; next != LIST_NULL; this = next)
+    for(ListNode* next; next != LIST_NULLPTR; this = next)
     {
         next = this->next;
         this->next = list->next;

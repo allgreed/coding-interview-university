@@ -2,7 +2,6 @@
 #define PROJECT_VECTOR_H
 
 #include <stdbool.h>
-#include <stdlib.h>
 
 extern const int VECTOR_EXIT_FAILED_ALLOCATION;
 extern const int VECTOR_EXIT_OUT_OF_BOUNDS;

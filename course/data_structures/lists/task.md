@@ -29,7 +29,6 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
     - [x] remove_value(value) - removes the first item in the list with this value
     - [x] reverse() - reverses the list
-<!-- todo get rid of these shitty warnings -->
 - [ ] Implement in:
     - [x] C
     - [ ] C++
