@@ -150,3 +150,4 @@ I've removed all the non-free links or those that I consider of little value.
 
 <!-- Add instructions here -->
 
+<!-- Gtest as a prerequisite to run my tests -> copy repo to /opt/gtest, test makefile, copy makefile, set gtest source to /opt/gtest, customize the makefile, viola! -->

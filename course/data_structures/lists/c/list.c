@@ -54,7 +54,7 @@ ListNode* ListNode_at_index(List* list, int index)
         exit(LIST_EXIT_NEGATIVE_INDEX);
     }
 
-    ListNode* node = list;
+    ListNode<T>* node = list;
 
     for(int i = -1; i < index ; i++)
     {

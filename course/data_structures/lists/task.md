@@ -29,15 +29,13 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] value_n_from_end(n) - returns the value of the node at nth position from the end of the lists
     - [x] remove_value(value) - removes the first item in the list with this value
     - [x] reverse() - reverses the list
-- [ ] Implement in:
-    - [x] C
-    - [ ] C++
-    <!-- Todo: Unit testing C++ -->
-    <!-- https://github.com/google/googletest/blob/master/googletest/docs/Primer.md -->
-    <!-- Testing exceptions -->
-    - [ ] C++ with builtin types
 - [x] Doubly-linked List
     - [Description (video)](https://www.coursera.org/learn/data-structures/lecture/jpGKD/doubly-linked-lists)
     - No need to implement
+- [ ] Implement in:
+    - [x] C
+    - [ ] C++
+    - [ ] C++ with builtin types
+    <!-- https://stackoverflow.com/questions/5733842/how-to-get-a-certain-element-in-a-list-given-the-position -->
 
 <!-- Update template if necessary -->

@@ -1,14 +1,23 @@
-# CONFIG
+### CONFIG ###
 
-PROJECT=list
+PROJECT = list
 
-CC=g++
-CFLAGS=--std=c++17
-HEADERSUFFIX=.hpp
-SOURCESUFFIX=.cpp
-IS_TEMPLATE=true
+CC = g++
+CFLAGS += --std=c++17
+HEADERSUFFIX = .hpp
+SOURCESUFFIX = .cpp
+IS_TEMPLATE = true
 
-# MAIN
+### MAIN ###
+
+$(PROJECT) : $(FILES) $(DEPS) gtest_main.a
+	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@
+
+	@./$(PROJECT)
+
+	@rm $(PROJECT)
+
+### MY SETUP ###
 
 ifeq ($(IS_TEMPLATE), true)
         IGNORE_FILES=$(addsuffix $(SOURCESUFFIX), $(PROJECT))
@@ -19,9 +28,32 @@ endif
 DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))
 FILES := $(filter-out $(IGNORE_FILES), $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
-$(PROJECT): $(FILES) $(DEPS)
-	$(CC) $(FILES) $(CFLAGS)
-	./a.out
+### GTEST CONFIG ###
 
-	@# clean a.out
-	@rm a.out
+GTEST_DIR = /opt/gtest/googletest
+CPPFLAGS += -isystem $(GTEST_DIR)/include
+CXXFLAGS += -g -Wall -Wextra -pthread
+USER_DIR = .
+
+# Suppresses those shitty unknown pragma region warnings
+CFLAGS += -Wno-unknown-pragmas
+
+### GOOGLETEST SETUP ###
+
+GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
+                $(GTEST_DIR)/include/gtest/internal/*.h
+GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
+
+gtest-all.o : $(GTEST_SRCS_)
+	$(CC) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest-all.cc
+
+gtest_main.o : $(GTEST_SRCS_)
+	$(CC) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) -c \
+            $(GTEST_DIR)/src/gtest_main.cc
+
+gtest.a : gtest-all.o
+	$(AR) $(ARFLAGS) $@ $^
+
+gtest_main.a : gtest-all.o gtest_main.o
+	$(AR) $(ARFLAGS) $@ $^

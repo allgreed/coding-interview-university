@@ -1,68 +1,65 @@
 #pragma once
 
+// *******************************
 // Warning: this library may throw
-#include <stdexcept>
+// *******************************
 
-// Can I move this to List -> protected ?
-// Friend class ??? -> and move all public to protected / private
+//todo: Can I move this to List -> protected ?
+//todo: Friend class ??? -> and move all public to protected / private
 template <typename T>
 class ListNode
 {
-protected:
-    T value;
-    ListNode* next;
-protected:
-
-public:
-    // constructor
-    // destrcutor
-    // copy constructor
-    // move constructor
-    // copy assignment operator
-    // move assignemnt operator
+    public:
+        T value;
+        ListNode* next;
+        ListNode();
+        ListNode(ListNode* next);
+        ListNode(T value, ListNode* next);
 };
 
 template <typename T>
 class List
 {
-protected:
-    int _size;
-    ListNode<T>* _last;
-    ListNode<T>* _first;
-    // Since size is kept track of sentinel at the beginning is pointless
-    // Therefore "sentinel" refers to the end sentinel
-    ListNode<T>* _sentinel;
-protected:
-    int endIndex();
-public:
-    List();
-    ~List();
-    // copy constructor
-    // move constructor
-    // copy assignment operator
-    // move assignemnt operator
+    protected:
+        int _size;
+        ListNode<T>* _first;
+        ListNode<T>* _last;
+        // Since size is kept track of sentinel at the beginning is pointless
+        // Therefore "sentinel" refers to the end sentinel
+        ListNode<T>* _sentinel;
 
-    // Basic operations
-    void insert(int index, T value);
-    T at(int index);
+    protected:
+        int endIndex();
+        ListNode<T>* nodeAt(int index);
 
-    // void erase(int index);
-    // int size();
+    public:
+        List();
+        ~List();
+        //todo: copy constructor
+        //todo: move constructor
+        //todo: copy assignment operator
+        //todo: move assignemnt operator
 
-    // // Derived
-    // void push_front(T value);
-    // T pop_front();
-    // void push_back(T value);
-    // T pop_back();
+        // Basic operations
+        void insert(int index, T value);
+        T at(int index);
+        // void erase(int index);
+        int size();
 
-    // bool empty();
-    // T back();
-    // T front();
-    // T value_n_from_end(int reverseIndex);
+        // // Derived
+        // void push_front(T value);
+        // T pop_front();
+        // void push_back(T value);
+        // T pop_back();
 
-    // // Advanced
-    // void reverse();
-    // void remove_value(T value);
+        // bool empty();
+        // T back();
+        // T front();
+        // T value_n_from_end(int reverseIndex);
+
+        // // Advanced
+        // void reverse();
+        // void remove_value(T value);
 };
 
 // For truly type agnostic templates
