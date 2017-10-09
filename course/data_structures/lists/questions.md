@@ -6,4 +6,6 @@
 
 ## C++
 
+### Why use private, not protected -> if private does not allow inheritance?
+
 ## C++ STL

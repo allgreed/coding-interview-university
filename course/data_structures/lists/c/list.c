@@ -99,10 +99,10 @@ void List_destroy(List* list)
 {
     ListNode* next;
 
-    for(ListNode* this = list; !ListNode_is_last(this); this = next)
+    for(ListNode* current = list; !ListNode_is_last(current); current = next)
     {
-        next = this->next;
-        ListNode_destroy(this);
+        next = current->next;
+        ListNode_destroy(current);
     }
 }
 
@@ -211,13 +211,13 @@ void List_reverse(List* list)
     if (list->next == LIST_NULLPTR || list->next->next == LIST_NULLPTR)
         return;
 
-    ListNode* this = list->next;
+    ListNode* current = list->next;
     list->next = LIST_NULLPTR;
 
-    for(ListNode* next; next != LIST_NULLPTR; this = next)
+    for(ListNode* next; next != LIST_NULLPTR; current = next)
     {
-        next = this->next;
-        this->next = list->next;
-        list->next = this;
+        next = current->next;
+        current->next = list->next;
+        list->next = current;
     }
 }

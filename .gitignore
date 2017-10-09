@@ -7,3 +7,7 @@ personal-9894.md
 
 # Executables
 *.out
+
+# Prebuilts
+*.o
+*.a
