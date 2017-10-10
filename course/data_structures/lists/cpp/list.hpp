@@ -6,6 +6,8 @@
 
 //todo: Can I move this to List -> protected ?
 //todo: Friend class ??? -> and move all public to protected / private
+//todo: redo to struct?
+//todo: move node methods (eraseNode -> eraseNextNode, to here?)
 template <typename T>
 class ListNode
 {
@@ -30,6 +32,7 @@ class List
         int endIndex();
         ListNode<T>* nodeAt(int index);
         ListNode<T>* nodeBefore(int index);
+        void nodeErase(ListNode<T>* preErased);
 
     public:
         List();
@@ -37,7 +40,7 @@ class List
         //todo: copy constructor
         //todo: move constructor
         //todo: copy assignment operator
-        //todo: move assignemnt operator
+        //todo: move assignment operator
 
         // Basic operations
         void insert(int index, T value);
@@ -48,20 +51,16 @@ class List
         // Derived
         void push_front(T value);
         T pop_front();
-        // void push_back(T value);
-        // T pop_back();
+        void push_back(T value);
+        T pop_back();
+        bool empty();
+        T back();
+        T front();
+        T value_n_from_end(int reverseIndex);
 
-        // check if the last sentinel is really at the end
-        // add a find/contains method
-
-        // bool empty();
-        // T back();
-        // T front();
-        // T value_n_from_end(int reverseIndex);
-
-        // // Advanced
-        // void reverse();
-        // void remove_value(T value);
+        // Advanced
+        void reverse();
+        void remove_value(T value);
 };
 
 // For truly type agnostic templates

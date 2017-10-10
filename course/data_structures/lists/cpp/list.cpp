@@ -60,6 +60,19 @@ ListNode<T>* List<T>::nodeBefore(int index)
     return nodeAt(index - 1);
 }
 
+template <typename T>
+void List<T>::nodeErase(ListNode<T>* preErased)
+{
+    ListNode<T>* erasedNode = preErased->next;
+    preErased->next = erasedNode->next;
+
+    delete erasedNode;
+
+    // bookkeeping
+    if (erasedNode->next == backSentinel)
+        last = preErased;
+    _size--;
+}
 
 #pragma endregion
 
@@ -100,17 +113,9 @@ template <typename T>
 T List<T>::erase(int index)
 {
     ListNode<T>* preErased = nodeBefore(index);
-    ListNode<T>* erasedNode = preErased->next;
 
-    T valueOfDeleted = erasedNode->value;
-    preErased->next = erasedNode->next;
-
-    delete erasedNode;
-
-    // bookkeeping
-    if (index == endIndex())
-        last = preErased;
-    _size--;
+    T valueOfDeleted = preErased->next->value;
+    nodeErase(preErased);
 
     // adds little time to erasing and simplifies pop implementation
     return valueOfDeleted;
@@ -130,6 +135,89 @@ template <typename T>
 T List<T>::pop_front()
 {
     return erase(0);
+}
+
+template <typename T>
+void List<T>::push_back(T value)
+{
+    insert(endIndex()+1, value);
+}
+
+template <typename T>
+T List<T>::pop_back()
+{
+    return erase(endIndex());
+}
+
+template <typename T>
+bool List<T>::empty()
+{
+    return (_size == 0);
+}
+
+template <typename T>
+T List<T>::back()
+{
+    return at(endIndex());
+}
+
+template <typename T>
+T List<T>::front()
+{
+    return at(0);
+}
+
+template <typename T>
+T List<T>::value_n_from_end(int reverseIndex)
+{
+    return at(endIndex() - reverseIndex);
+}
+
+#pragma endregion
+
+#pragma region Advanced
+
+template <typename T>
+void List<T>::reverse()
+{
+    // Quit if reverse is not required
+    if (_size < 2)
+        return;
+
+    // bookkeeping
+    last = frontSentinel->next;
+
+    ListNode<T>* current = frontSentinel->next;
+    frontSentinel->next = backSentinel;
+    
+    for(ListNode<T>* next; next != backSentinel; current = next)
+    {
+        next = current->next;
+        current->next = frontSentinel->next;
+        frontSentinel->next = current;
+    }
+}
+
+#include <iostream>
+
+template <typename T>
+void List<T>::remove_value(T value)
+{
+    // redo to p2p
+    
+    backSentinel->value = value;
+
+    ListNode<T>* before = nullptr;
+    ListNode<T>* current = frontSentinel;
+
+    while(current->value != value)
+    {
+        before = current;
+        current = current->next;
+    }
+
+    if(current != backSentinel)
+        nodeErase(before);
 }
 
 #pragma endregion
