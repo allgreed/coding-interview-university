@@ -4,24 +4,21 @@
 // Warning: this library may throw
 // *******************************
 
-//todo: Can I move this to List -> protected ?
-//todo: Friend class ??? -> and move all public to protected / private
-//todo: redo to struct?
-//todo: move node methods (eraseNode -> eraseNextNode, to here?)
-template <typename T>
-class ListNode
-{
-    public:
-        T value;
-        ListNode* next;
-        ListNode();
-        ListNode(ListNode* next);
-        ListNode(T value, ListNode* next);
-};
-
 template <typename T>
 class List
 {
+protected:
+    template <typename _T>
+    struct ListNode
+    {
+        _T value;
+        ListNode* next;
+
+        ListNode(_T value, ListNode* next) : value(value), next(next) {}
+        ListNode(ListNode* next) : next(next) {}
+        ListNode() {}
+    };
+
     protected:
         int _size;
         ListNode<T>* frontSentinel;
@@ -32,7 +29,7 @@ class List
         int endIndex();
         ListNode<T>* nodeAt(int index);
         ListNode<T>* nodeBefore(int index);
-        void nodeErase(ListNode<T>* preErased);
+        void nodeEraseAfter(ListNode<T>* preErased);
 
     public:
         List();

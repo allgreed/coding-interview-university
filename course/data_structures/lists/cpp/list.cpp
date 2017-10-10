@@ -1,16 +1,5 @@
 #include <stdexcept>
 
-template <typename T>
-ListNode<T>::ListNode(T value, ListNode* next) : value(value), next(next) {}
-
-template <typename T>
-ListNode<T>::ListNode(ListNode* next) : next(next) {}
-
-template <typename T>
-ListNode<T>::ListNode() {}
-
-
-
 #pragma region Constructors, destructor, assignemt operators
 
 template <typename T>
@@ -41,7 +30,7 @@ int List<T>::endIndex()
 }
 
 template <typename T>
-ListNode<T>* List<T>::nodeAt(int index)
+List<T>::ListNode<T>* List<T>::nodeAt(int index)
 {
     if (index == endIndex())
         return last;
@@ -55,13 +44,13 @@ ListNode<T>* List<T>::nodeAt(int index)
 }
 
 template <typename T>
-ListNode<T>* List<T>::nodeBefore(int index)
+List<T>::ListNode<T>* List<T>::nodeBefore(int index)
 {
     return nodeAt(index - 1);
 }
 
 template <typename T>
-void List<T>::nodeErase(ListNode<T>* preErased)
+void List<T>::nodeEraseAfter(ListNode<T>* preErased)
 {
     ListNode<T>* erasedNode = preErased->next;
     preErased->next = erasedNode->next;
@@ -115,7 +104,7 @@ T List<T>::erase(int index)
     ListNode<T>* preErased = nodeBefore(index);
 
     T valueOfDeleted = preErased->next->value;
-    nodeErase(preErased);
+    nodeEraseAfter(preErased);
 
     // adds little time to erasing and simplifies pop implementation
     return valueOfDeleted;
@@ -214,7 +203,7 @@ void List<T>::remove_value(T value)
         before = current;
 
     if(before->next != backSentinel)
-        nodeErase(before);
+        nodeEraseAfter(before);
 }
 
 #pragma endregion
