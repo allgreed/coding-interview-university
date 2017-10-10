@@ -12,7 +12,7 @@ IS_TEMPLATE = true
 main: $(PROJECT)
 
 ifeq ($(IS_TEMPLATE), true)
-# todo: redo this to get rid of usless variables
+# todo: redo this to get rid of useless variables
         IGNORE_FILES=$(addsuffix $(SOURCESUFFIX), $(PROJECT))
         DEPS += $(addsuffix $(SOURCESUFFIX), $(PROJECT))
 else
@@ -56,4 +56,3 @@ gtest_main.a : gtest-all.o gtest_main.o
 $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@
 	@./$(PROJECT)
-	@rm $(PROJECT)

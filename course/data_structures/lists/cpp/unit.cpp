@@ -37,7 +37,41 @@ TEST(List, Get_and_set)
 
     list.insert(2, 0);
     EXPECT_EQ(list.at(2), 0);
+
+    EXPECT_EQ(list.size(), 4);
 }
+
+TEST(List, Erase)
+{
+    List<int> list;
+    list.insert(0, 567890);
+    list.insert(0, 123456);
+    list.insert(0, -123456);
+
+    list.erase(0);
+
+    EXPECT_EQ(list.at(1), 567890);
+    EXPECT_EQ(list.size(), 2);
+
+    list.erase(1);
+
+    EXPECT_EQ(list.at(0), 123456);
+    EXPECT_EQ(list.size(), 1);
+}
+
+TEST(List, TEST_CASE_NAME)
+{
+    List<int> list;
+
+    list.push_front(123);
+    list.push_front(-123);
+
+    EXPECT_EQ(list.at(0), -123);
+    EXPECT_EQ(list.at(1), 123);
+    EXPECT_EQ(list.pop_front(), -123);
+    EXPECT_EQ(list.pop_front(), 123);
+}
+
 
 // TEST(List, TEST_CASE_NAME)
 // {

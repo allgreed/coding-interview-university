@@ -22,15 +22,14 @@ class List
 {
     protected:
         int _size;
-        ListNode<T>* _first;
-        ListNode<T>* _last;
-        // Since size is kept track of sentinel at the beginning is pointless
-        // Therefore "sentinel" refers to the end sentinel
-        ListNode<T>* _sentinel;
+        ListNode<T>* frontSentinel;
+        ListNode<T>* backSentinel;
+        ListNode<T>* last;
 
     protected:
         int endIndex();
         ListNode<T>* nodeAt(int index);
+        ListNode<T>* nodeBefore(int index);
 
     public:
         List();
@@ -43,14 +42,17 @@ class List
         // Basic operations
         void insert(int index, T value);
         T at(int index);
-        // void erase(int index);
+        T erase(int index);
         int size();
 
-        // // Derived
-        // void push_front(T value);
-        // T pop_front();
+        // Derived
+        void push_front(T value);
+        T pop_front();
         // void push_back(T value);
         // T pop_back();
+
+        // check if the last sentinel is really at the end
+        // add a find/contains method
 
         // bool empty();
         // T back();
