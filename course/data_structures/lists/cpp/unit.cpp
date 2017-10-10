@@ -209,6 +209,34 @@ TEST(List, Array_operator_overload)
     EXPECT_THROW(list[-2], std::out_of_range);
 }
 
+TEST(List, Equality_and_nonequality_operator)
+{
+    List<int> refence_list;
+    List<int> list;
+
+    EXPECT_TRUE(refence_list == list);
+
+    list.push_back(-1);
+
+    EXPECT_TRUE(refence_list != list);
+
+    list.pop_back();
+
+    refence_list.push_back(34987384);
+    refence_list.push_back(-1);
+
+    list.push_back(34987384);
+    list.push_back(-1);
+
+    EXPECT_TRUE(refence_list == list);
+
+    refence_list.push_back(5);
+    list.push_back(0);
+
+    EXPECT_TRUE(refence_list != list);
+}
+
+
 // TEST(List, TEST_CASE_NAME)
 // {
 //     List<int> list;

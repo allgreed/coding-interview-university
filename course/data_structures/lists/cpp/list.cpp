@@ -5,7 +5,7 @@
 template <typename T>
 List<T>::List() : _size(0)
 {
-    backSentinel = new ListNode<T>();
+    backSentinel = new ListNode<T>;
     frontSentinel = new ListNode<T>(backSentinel);
     last = frontSentinel;
 }
@@ -13,9 +13,14 @@ List<T>::List() : _size(0)
 template <typename T>
 List<T>::~List()
 {
-    // iterate through all nodes and destroy them
+    ListNode<T>* next;
 
-    delete frontSentinel;
+    for(ListNode<T>* current = frontSentinel; current != backSentinel; current = next)
+    {
+        next = current->next;
+        delete current;
+    }
+
     delete backSentinel;
 }
 
@@ -24,13 +29,13 @@ List<T>::~List()
 #pragma region Private
 
 template <typename T>
-int List<T>::endIndex()
+int List<T>::endIndex() const
 {
     return _size - 1;
 }
 
 template <typename T>
-List<T>::ListNode<T>* List<T>::nodeAt(int index)
+List<T>::ListNode<T>* List<T>::nodeAt(int index) const
 {
     if (index == endIndex())
         return last;
@@ -81,7 +86,7 @@ void List<T>::insert(int index, T value)
 }
 
 template <typename T>
-T List<T>::at(int index)
+T List<T>::at(int index) const
 {
     if (index < 0)
         throw std::out_of_range("Negative index access attempt");
@@ -93,7 +98,7 @@ T List<T>::at(int index)
 }
 
 template <typename T>
-int List<T>::size()
+int List<T>::size() const
 {
     return _size;
 }
@@ -139,7 +144,7 @@ T List<T>::pop_back()
 }
 
 template <typename T>
-bool List<T>::empty()
+bool List<T>::empty() const
 {
     return (_size == 0);
 }
@@ -204,6 +209,28 @@ void List<T>::remove_value(T value)
 
     if(before->next != backSentinel)
         nodeEraseAfter(before);
+}
+
+template <typename T>
+bool List<T>::operator==(const List<T>& compared)
+{
+    if (this->size() != compared.size())
+        return false;
+
+    if (this->empty() && compared.empty())
+        return true;
+
+    for(int i=0; i <= endIndex(); i++)
+        if(this->at(i) != compared.at(i))
+            return false;
+
+    return true;
+}
+
+template <typename T>
+bool List<T>::operator!=(const List<T>& compared)
+{
+    return !(*this == compared); 
 }
 
 #pragma endregion

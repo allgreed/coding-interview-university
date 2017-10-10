@@ -4,17 +4,19 @@
 // Warning: this library may throw
 // *******************************
 
+#include <iostream>
+
 template <typename T>
 class List
 {
 protected:
-    template <typename _T>
+    template<typename _T>
     struct ListNode
     {
-        _T value;
+        T value;
         ListNode* next;
 
-        ListNode(_T value, ListNode* next) : value(value), next(next) {}
+        ListNode(T value, ListNode* next) : value(value), next(next) {}
         ListNode(ListNode* next) : next(next) {}
         ListNode() {}
     };
@@ -26,9 +28,11 @@ protected:
         ListNode<T>* last;
 
     protected:
-        int endIndex();
-        ListNode<T>* nodeAt(int index);
+        int endIndex() const;
+        ListNode<T>* nodeAt(int index) const;
         ListNode<T>* nodeBefore(int index);
+
+        //todo: move this inside node struct -> how to handle templates in function declaration? Ask Patryk
         void nodeEraseAfter(ListNode<T>* preErased);
 
     public:
@@ -41,25 +45,28 @@ protected:
 
         // Basic operations
         void insert(int index, T value);
-        T at(int index);
+        T at(int index) const;
         T erase(int index);
-        int size();
+        int size() const;
 
         // Derived
         void push_front(T value);
         T pop_front();
         void push_back(T value);
         T pop_back();
-        bool empty();
+        bool empty() const;
         T back();
         T front();
         T value_n_from_end(int reverseIndex);
+
         T operator[](int i);
 
         // Advanced
         void reverse();
         void remove_value(T value);
-        // todo: overload operator == for equality comparison
+
+        bool operator==(const List<T>& compared);
+        bool operator!=(const List<T>& compared);
 };
 
 // For truly type agnostic templates
