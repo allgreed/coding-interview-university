@@ -173,6 +173,12 @@ T List<T>::value_n_from_end(int reverseIndex)
     return at(endIndex() - reverseIndex);
 }
 
+template <typename T>
+T List<T>::operator[](int i)
+{
+    return at(i);
+}
+
 #pragma endregion
 
 #pragma region Advanced
@@ -198,25 +204,16 @@ void List<T>::reverse()
     }
 }
 
-#include <iostream>
-
 template <typename T>
 void List<T>::remove_value(T value)
 {
-    // redo to p2p
-    
     backSentinel->value = value;
+    ListNode<T>* before;
 
-    ListNode<T>* before = nullptr;
-    ListNode<T>* current = frontSentinel;
-
-    while(current->value != value)
-    {
+    for(ListNode<T>* current = frontSentinel; current->value != value; current = current->next)
         before = current;
-        current = current->next;
-    }
 
-    if(current != backSentinel)
+    if(before->next != backSentinel)
         nodeErase(before);
 }
 

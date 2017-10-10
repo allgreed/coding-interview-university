@@ -57,10 +57,12 @@ class List
         T back();
         T front();
         T value_n_from_end(int reverseIndex);
+        T operator[](int i);
 
         // Advanced
         void reverse();
         void remove_value(T value);
+        // todo: overload operator == for equality comparison
 };
 
 // For truly type agnostic templates

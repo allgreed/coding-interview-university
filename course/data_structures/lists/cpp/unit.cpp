@@ -196,6 +196,26 @@ TEST(List, Remove_value)
     EXPECT_EQ(list.size(), 2);
 }
 
+TEST(List, Array_operator_overload)
+{
+    List<int> list;
+    list.push_back(300);
+    list.push_back(-8345555);
+
+    EXPECT_EQ(list[0], list.at(0));
+    EXPECT_EQ(list[1], list.at(1));
+
+    EXPECT_THROW(list[10], std::invalid_argument);
+    EXPECT_THROW(list[-2], std::out_of_range);
+}
+
+// TEST(List, TEST_CASE_NAME)
+// {
+//     List<int> list;
+//     // Do the setup
+
+//     // Do the assertions
+// }
 
 // -------- PASTE THIS TO TEMPLATE -------
 
