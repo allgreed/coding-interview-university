@@ -149,10 +149,30 @@ template <typename T> void Vector<T>::prepend(T value)
 
 template <typename T> int Vector<T>::find(T value)
 {
-    for(int i = 0; i <= endIndex(); i++)
-        if (at(i) == value) return i;
+    int i = 0;
 
-    return -1;
+    // the cost of reallocating array would be greater than the benefit of using sentinel
+    if (size < capacity)
+    {
+        push(value);
+        while (at(i) != value) i++;
+        size--;
+
+        if (i > endIndex())
+            return -1;
+    }
+    else
+    {
+        while(i < endIndex())
+        {
+            if (at(i) == value) break;
+            i++;
+        }
+        if(i == endIndex() && at(endIndex()) != value)
+            return -1;
+    }
+
+    return i;
 }
 
 #pragma endregion
