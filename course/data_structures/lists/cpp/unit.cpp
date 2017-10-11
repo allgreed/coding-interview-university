@@ -236,6 +236,19 @@ TEST(List, Equality_and_nonequality_operator)
     EXPECT_TRUE(refence_list != list);
 }
 
+TEST(List, Copy)
+{
+    List<int> reference_list;
+    List<int> empty_list = reference_list;
+
+    EXPECT_TRUE(reference_list == empty_list);
+
+    reference_list.push_back(256);
+
+    List<int> list = reference_list;
+
+    EXPECT_TRUE(reference_list == list);
+}
 
 // TEST(List, TEST_CASE_NAME)
 // {

@@ -24,6 +24,18 @@ List<T>::~List()
     delete backSentinel;
 }
 
+
+#include <iostream>
+
+template <typename T>
+List<T>::List(const List<T> &list) : List()
+{
+    int endIndex = list.size() - 1;
+
+    for(int i = 0; i <= endIndex; i++)
+        insert(i, list.at(i));
+}
+
 #pragma endregion
 
 #pragma region Private

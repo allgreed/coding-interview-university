@@ -4,22 +4,20 @@
 // Warning: this library may throw
 // *******************************
 
-#include <iostream>
-
 template <typename T>
 class List
 {
-protected:
-    template<typename _T>
-    struct ListNode
-    {
-        T value;
-        ListNode* next;
+    protected:
+        template<typename _>
+        struct ListNode
+        {
+            T value;
+            ListNode* next;
 
-        ListNode(T value, ListNode* next) : value(value), next(next) {}
-        ListNode(ListNode* next) : next(next) {}
-        ListNode() {}
-    };
+            ListNode(T value, ListNode* next) : value(value), next(next) {}
+            ListNode(ListNode* next) : next(next) {}
+            ListNode() {}
+        };
 
     protected:
         int _size;
@@ -38,9 +36,10 @@ protected:
     public:
         List();
         ~List();
-        //todo: copy constructor
-        //todo: move constructor
+
+        List(const List<T> &list);
         //todo: copy assignment operator
+        //todo: move constructor
         //todo: move assignment operator
 
         // Basic operations
