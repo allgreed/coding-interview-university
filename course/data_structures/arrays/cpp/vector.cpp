@@ -158,7 +158,7 @@ template <typename T> int Vector<T>::find(T value)
         while (at(i) != value) i++;
         size--;
 
-        if (i > endIndex())
+        if(i == endIndex() && at(endIndex()) != value)
             return -1;
     }
     else
@@ -168,7 +168,8 @@ template <typename T> int Vector<T>::find(T value)
             if (at(i) == value) break;
             i++;
         }
-        if(i == endIndex() && at(endIndex()) != value)
+
+        if (i > endIndex())
             return -1;
     }
 

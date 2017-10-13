@@ -2,6 +2,9 @@
 
 #pragma region Constructors, destructor, assignemt operators
 
+// todo: delete after dev
+#include <iostream>
+
 template <typename T>
 List<T>::List() : _size(0)
 {
@@ -24,16 +27,41 @@ List<T>::~List()
     delete backSentinel;
 }
 
-
-#include <iostream>
-
 template <typename T>
 List<T>::List(const List<T> &list) : List()
 {
-    int endIndex = list.size() - 1;
+    *this = list;
+}
 
-    for(int i = 0; i <= endIndex; i++)
-        insert(i, list.at(i));
+template <typename T>
+List<T>& List<T>::operator=(const List<T> 
+    &list)
+{
+    if (this != &list)
+    {
+        int sizeDifference = _size - list.size();
+        int commonSize = (sizeDifference < 0) ? _size : list.size();
+
+        ListNode<T>* current = frontSentinel->next;
+        for(int i = 0; i < commonSize; i++)
+        { 
+            current -> value = list.at(i);
+            current = current->next;
+        }
+
+        if (sizeDifference < 0)
+        {
+            sizeDifference = -sizeDifference;
+
+            for (int i = 0; i < sizeDifference; i++)
+                insert(_size, list.at(_size));
+        }
+        else if (sizeDifference > 0)
+            for(int i = 0; i < sizeDifference; i++)
+                erase(endIndex());
+    }
+
+    return *this;
 }
 
 #pragma endregion
@@ -226,10 +254,10 @@ void List<T>::remove_value(T value)
 template <typename T>
 bool List<T>::operator==(const List<T>& compared)
 {
-    if (this->size() != compared.size())
+    if (size() != compared.size())
         return false;
 
-    if (this->empty() && compared.empty())
+    if (empty() && compared.empty())
         return true;
 
     for(int i=0; i <= endIndex(); i++)

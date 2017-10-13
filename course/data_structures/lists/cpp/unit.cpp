@@ -250,6 +250,35 @@ TEST(List, Copy)
     EXPECT_TRUE(reference_list == list);
 }
 
+TEST(List, Copy_assignment)
+{
+    List<int> reference_list;
+    List<int> list;
+
+    // equal sizes, different values
+    reference_list.push_back(256);
+    reference_list.push_back(512);
+    list.push_back(-256);
+    list.push_back(-512);
+
+    list = reference_list;
+    EXPECT_TRUE(reference_list == list);
+
+    // reference is smaller
+    reference_list.erase(0);
+    reference_list.erase(0);
+
+    list = reference_list;
+    EXPECT_TRUE(reference_list == list);
+
+    // reference is bigger
+    reference_list.push_back(256);
+    reference_list.push_back(512);
+
+    list = reference_list;
+    EXPECT_TRUE(reference_list == list);
+}
+
 // TEST(List, TEST_CASE_NAME)
 // {
 //     List<int> list;
