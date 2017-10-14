@@ -37,13 +37,13 @@ class List
 
     public:
         List();
-        ~List();
 
-        List(const List<T> &list);
-        List<T>& operator=(const List<T> &list);
+        ~List();
+        List(const List<T>& list);
+        List<T>& operator=(const List<T>& list);
         
-        //todo: move constructor
-        //todo: move assignment operator
+        //todo: move constructor => combines ordinary constructor and move assignment operator
+        List<T>& operator=(List<T>&& list);
 
         // Basic operations
         void insert(int index, T value);

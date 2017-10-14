@@ -279,6 +279,19 @@ TEST(List, Copy_assignment)
     EXPECT_TRUE(reference_list == list);
 }
 
+TEST(List, Move_assignment)
+{
+    List<int> reference_list;
+    reference_list.push_back(256);
+    reference_list.push_back(512);
+    List<int> disposable_reference_list = reference_list;
+    List<int> list;
+
+    list = std::move(disposable_reference_list);
+
+    EXPECT_TRUE(list == reference_list);
+}
+
 // TEST(List, TEST_CASE_NAME)
 // {
 //     List<int> list;
