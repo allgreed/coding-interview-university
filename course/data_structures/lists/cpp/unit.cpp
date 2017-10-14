@@ -290,6 +290,12 @@ TEST(List, Move_assignment)
     list = std::move(disposable_reference_list);
 
     EXPECT_TRUE(list == reference_list);
+
+    // disposable_reference_list is in valid state
+    // if it's not it'll explode
+    disposable_reference_list.push_back(100);
+    disposable_reference_list.remove_value(100);
+    disposable_reference_list.size();
 }
 
 // TEST(List, TEST_CASE_NAME)

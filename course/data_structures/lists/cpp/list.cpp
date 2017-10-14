@@ -1,9 +1,10 @@
 #include <stdexcept>
+#include <utility>
 
 #pragma region Constructors, destructor, assignemt operators
 
 // todo: delete after dev
-#include <iostream>
+// #include <iostream>
 
 template <typename T>
 List<T>::List() : _size(0)
@@ -60,6 +61,17 @@ List<T>& List<T>::operator=(const List<T>
             for(int i = 0; i < sizeDifference; i++)
                 erase(endIndex());
     }
+
+    return *this;
+}
+
+template <typename T>
+List<T>& List<T>::operator=(List<T>&& list)
+{
+    std::swap(backSentinel, list.backSentinel);
+    std::swap(frontSentinel, list.frontSentinel);
+    std::swap(last, list.last);
+    std::swap(_size, list._size);
 
     return *this;
 }
