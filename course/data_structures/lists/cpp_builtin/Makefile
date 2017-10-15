@@ -8,25 +8,18 @@ HEADERSUFFIX = .hpp
 SOURCESUFFIX = .cpp
 IS_TEMPLATE = true
 
-### MAIN ###
-
-$(PROJECT) : $(FILES) $(DEPS) gtest_main.a
-	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@
-
-	@./$(PROJECT)
-
-	@rm $(PROJECT)
-
 ### MY SETUP ###
+main: $(PROJECT)
 
 ifeq ($(IS_TEMPLATE), true)
+# todo: redo this to get rid of useless variables
         IGNORE_FILES=$(addsuffix $(SOURCESUFFIX), $(PROJECT))
+        DEPS += $(addsuffix $(SOURCESUFFIX), $(PROJECT))
 else
-        IGNORE_FILES=
 endif
 
-DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))
-FILES := $(filter-out $(IGNORE_FILES), $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
+DEPS += $(addsuffix $(HEADERSUFFIX), $(PROJECT))
+FILES += $(filter-out $(IGNORE_FILES), $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
 ### GTEST CONFIG ###
 
@@ -57,3 +50,9 @@ gtest.a : gtest-all.o
 
 gtest_main.a : gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
+
+### MAIN ###
+
+$(PROJECT) : $(FILES) $(DEPS) gtest_main.a
+	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
+	@./$(PROJECT).out

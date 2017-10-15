@@ -36,6 +36,5 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] C
     - [x] C++
     - [ ] C++ with builtin types
-    <!-- https://stackoverflow.com/questions/5733842/how-to-get-a-certain-element-in-a-list-given-the-position -->
 
 <!-- Update template if necessary -->
