@@ -284,27 +284,27 @@ TEST(List, Move_assignment)
     List<int> reference_list;
     reference_list.push_back(256);
     reference_list.push_back(512);
-    List<int> disposable_reference_list = reference_list;
+    List<int> disposable_list = reference_list;
+    
     List<int> list;
+    list.push_back(5);
 
-    list = std::move(disposable_reference_list);
+    list = std::move(disposable_list);
 
     EXPECT_TRUE(list == reference_list);
-
-    // disposable_reference_list is in valid state
-    // if it's not it'll explode
-    disposable_reference_list.push_back(100);
-    disposable_reference_list.remove_value(100);
-    disposable_reference_list.size();
 }
 
-// TEST(List, TEST_CASE_NAME)
-// {
-//     List<int> list;
-//     // Do the setup
+TEST(List, Move_constructor)
+{
+    List<int> reference_list;
+    reference_list.push_back(256);
+    reference_list.push_back(512);
+    List<int> disposable_list = reference_list;
 
-//     // Do the assertions
-// }
+    List<int> list = std::move(disposable_list);
+
+    EXPECT_TRUE(list == reference_list);
+}
 
 // -------- PASTE THIS TO TEMPLATE -------
 

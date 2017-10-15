@@ -25,7 +25,6 @@ class List
         ListNode<T>* frontSentinel;
         ListNode<T>* backSentinel;
         ListNode<T>* last;
-        // Maybe add static cache of last visited node to support public iterating ?
 
     protected:
         int endIndex() const;
@@ -41,8 +40,7 @@ class List
         ~List();
         List(const List<T>& list);
         List<T>& operator=(const List<T>& list);
-        
-        //todo: move constructor => combines ordinary constructor and move assignment operator
+        List(List<T>&& list);
         List<T>& operator=(List<T>&& list);
 
         // Basic operations

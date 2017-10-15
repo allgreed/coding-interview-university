@@ -4,7 +4,7 @@
 #pragma region Constructors, destructor, assignemt operators
 
 // todo: delete after dev
-// #include <iostream>
+#include <iostream>
 
 template <typename T>
 List<T>::List() : _size(0)
@@ -66,12 +66,23 @@ List<T>& List<T>::operator=(const List<T>
 }
 
 template <typename T>
+List<T>::List(List<T>&& list)
+{
+    backSentinel = nullptr;
+    frontSentinel = nullptr;
+
+    *this = std::move(list);
+}
+
+template <typename T>
 List<T>& List<T>::operator=(List<T>&& list)
 {
+    // Previous contents should be properly deallocated
     std::swap(backSentinel, list.backSentinel);
     std::swap(frontSentinel, list.frontSentinel);
-    std::swap(last, list.last);
-    std::swap(_size, list._size);
+
+    last = list.last;
+    _size = list._size;
 
     return *this;
 }
