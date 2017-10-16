@@ -98,10 +98,9 @@ void List<T>::reverse()
 template <typename T>
 void List<T>::remove_value(T value)
 {
-    // do pokminienia jutro ;)
-    auto element = std::find(_list.begin(), std::next(_list.end(), 1), value);
+    auto element = std::find(_list.begin(), _list.end(), value);
 
-    if (element != std::next(_list.end(), 1))
+    if (_list.end() != element)
         _list.erase(element);
 }
 

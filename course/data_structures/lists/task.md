@@ -32,9 +32,9 @@ Finished @: yyyy-mm-dd hh:mm
 - [x] Doubly-linked List
     - [Description (video)](https://www.coursera.org/learn/data-structures/lecture/jpGKD/doubly-linked-lists)
     - No need to implement
-- [ ] Implement in:
+- [x] Implement in:
     - [x] C
     - [x] C++
-    - [ ] C++ with builtin types
+    - [x] C++ with builtin types
 
 <!-- Update template if necessary -->
