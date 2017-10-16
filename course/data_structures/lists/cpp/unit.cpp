@@ -305,18 +305,3 @@ TEST(List, Move_constructor)
 
     EXPECT_TRUE(list == reference_list);
 }
-
-// -------- PASTE THIS TO TEMPLATE -------
-
-// #include "gtest/gtest.h"
-
-// Test declarations template
-
-// TEST(PROJECT_TO_UPPERCASE, TEST_CASE_NAME)
-// {
-//     // Do the construction
-//     // Do the setup
-
-//     // Do the assertions
-//     // Do cleanup (if necessary)
-// }

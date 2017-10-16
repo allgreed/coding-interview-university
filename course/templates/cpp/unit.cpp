@@ -1,14 +1,18 @@
-#include "placeholder.hpp"
+#include "$FILL THIS !!!$.hpp"
+#include "gtest/gtest.h"
 
-#include <iostream>
-#include <assert.h>
+// ------------------------------------------
 
-// Test declarations
 
-int main()
-{
-    // Test init
+// Test declarations template
 
-    std::cout << "All tests passed!" << std::endl;
-    return 0;
-}
+// TODO: Prefill this!
+
+// TEST(PROJECT_TO_UPPERCASE, TEST_CASE_NAME)
+// {
+//     // Do the construction
+//     // Do the setup
+
+//     // Do the assertions
+//     // Do cleanup (if necessary)
+// }

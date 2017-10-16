@@ -1,7 +1,7 @@
 ### Linked Lists
 
 Started @: 2017-10-04 18:29
-Finished @: yyyy-mm-dd hh:mm
+Finished @: 2017-10-16 12:08
 
 
 - [x] Description:
