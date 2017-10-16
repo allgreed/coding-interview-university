@@ -45,3 +45,5 @@ void nodeEraseAfter(ListNode<T>* preErased);
 ```
 
 ## C++ STL
+
+### How iterators work?

@@ -126,6 +126,7 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 
 <!-- Todo: Answer all question in arrays -->
 <!-- Todo: Answer all question in lists -->
+<!-- Todo: Answer all question in stacks -->
 
 <!-- Todo: Customized this README -> above -->
 <!-- Todo: Shoutout for jwasham -->

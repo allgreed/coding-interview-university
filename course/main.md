@@ -1,7 +1,6 @@
 
 - [Algorithmic complexity / Big-O / Asymptotic analysis](#algorithmic-complexity--big-o--asymptotic-analysis)
 - [Data Structures](#data-structures)
-    - [Stack](#stack)
     <!-- Add a prepush hook / standalone script that clears all the .out files -->
     - [Queue](#queue)
     - [Hash table](#hash-table)
@@ -105,11 +104,6 @@
 ---
 
 ## Data Structures
-
-- ### Stack
-    - [ ] [Stacks (video)](https://www.coursera.org/learn/data-structures/lecture/UdKzQ/stacks)
-    - [ ] [Using Stacks Last-In First-Out (video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Using-stacks-last-first-out/149042/177120-4.html)
-    - [ ] Will not implement. Implementing with array is trivial.
 
 - ### Queue
     - [ ] [Using Queues First-In First-Out(video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Using-queues-first-first-out/149042/177122-4.html)

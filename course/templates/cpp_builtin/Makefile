@@ -1,6 +1,6 @@
 ### CONFIG ###
 
-PROJECT = list
+PROJECT = $FILL THIS !!!$
 
 CC = g++
 CFLAGS += --std=c++17
