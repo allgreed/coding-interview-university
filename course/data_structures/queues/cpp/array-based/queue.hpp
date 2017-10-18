@@ -10,4 +10,4 @@
 // classes
 
 // Only if class is using generic templates
-#include "$FILL THIS !!!$.cpp"
+#include "queue.cpp"

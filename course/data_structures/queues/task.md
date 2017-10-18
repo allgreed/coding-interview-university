@@ -1,6 +1,6 @@
-### $FILL THIS !!!$
+### Queue
 
-Started @: yyyy-mm-dd hh:mm
+Started @: 2017-10-18 18:33
 Finished @: yyyy-mm-dd hh:mm
 
 - ### Queue
@@ -12,14 +12,28 @@ Finished @: yyyy-mm-dd hh:mm
         - enqueue(value) - adds value at position at tail
         - dequeue() - returns value and removes least recently added element (front)
         - empty()
+    - [ ] Implement in:
+        - [ ] C
+        - [ ] C++
+        - [ ] C++ with builtin types
     - [ ] Implement using fixed-sized array:
         - enqueue(value) - adds item at end of available storage
         - dequeue() - returns value and removes least recently added element
         - empty()
         - full()
+    - [ ] Implement in:
+        - [ ] C
+        - [ ] C++
+        - [ ] C++ with builtin types
     - [ ] Cost:
         - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)
             because you'd need the next to last element, causing a full traversal each dequeue
         - enqueue: O(1) (amortized, linked list and array [probing])
         - dequeue: O(1) (linked list and array)
         - empty: O(1) (linked list and array)
+
+<!-- append this to template -->
+<!-- - [ ] Implement in:
+    - [ ] C
+    - [ ] C++
+    - [ ] C++ with builtin types -->

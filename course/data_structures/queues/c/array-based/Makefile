@@ -1,6 +1,6 @@
 #config
 
-PROJECT=$FILL THIS !!!$
+PROJECT=queue
 
 CC=gcc
 CFLAGS=

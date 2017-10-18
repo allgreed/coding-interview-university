@@ -1,6 +1,6 @@
 ### CONFIG ###
 
-PROJECT = $FILL THIS !!!$
+PROJECT = queue
 
 CC = g++
 CFLAGS += --std=c++17
