@@ -4,16 +4,16 @@ Started @: 2017-10-18 18:33
 Finished @: yyyy-mm-dd hh:mm
 
 - ### Queue
-    - [ ] [Using Queues First-In First-Out(video)](https://www.lynda.com/Developer-Programming-Foundations-tutorials/Using-queues-first-first-out/149042/177122-4.html)
-    - [ ] [Queue (video)](https://www.coursera.org/learn/data-structures/lecture/EShpq/queue)
-    - [ ] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
-    - [x] [Priority Queues (video)](https://www.youtube.com/watch?v=wptevk0bshY)
-    - [ ] Implement using linked-list, with tail pointer:
+    - [ ] Description:
+        - [ ] [Queue (video)](https://www.coursera.org/learn/data-structures/lecture/EShpq/queue)
+        - [ ] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
+        - [x] [Priority Queues (video)](https://www.youtube.com/watch?v=wptevk0bshY)
+    - [x] Implement using linked-list, with tail pointer:
         - enqueue(value) - adds value at position at tail
         - dequeue() - returns value and removes least recently added element (front)
         - empty()
     - [ ] Implement in:
-        - [ ] C
+        - [x] C
         - [ ] C++
         - [ ] C++ with builtin types
     - [ ] Implement using fixed-sized array:
