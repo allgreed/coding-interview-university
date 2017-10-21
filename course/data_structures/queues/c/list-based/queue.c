@@ -17,6 +17,10 @@ void* allocate(int size)
         exit(QUEUE_EXIT_FAILED_ALLOCATION);
     }
 
+    #ifdef QUEUE_MEMTEST_ON
+         printf("Allocated:  %ld\n", (long int) retval);
+    #endif
+
     return retval;
 }
 
@@ -26,9 +30,6 @@ void* allocate(int size)
 Queue* Queue_create()
 {
     Queue* queue = allocate(sizeof(Queue));
-    #ifdef QUEUE_MEMTEST_ON
-        printf("Created queue: %ld\n", (long int) queue);
-    #endif
 
     queue->head = QUEUE_NULLPTR;
     queue->tail = QUEUE_NULLPTR;
@@ -67,9 +68,6 @@ void Queue_destory(Queue* queue)
 void Queue_enqueue(Queue* queue, Queue_element_t value)
 {
     Queue_node* newNode = allocate(sizeof(Queue_node));
-    #ifdef QUEUE_MEMTEST_ON
-        printf("Created node: %ld\n", (long int) newNode);
-    #endif
 
     newNode->value = value;
     newNode->next = QUEUE_NULLPTR;

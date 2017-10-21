@@ -37,3 +37,6 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] C
     - [ ] C++
     - [ ] C++ with builtin types -->
+
+<!-- template -->
+    <!-- cpp -> move stdexcept to .cpp file from header -->
