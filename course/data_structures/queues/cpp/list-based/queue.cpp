@@ -6,7 +6,9 @@
 #pragma region
 #pragma endregion
 
+// todo: delete after dev
 #include <iostream>
+
 #pragma region Constructors, assigments, destructor
 
 template <typename T>
@@ -108,18 +110,14 @@ bool Queue<T>::empty()
 template <typename T>
 bool Queue<T>::operator==(const Queue<T>& rhs)
 {
-    Queue_node<T>* current, * rhs_current;
-    Queue_node<T>* next = head, * rhs_next = rhs.head;
+    Queue_node<T>* current = head;
+    Queue_node<T>* rhs_current = rhs.head;
 
-    while((next != nullptr) && (rhs_next != nullptr))
-    {
-        traverse(current, rhs_current, next, rhs_next);
-
+    for(;(current != nullptr) && (rhs_current != nullptr); traverse(current, rhs_current))
         if (current->value != rhs_current->value)
             return false;
-    }
 
-    if(next != rhs_next)
+    if(current != rhs_current)
         return false;
 
     return true;
