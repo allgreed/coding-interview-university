@@ -133,11 +133,36 @@ TEST(Queue, copy_assignment_from_empty)
     EXPECT_TRUE(queue == smaller_reference_queue);
 }
 
+TEST(Queue, move_assignment)
+{
+    Queue<int> queue;
+    Queue<int> reference_queue;
+    Queue<int> disposable_queue;
 
-// ---------------------
+    reference_queue.enqueue(-100);
+    reference_queue.enqueue(100);
 
-// move constructor test
-// move assignemnt test
+    disposable_queue = reference_queue;
+
+    queue = std::move(disposable_queue);
+
+    EXPECT_TRUE(queue == reference_queue);
+}
+
+TEST(Queue, move_constructor)
+{
+    Queue<int> reference_queue;
+    Queue<int> disposable_queue;
+
+    reference_queue.enqueue(-100);
+    reference_queue.enqueue(100);
+
+    disposable_queue = reference_queue;
+
+    Queue<int> queue = std::move(disposable_queue);
+
+    EXPECT_TRUE(queue == reference_queue);
+}
 
 // ---------------------
 
@@ -152,14 +177,6 @@ TEST(Queue, copy_assignment_from_empty)
 //     Queue_enqueue(queue, -5);
 
 //     Queue_destory(queue);
-// }
-
-// TEST(QUEUE, TEST_CASE_NAME)
-// {
-//     Queue<int> queue;
-//     // Do the setup
-
-//     // Do the assertions
 // }
 
 // Test declarations template

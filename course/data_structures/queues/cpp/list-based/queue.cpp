@@ -4,6 +4,13 @@
 #include <algorithm>
 
 #pragma region
+
+template <typename T>
+Queue<T>::Queue_node::Queue_node(T value) : value(value), next(nullptr) {}
+
+template <typename T>
+Queue<T>::Queue_node::Queue_node(Queue_node* pointer) : next(pointer) {}
+
 #pragma endregion
 
 // todo: delete after dev
@@ -18,10 +25,10 @@ Queue<T>::Queue() : head(nullptr), tail(nullptr) {}
 template <typename T>
 Queue<T>::~Queue()
 {
-    Queue_node<T> dummyThis = Queue_node<T>(head);
-    Queue_node<T>* current = &dummyThis;
+    Queue_node dummyThis = Queue_node(head);
+    Queue_node* current = &dummyThis;
 
-    for(Queue_node<T>* next = head; next != nullptr; delete current)
+    for(Queue_node* next = head; next != nullptr; delete current)
         traverse(current, next);
 }
 
@@ -34,12 +41,12 @@ Queue<T>::Queue(const Queue<T>& rhs) : Queue()
 template <typename T>
 Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
 {
-    Queue_node<T>* next = head, * rhs_next = rhs.head;
+    Queue_node* next = head, * rhs_next = rhs.head;
 
-    Queue_node<T> dummyThis = Queue_node<T>(next);
-    Queue_node<T> dummyRhs = Queue_node<T>(rhs_next);
+    Queue_node dummyThis = Queue_node(next);
+    Queue_node dummyRhs = Queue_node(rhs_next);
 
-    Queue_node<T>* current = &dummyThis, * rhs_current = &dummyRhs;
+    Queue_node* current = &dummyThis, * rhs_current = &dummyRhs;
 
     for(; (next != nullptr) && (rhs_next != nullptr); current->value = rhs_current->value)
         traverse(current, rhs_current, next, rhs_next);
@@ -65,6 +72,20 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
     return *this;
 }
 
+template <typename T>
+Queue<T>::Queue(Queue<T>&& rhs) : Queue()
+{
+    *this = std::move(rhs);
+}
+
+template <typename T>
+Queue<T>& Queue<T>::operator=(Queue<T>&& rhs)
+{
+    std::swap(rhs.tail, tail);
+    std::swap(rhs.head, head);
+    return *this;
+}
+
 #pragma endregion
 
 #pragma region Operations
@@ -72,7 +93,7 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
 template <typename T>
 void Queue<T>::enqueue(T value)
 {
-    auto newNode = new Queue_node<T>(value);
+    auto newNode = new Queue_node(value);
 
     if(empty())
         head = newNode;
@@ -90,7 +111,7 @@ T Queue<T>::dequeue()
 
     T retval = head->value;
 
-    Queue_node<T>* dequeued_node = head;
+    Queue_node* dequeued_node = head;
     head = dequeued_node->next;
     delete dequeued_node;
 
@@ -110,8 +131,8 @@ bool Queue<T>::empty()
 template <typename T>
 bool Queue<T>::operator==(const Queue<T>& rhs)
 {
-    Queue_node<T>* current = head;
-    Queue_node<T>* rhs_current = rhs.head;
+    Queue_node* current = head;
+    Queue_node* rhs_current = rhs.head;
 
     for(;(current != nullptr) && (rhs_current != nullptr); traverse(current, rhs_current))
         if (current->value != rhs_current->value)
