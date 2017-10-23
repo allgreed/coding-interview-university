@@ -62,107 +62,108 @@ TEST(Queue, equality)
     EXPECT_TRUE(queue == reference_queue);
 }
 
-TEST(Queue, copy_constructor)
-{
-    Queue<int> reference_queue;
+// TEST(Queue, copy_constructor)
+// {
+//     Queue<int> reference_queue;
 
-    reference_queue.enqueue(3);
-    reference_queue.enqueue(4);
-    reference_queue.enqueue(5);
+//     reference_queue.enqueue(3);
+//     reference_queue.enqueue(4);
+//     reference_queue.enqueue(5);
 
-    Queue<int> queue = reference_queue;
+//     Queue<int> queue = reference_queue;
 
-    EXPECT_TRUE(queue == reference_queue);
-}
+//     EXPECT_TRUE(queue == reference_queue);
+// }
 
-TEST(Queue, copy_assignment)
-{
-    Queue<int> queue;
-    Queue<int> same_reference_queue;
-    Queue<int> smaller_reference_queue;
-    Queue<int> bigger_reference_queue;
+// TEST(Queue, copy_assignment)
+// {
+//     Queue<int> queue;
+//     Queue<int> same_reference_queue;
+//     Queue<int> smaller_reference_queue;
+//     Queue<int> bigger_reference_queue;
 
-    queue.enqueue(1);
-    queue.enqueue(2);
-    queue.enqueue(3);
+//     queue.enqueue(1);
+//     queue.enqueue(2);
+//     queue.enqueue(3);
 
-    same_reference_queue.enqueue(4);
-    same_reference_queue.enqueue(5);
-    same_reference_queue.enqueue(6);
+//     same_reference_queue.enqueue(4);
+//     same_reference_queue.enqueue(5);
+//     same_reference_queue.enqueue(6);
 
-    smaller_reference_queue.enqueue(7);
-    smaller_reference_queue.enqueue(8);
+//     smaller_reference_queue.enqueue(7);
+//     smaller_reference_queue.enqueue(8);
 
-    bigger_reference_queue.enqueue(9);
-    bigger_reference_queue.enqueue(10);
-    bigger_reference_queue.enqueue(11);
-    bigger_reference_queue.enqueue(12);
+//     bigger_reference_queue.enqueue(9);
+//     bigger_reference_queue.enqueue(10);
+//     bigger_reference_queue.enqueue(11);
+//     bigger_reference_queue.enqueue(12);
 
-    queue = same_reference_queue;
-    EXPECT_TRUE(queue == same_reference_queue);
+//     queue = same_reference_queue;
+//     EXPECT_TRUE(queue == same_reference_queue);
 
-    queue = smaller_reference_queue;
-    EXPECT_TRUE(queue == smaller_reference_queue);
+//     queue = smaller_reference_queue;
+//     EXPECT_TRUE(queue == smaller_reference_queue);
 
-    queue = bigger_reference_queue;
-    EXPECT_TRUE(queue == bigger_reference_queue);
-}
+//     queue = bigger_reference_queue;
+//     EXPECT_TRUE(queue == bigger_reference_queue);
+// }
 
-TEST(Queue, copy_assignment_from_empty)
-{
-    Queue<int> queue;
-    Queue<int> empty_reference_queue;
-    Queue<int> smaller_reference_queue;
-    Queue<int> bigger_reference_queue;
+// TEST(Queue, copy_assignment_from_empty)
+// {
+//     Queue<int> queue;
+//     Queue<int> empty_reference_queue;
+//     Queue<int> smaller_reference_queue;
+//     Queue<int> bigger_reference_queue;
 
-    smaller_reference_queue.enqueue(7);
-    smaller_reference_queue.enqueue(8);
+//     smaller_reference_queue.enqueue(7);
+//     smaller_reference_queue.enqueue(8);
 
-    bigger_reference_queue.enqueue(9);
-    bigger_reference_queue.enqueue(10);
-    bigger_reference_queue.enqueue(11);
-    bigger_reference_queue.enqueue(12);
+//     bigger_reference_queue.enqueue(9);
+//     bigger_reference_queue.enqueue(10);
+//     bigger_reference_queue.enqueue(11);
+//     bigger_reference_queue.enqueue(12);
 
-    queue = empty_reference_queue;
-    EXPECT_TRUE(queue == empty_reference_queue);
+//     queue = empty_reference_queue;
+//     EXPECT_TRUE(queue == empty_reference_queue);
 
-    bigger_reference_queue = queue;
-    EXPECT_TRUE(queue == bigger_reference_queue);
+//     bigger_reference_queue = queue;
+//     EXPECT_TRUE(queue == bigger_reference_queue);
 
-    queue = smaller_reference_queue;
-    EXPECT_TRUE(queue == smaller_reference_queue);
-}
+//     queue = smaller_reference_queue;
+//     EXPECT_TRUE(queue == smaller_reference_queue);
+// }
 
-TEST(Queue, move_assignment)
-{
-    Queue<int> queue;
-    Queue<int> reference_queue;
-    Queue<int> disposable_queue;
+// TEST(Queue, move_assignment)
+// {
+//     Queue<int> queue;
+//     Queue<int> reference_queue;
+//     Queue<int> disposable_queue;
 
-    reference_queue.enqueue(-100);
-    reference_queue.enqueue(100);
+//     reference_queue.enqueue(-100);
+//     reference_queue.enqueue(100);
 
-    disposable_queue = reference_queue;
+//     disposable_queue = reference_queue;
 
-    queue = std::move(disposable_queue);
+//     queue = std::move(disposable_queue);
 
-    EXPECT_TRUE(queue == reference_queue);
-}
+//     EXPECT_TRUE(queue == reference_queue);
+// }
 
-TEST(Queue, move_constructor)
-{
-    Queue<int> reference_queue;
-    Queue<int> disposable_queue;
+// TEST(Queue, move_constructor)
+// {
+//     Queue<int> reference_queue;
+//     Queue<int> disposable_queue;
 
-    reference_queue.enqueue(-100);
-    reference_queue.enqueue(100);
+//     reference_queue.enqueue(-100);
+//     reference_queue.enqueue(100);
 
-    disposable_queue = reference_queue;
+//     disposable_queue = reference_queue;
 
-    Queue<int> queue = std::move(disposable_queue);
+//     Queue<int> queue = std::move(disposable_queue);
 
-    EXPECT_TRUE(queue == reference_queue);
-}
+//     EXPECT_TRUE(queue == reference_queue);
+// }
+
 
 // ---------------------
 

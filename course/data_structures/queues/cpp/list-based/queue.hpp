@@ -18,23 +18,8 @@ class Queue
         Queue_node* tail;
 
     protected:
-        // redo this to something more general -> variadic templates
-        void traverse(Queue_node*& nodePointer)
-        {
-            nodePointer = nodePointer->next;
-        }
-        void traverse(Queue_node*& nodePointer, Queue_node*& anotherNodePointer)
-        {
-            nodePointer = nodePointer->next;
-            anotherNodePointer = anotherNodePointer->next;
-        }
-        void traverse(Queue_node*& nodePointer, Queue_node*& anotherNodePointer, Queue_node*& nextanotherNodePointer, Queue_node*& moaranotherNodePointer)
-        {
-            nodePointer = nodePointer->next;
-            anotherNodePointer = anotherNodePointer->next;
-            nextanotherNodePointer = nextanotherNodePointer->next;
-            moaranotherNodePointer = moaranotherNodePointer->next;
-        }
+        void traverse(Queue_node*& nodePointer);
+        template <typename... args_t> void traverse(Queue_node*& nodePointer, args_t&... args);
 
     public:
         Queue();
@@ -52,5 +37,4 @@ class Queue
         bool operator!=(const Queue<T>& rhs);
 };
 
-// Only if class is using generic templates
 #include "queue.cpp"
