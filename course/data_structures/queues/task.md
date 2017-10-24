@@ -4,9 +4,9 @@ Started @: 2017-10-18 18:33
 Finished @: yyyy-mm-dd hh:mm
 
 - ### Queue
-    - [ ] Description:
+    - [x] Description:
         - [x] [Queue (video)](https://www.coursera.org/learn/data-structures/lecture/EShpq/queue)
-        - [ ] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
+        - [x] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
         - [x] [Priority Queues (video)](https://www.youtube.com/watch?v=wptevk0bshY)
     - [x] Implement using linked-list, with tail pointer:
         - enqueue(value) - adds value at position at tail
@@ -24,7 +24,7 @@ Finished @: yyyy-mm-dd hh:mm
         - full()
     - [ ] Implement in:
         - [x] C
-        - [ ] C++
+        - [ ] C++ (start index + tracking size)
         - [ ] C++ with builtin types
     - [ ] Cost:
         - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)
