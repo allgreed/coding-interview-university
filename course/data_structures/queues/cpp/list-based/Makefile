@@ -57,4 +57,5 @@ $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
 	@./$(PROJECT).out
 	@printf "\nMemleak report:\n"
-	@valgrind --leak-check=yes --log-fd=1 ./queue.out | grep ""  --line-buffered | tail | head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
+	@valgrind --leak-check=yes --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d' |\
+	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'

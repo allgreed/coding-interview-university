@@ -49,7 +49,9 @@ Finished @: yyyy-mm-dd hh:mm
     <!-- Add this to cpp makefiles -->
 ```
 @printf "\nValgrind report:\n\n"
-@valgrind --leak-check=yes --log-fd=1 ./queue.out | grep ""  --line-buffered | tail | head -n 3 | awk '{$$1= ""; print substr($$0,2)}'
+@valgrind --leak-check=yes --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d' |\
+ head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
+
 ```
 
 <!-- template -->
