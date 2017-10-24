@@ -56,15 +56,17 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
 {
     Queue_node* current = head;
     Queue_node* rhs_current = rhs.head;
-    traverse(current, rhs_current);
 
     while((current != nullptr) && (rhs_current != nullptr))
     {
+        std::cout << "Value: " << current->value << " " << rhs_current->value << std::endl;
         current->value = rhs_current->value;
         traverse(current, rhs_current);
     }
 
-    if(current == rhs_current) {}
+    if(current == rhs_current) {
+        std::cout << "Equal case" << std::endl;
+    }
     else if (rhs_current == nullptr)
     {
         Queue_node* next = current;
