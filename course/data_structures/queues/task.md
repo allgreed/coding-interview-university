@@ -14,8 +14,9 @@ Finished @: yyyy-mm-dd hh:mm
         - empty()
     - [ ] Implement in:
         - [x] C
-        - [ ] C++
+        - [x] C++
         - [ ] C++ with builtin types
+        - [ ] C++ (manual memory leak test)
     - [ ] Implement using fixed-sized array:
         - enqueue(value) - adds item at end of available storage
         - dequeue() - returns value and removes least recently added element
@@ -24,6 +25,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] Implement in:
         - [ ] C
         - [ ] C++
+        - [ ] C++ (manual memory leak test)
         - [ ] C++ with builtin types
     - [ ] Cost:
         - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)

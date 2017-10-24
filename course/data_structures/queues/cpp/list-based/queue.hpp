@@ -1,4 +1,5 @@
 #pragma once
+// Warning: this library may throw
 
 template <typename T>
 class Queue
@@ -20,6 +21,7 @@ class Queue
     protected:
         void traverse(Queue_node*& nodePointer);
         template <typename... args_t> void traverse(Queue_node*& nodePointer, args_t&... args);
+        void destroyFrom(Queue_node* startPointer);
 
     public:
         Queue();

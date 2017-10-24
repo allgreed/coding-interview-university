@@ -1,7 +1,8 @@
-// Warning: this library may throw
 #include <stdexcept>
-
 #include <algorithm>
+
+// todo: delete after dev
+#include <iostream>
 
 #pragma region Internals
 
@@ -24,10 +25,23 @@ void Queue<T>::traverse(Queue_node*& nodePointer, args_t&... args)
     traverse(args...);
 }
 
-#pragma endregion
+template <typename T>
+void Queue<T>::destroyFrom(Queue_node* startPointer)
+{
+    Queue_node dummyThis = Queue_node(startPointer);
+    Queue_node* current = &dummyThis;
 
-// todo: delete after dev
-#include <iostream>
+    for(Queue_node* next = startPointer; next != nullptr; delete current)
+        traverse(current, next);
+
+    if (startPointer == head)
+    {
+        head = nullptr;
+        tail = nullptr;
+    }
+}
+
+#pragma endregion
 
 #pragma region Constructors, assigments, destructor
 
@@ -38,11 +52,7 @@ Queue<T>::Queue() : head(nullptr), tail(nullptr) {}
 template <typename T>
 Queue<T>::~Queue()
 {
-    Queue_node dummyThis = Queue_node(head);
-    Queue_node* current = &dummyThis;
-
-    for(Queue_node* next = head; next != nullptr; delete current)
-        traverse(current, next);
+    destroyFrom(head);
 }
 
 template <typename T>
@@ -59,30 +69,18 @@ Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
 
     while((current != nullptr) && (rhs_current != nullptr))
     {
-        std::cout << "Value: " << current->value << " " << rhs_current->value << std::endl;
         current->value = rhs_current->value;
+        tail = current;
         traverse(current, rhs_current);
     }
 
-    if(current == rhs_current) {
-        std::cout << "Equal case" << std::endl;
-    }
+    if(current == rhs_current) {}
     else if (rhs_current == nullptr)
     {
-        Queue_node* next = current;
-        traverse(next);
+        destroyFrom(current);
 
-        for(tail = current; next != nullptr; delete current)
-            traverse(current, next);
-
-        tail->next = nullptr;
-
-        // here sth fails - shall fix it
-        if (tail == head)
-        {
-            head = nullptr;
-            tail = nullptr;
-        }
+        if(tail != nullptr)
+            tail->next = nullptr;
     }
     else
     {
