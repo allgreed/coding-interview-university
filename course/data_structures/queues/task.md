@@ -15,8 +15,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] Implement in:
         - [x] C
         - [x] C++
-        - [ ] C++ with builtin types
-        - [ ] C++ (manual memory leak test)
+        - [x] C++ with builtin types
+        - [x] Memtest via valgrind
     - [ ] Implement using fixed-sized array:
         - enqueue(value) - adds item at end of available storage
         - dequeue() - returns value and removes least recently added element
@@ -45,3 +45,10 @@ Finished @: yyyy-mm-dd hh:mm
 
 <!-- template -->
     <!-- Convert indentation to tabs in makefiles -->
+
+<!-- template -->
+    <!-- Add this to makefiles -->
+```
+@printf "\nValgrind report:\n\n"
+@valgrind --leak-check=yes --log-fd=1 ./queue.out | grep ""  --line-buffered | tail | head -n 3 | awk '{$$1= ""; print substr($$0,2)}'
+```

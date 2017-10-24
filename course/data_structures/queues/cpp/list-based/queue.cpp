@@ -1,9 +1,6 @@
 #include <stdexcept>
 #include <algorithm>
 
-// todo: delete after dev
-#include <iostream>
-
 #pragma region Internals
 
 template <typename T>
@@ -116,6 +113,7 @@ template <typename T>
 void Queue<T>::enqueue(T value)
 {
     auto newNode = new Queue_node(value);
+    // auto newNode = debug_new(Queue_node(value));
 
     if(empty())
         head = newNode;

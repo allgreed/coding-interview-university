@@ -163,22 +163,3 @@ TEST(Queue, move_constructor)
 
     EXPECT_TRUE(queue == reference_queue);
 }
-
-
-// ---------------------
-
-// overload new and delete and somehow propagate it through the code -> log all allocations and deletions ???
-
-// TEST(Queue, Memory_leaks)
-// {
-//     {
-//         Queue<int> queue;
-
-//         Queue_enqueue(queue, 1000000);
-//         Queue_enqueue(queue, 0);
-//         Queue_enqueue(queue, -5);
-//     }
-
-//     // assert if there are any memory leaks
-// }
-
