@@ -169,24 +169,16 @@ TEST(Queue, move_constructor)
 
 // overload new and delete and somehow propagate it through the code -> log all allocations and deletions ???
 
-// void memleak_test()
+// TEST(Queue, Memory_leaks)
 // {
-//     Queue* queue = Queue_create();
+//     {
+//         Queue<int> queue;
 
-//     Queue_enqueue(queue, 1000000);
-//     Queue_enqueue(queue, 0);
-//     Queue_enqueue(queue, -5);
+//         Queue_enqueue(queue, 1000000);
+//         Queue_enqueue(queue, 0);
+//         Queue_enqueue(queue, -5);
+//     }
 
-//     Queue_destory(queue);
+//     // assert if there are any memory leaks
 // }
 
-// Test declarations template
-// ---------------------
-
-// TEST(Queue, TEST_CASE_NAME)
-// {
-//     Queue<int> queue;
-//     // Do the setup
-
-//     // Do the assertions
-// }

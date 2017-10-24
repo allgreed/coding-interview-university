@@ -42,3 +42,6 @@ Finished @: yyyy-mm-dd hh:mm
 
 <!-- template -->
     <!-- cpp -> move stdexcept to .cpp file from header -->
+
+<!-- template -->
+    <!-- Convert indentation to tabs in makefiles -->
