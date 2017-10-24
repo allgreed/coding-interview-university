@@ -113,7 +113,6 @@ template <typename T>
 void Queue<T>::enqueue(T value)
 {
     auto newNode = new Queue_node(value);
-    // auto newNode = debug_new(Queue_node(value));
 
     if(empty())
         head = newNode;

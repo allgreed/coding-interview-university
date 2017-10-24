@@ -5,27 +5,26 @@ Finished @: yyyy-mm-dd hh:mm
 
 - ### Queue
     - [ ] Description:
-        - [ ] [Queue (video)](https://www.coursera.org/learn/data-structures/lecture/EShpq/queue)
+        - [x] [Queue (video)](https://www.coursera.org/learn/data-structures/lecture/EShpq/queue)
         - [ ] [Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)
         - [x] [Priority Queues (video)](https://www.youtube.com/watch?v=wptevk0bshY)
     - [x] Implement using linked-list, with tail pointer:
         - enqueue(value) - adds value at position at tail
         - dequeue() - returns value and removes least recently added element (front)
         - empty()
-    - [ ] Implement in:
+    - [x] Implement in:
         - [x] C
         - [x] C++
         - [x] C++ with builtin types
         - [x] Memtest via valgrind
-    - [ ] Implement using fixed-sized array:
+    - [x] Implement using fixed-sized array:
         - enqueue(value) - adds item at end of available storage
         - dequeue() - returns value and removes least recently added element
         - empty()
         - full()
     - [ ] Implement in:
-        - [ ] C
+        - [x] C
         - [ ] C++
-        - [ ] C++ (manual memory leak test)
         - [ ] C++ with builtin types
     - [ ] Cost:
         - a bad implementation using linked list where you enqueue at head and dequeue at tail would be O(n)
@@ -47,8 +46,15 @@ Finished @: yyyy-mm-dd hh:mm
     <!-- Convert indentation to tabs in makefiles -->
 
 <!-- template -->
-    <!-- Add this to makefiles -->
+    <!-- Add this to cpp makefiles -->
 ```
 @printf "\nValgrind report:\n\n"
 @valgrind --leak-check=yes --log-fd=1 ./queue.out | grep ""  --line-buffered | tail | head -n 3 | awk '{$$1= ""; print substr($$0,2)}'
 ```
+
+<!-- template -->
+    <!-- add this to c makefiles -->
+... -o $@.out
+@./$(PROJECT).out
+@printf "\nMemleaks to report:\n"
+@valgrind --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d'
