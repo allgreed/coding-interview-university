@@ -1,13 +1,34 @@
 #pragma once
-
 // Warning: this library may throw
-// #include <stdexcept>
 
-// import other types
+template <typename T>
+class Queue
+{
+    protected:
+        static constexpr int DEFAULT_SIZE = 5;
 
-// constants
+    protected:
+        int _begin_index;
+        int _size;
+        int _capacity;
+        T* _data;
 
-// classes
+    public:
+        Queue(int desired_size);
+        Queue();
+        ~Queue();
+        // copy ass
+        // copy cons
+        // move ass
+        // move cons
 
-// Only if class is using generic templates
+        void enqueue(T value);
+        T dequeue();
+        bool empty();
+        bool full();
+
+        bool operator==(const Queue<T>& rhs);
+        bool operator!=(const Queue<T>& rhs);
+};
+
 #include "queue.cpp"
