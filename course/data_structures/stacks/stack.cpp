@@ -12,9 +12,11 @@ const int OP_COUNT = 10'000'000;
 template <class T>
 void runTest(std::string container_name)
 {
+    typedef typename T::value_type value_T;
+
     clock_t begin = clock();
 
-    std::stack<int, T> stack;
+    std::stack<value_T, T> stack;
 
     for(int i = 0; i < OP_COUNT; i++)
     {
