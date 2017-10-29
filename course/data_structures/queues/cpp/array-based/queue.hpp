@@ -14,13 +14,16 @@ class Queue
         T* _data;
 
     public:
+        // value_type
+
+    public:
         Queue(int desired_size);
         Queue();
         ~Queue();
         // copy ass
         // copy cons
-        // move ass
-        // move cons
+        Queue<T>& operator=(Queue<T>&& rhs);
+        Queue(Queue<T>&& rhs);
 
         void enqueue(T value);
         T dequeue();
@@ -28,6 +31,7 @@ class Queue
         bool full();
 
         bool operator==(const Queue<T>& rhs);
+        // even better equality checker -> memory fun
         bool operator!=(const Queue<T>& rhs);
 };
 

@@ -199,6 +199,40 @@ TEST(Queue, Equality_operator_circular_eq)
     EXPECT_TRUE(queue == reference_queue);
 }
 
+TEST(Queue, move_assignment)
+{
+    Queue<int> queue;
+    Queue<int> reference_queue;
+    Queue<int> disposable_queue;
+
+    reference_queue.enqueue(-100);
+    reference_queue.enqueue(100);
+
+    disposable_queue.enqueue(-100);
+    disposable_queue.enqueue(100);
+
+    queue = std::move(disposable_queue);
+
+    EXPECT_TRUE(queue == reference_queue);
+}
+
+TEST(Queue, move_constructor)
+{
+    Queue<int> reference_queue;
+    Queue<int> disposable_queue;
+
+    reference_queue.enqueue(-100);
+    reference_queue.enqueue(100);
+
+    disposable_queue.enqueue(-100);
+    disposable_queue.enqueue(100);
+
+    Queue<int> queue = std::move(disposable_queue);
+
+    EXPECT_TRUE(queue == reference_queue);
+}
+
+
     // wrapp the buffer over in one, and not wrapp in second -> improve this test
 
 // TEST(Queue, copy_constructor)
@@ -270,35 +304,4 @@ TEST(Queue, Equality_operator_circular_eq)
 
 //     queue = smaller_reference_queue;
 //     EXPECT_TRUE(queue == smaller_reference_queue);
-// }
-
-// TEST(Queue, move_assignment)
-// {
-//     Queue<int> queue;
-//     Queue<int> reference_queue;
-//     Queue<int> disposable_queue;
-
-//     reference_queue.enqueue(-100);
-//     reference_queue.enqueue(100);
-
-//     disposable_queue = reference_queue;
-
-//     queue = std::move(disposable_queue);
-
-//     EXPECT_TRUE(queue == reference_queue);
-// }
-
-// TEST(Queue, move_constructor)
-// {
-//     Queue<int> reference_queue;
-//     Queue<int> disposable_queue;
-
-//     reference_queue.enqueue(-100);
-//     reference_queue.enqueue(100);
-
-//     disposable_queue = reference_queue;
-
-//     Queue<int> queue = std::move(disposable_queue);
-
-//     EXPECT_TRUE(queue == reference_queue);
 // }

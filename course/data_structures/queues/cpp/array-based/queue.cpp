@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include <cstring>
+#include <algorithm>
 
 // delete after dev
 #include <iostream>
@@ -30,12 +31,21 @@ Queue<T>::~Queue()
 // template <typename T>
 // copy cons
 
-// template <typename T>
-// move ass
+template <typename T>
+Queue<T>& Queue<T>::operator=(Queue<T>&& rhs)
+{
+    std::swap(_begin_index, rhs._begin_index);
+    std::swap(_size, rhs._size);
+    std::swap(_capacity, rhs._capacity);
+    std::swap(_data, rhs._data);
+    return *this;
+}
 
-// template <typename T>
-// move cons
-
+template <typename T>
+Queue<T>::Queue(Queue<T>&& rhs) : _data(nullptr)
+{
+    *this = std::move(rhs);
+}
 
 #pragma endregion
 
@@ -83,38 +93,22 @@ bool Queue<T>::full()
 template <typename T>
 bool Queue<T>::operator==(const Queue<T>& rhs)
 {
-    // reeeefactor when done!
-
-    struct Chunk_map
-    {
-        T* begin;
-        int size;
-
-        // Chunk_map(T* ptr, int size) : begin(ptr), size(size) {};
-    };
-
-    struct Chunked_data_array_map
-    {
-        Chunk_map main;
-        Chunk_map rest;
-
-        Chunked_data_array_map(T* data_array, int size, int begin_index)
-        {
-            // create two chunks
-        }
-    };
+    // queue is considered equal to another queue if:
+    // - sizes are equal
+    // - capacities are equal
+    // - all elements are equal
 
     if(_size != rhs._size)
         return false;
 
-    return (bool) !std::memcmp(this->_data + _begin_index, rhs._data + rhs._begin_index, sizeof(T) * _size);
+    if (_capacity != rhs._capacity)
+        return false;
 
-    // compare two buffers if buffers wrap around
+    for(int i = 0; i < _size; i++)
+        if ( _data[(_begin_index + i) % _capacity] != rhs._data[(rhs._begin_index + i) % _capacity] )
+            return false;
 
-    // auto lhs_chunked = Chunked_data_array_map(this->_data, _size, _begin_index);
-    // auto rhs_chunked = Chunked_data_array_map(rhs._data, rhs._size, rhs._begin_index);
-    // compare memory by maps
-    // return compare result
+    return true;
 }
 
 template <typename T>
