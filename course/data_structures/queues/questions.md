@@ -29,4 +29,10 @@ My example:
         static constexpr int DEFAULT_SIZE = 5;
 ```
 
+### How to check for existance of == operator on class?
+Would [This](https://stackoverflow.com/a/31860104) be feasible?
+
 ## C++ STL
+
+### Standard circular buffer class?
+
