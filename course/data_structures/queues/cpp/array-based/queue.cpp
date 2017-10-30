@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <cstring>
 #include <algorithm>
+#include <type_traits>
 
 // delete after dev
 #include <iostream>
@@ -25,19 +26,46 @@ Queue<T>::~Queue()
     delete[] _data;
 }
 
-// template <typename T>
-// copy ass
+template <typename T>
+Queue<T>& Queue<T>::operator=(const Queue<T>& rhs)
+{
+    if (_capacity != rhs._capacity)
+    {
+        _capacity = rhs._capacity;
 
-// template <typename T>
-// copy cons
+        delete[] _data;
+        _data = new T[_capacity];
+    }
+
+    _begin_index = 0;
+    _size = rhs._size;
+
+    if (empty())
+        return *this;
+
+    int first_chunk_element_count = std::min(rhs._size, rhs._capacity - rhs._begin_index);
+    std::memcpy(_data, rhs._data + rhs._begin_index, sizeof(T) * first_chunk_element_count);
+
+    int second_chunk_element_count = rhs._size - first_chunk_element_count;
+    std::memcpy(_data + first_chunk_element_count, rhs._data, sizeof(T) * second_chunk_element_count);
+
+    return *this;
+}
+
+template <typename T>
+Queue<T>::Queue(const Queue<T>& rhs) : _capacity(-1), _data(nullptr)
+{
+    *this = rhs;
+}
 
 template <typename T>
 Queue<T>& Queue<T>::operator=(Queue<T>&& rhs)
 {
-    std::swap(_begin_index, rhs._begin_index);
-    std::swap(_size, rhs._size);
-    std::swap(_capacity, rhs._capacity);
+    _begin_index = rhs._begin_index;
+    _size = rhs._size;
+    _capacity = rhs._capacity;
     std::swap(_data, rhs._data);
+
     return *this;
 }
 
@@ -90,23 +118,46 @@ bool Queue<T>::full()
 
 #pragma region Comparison operators
 
+/* queue is considered equal to another queue if:
+    - sizes are equal
+    - capacities are equal
+    - all elements are equal 
+*/
+
 template <typename T>
 bool Queue<T>::operator==(const Queue<T>& rhs)
 {
-    // queue is considered equal to another queue if:
-    // - sizes are equal
-    // - capacities are equal
-    // - all elements are equal
 
-    if(_size != rhs._size)
+    if(_size != rhs._size || _capacity != rhs._capacity)
         return false;
 
-    if (_capacity != rhs._capacity)
-        return false;
+    int uncompared_size = _size, lhs_cmp_ptr = _begin_index, rhs_cmp_ptr = rhs._begin_index;
 
-    for(int i = 0; i < _size; i++)
-        if ( _data[(_begin_index + i) % _capacity] != rhs._data[(rhs._begin_index + i) % _capacity] )
-            return false;
+    constexpr bool is_detailed_comparison_required = (
+        std::is_compound<T>::value &&
+        (!std::is_pointer<T>::value)
+        // && has comparison operator implemented
+    );
+
+    while(uncompared_size > 0)
+    {
+        int size_to_compare = is_detailed_comparison_required ?
+            1 :
+            std::min({uncompared_size, _capacity - lhs_cmp_ptr, _capacity - rhs_cmp_ptr});
+
+        if(is_detailed_comparison_required)
+        {
+            if ( _data[(lhs_cmp_ptr) % _capacity] != rhs._data[(rhs_cmp_ptr) % _capacity] )
+                return false;
+        }
+        else
+            if(std::memcmp(_data + lhs_cmp_ptr, rhs._data + rhs_cmp_ptr, size_to_compare * sizeof(T)) != 0)
+                return false;
+
+        lhs_cmp_ptr = (lhs_cmp_ptr + size_to_compare) % _capacity;
+        rhs_cmp_ptr = (rhs_cmp_ptr + size_to_compare) % _capacity;
+        uncompared_size -= size_to_compare;
+    }
 
     return true;
 }

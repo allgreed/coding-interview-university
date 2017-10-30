@@ -232,76 +232,83 @@ TEST(Queue, move_constructor)
     EXPECT_TRUE(queue == reference_queue);
 }
 
+TEST(Queue, copy_constructor)
+{
+    Queue<int> reference_queue;
 
-    // wrapp the buffer over in one, and not wrapp in second -> improve this test
+    reference_queue.enqueue(3);
+    reference_queue.enqueue(4);
+    reference_queue.enqueue(5);
 
-// TEST(Queue, copy_constructor)
-// {
-//     Queue<int> reference_queue;
+    Queue<int> queue = reference_queue;
 
-//     reference_queue.enqueue(3);
-//     reference_queue.enqueue(4);
-//     reference_queue.enqueue(5);
+    EXPECT_TRUE(queue == reference_queue);
+}
 
-//     Queue<int> queue = reference_queue;
+TEST(Queue, copy_assignment)
+{
+    Queue<int> queue;
+    Queue<int> same_reference_queue;
+    Queue<int> emprty_reference_queue;
+    Queue<int> bigger_reference_queue;
 
-//     EXPECT_TRUE(queue == reference_queue);
-// }
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
 
-// TEST(Queue, copy_assignment)
-// {
-//     Queue<int> queue;
-//     Queue<int> same_reference_queue;
-//     Queue<int> smaller_reference_queue;
-//     Queue<int> bigger_reference_queue;
+    same_reference_queue.enqueue(4);
+    same_reference_queue.enqueue(5);
+    same_reference_queue.enqueue(6);
 
-//     queue.enqueue(1);
-//     queue.enqueue(2);
-//     queue.enqueue(3);
+    bigger_reference_queue.enqueue(9);
+    bigger_reference_queue.enqueue(10);
+    bigger_reference_queue.enqueue(11);
+    bigger_reference_queue.enqueue(12);
 
-//     same_reference_queue.enqueue(4);
-//     same_reference_queue.enqueue(5);
-//     same_reference_queue.enqueue(6);
+    queue = same_reference_queue;
+    EXPECT_TRUE(queue == same_reference_queue);
 
-//     smaller_reference_queue.enqueue(7);
-//     smaller_reference_queue.enqueue(8);
+    queue = emprty_reference_queue;
+    EXPECT_TRUE(queue == emprty_reference_queue);
 
-//     bigger_reference_queue.enqueue(9);
-//     bigger_reference_queue.enqueue(10);
-//     bigger_reference_queue.enqueue(11);
-//     bigger_reference_queue.enqueue(12);
+    queue = bigger_reference_queue;
+    EXPECT_TRUE(queue == bigger_reference_queue);
+}
 
-//     queue = same_reference_queue;
-//     EXPECT_TRUE(queue == same_reference_queue);
+TEST(Queue, copy_asignment_different_capacities)
+{
+    Queue<int> queue(4);
+    Queue<int> reference_queue(5);
 
-//     queue = smaller_reference_queue;
-//     EXPECT_TRUE(queue == smaller_reference_queue);
+    reference_queue.enqueue(100);
+    reference_queue.enqueue(-69);
 
-//     queue = bigger_reference_queue;
-//     EXPECT_TRUE(queue == bigger_reference_queue);
-// }
+    queue = reference_queue;
+    EXPECT_TRUE(queue == reference_queue);
+}
 
-// TEST(Queue, copy_assignment_from_empty)
-// {
-//     Queue<int> queue;
-//     Queue<int> empty_reference_queue;
-//     Queue<int> smaller_reference_queue;
-//     Queue<int> bigger_reference_queue;
+TEST(Queue, copy_asignment_overlapping_buffers)
+{
+    Queue<int> queue;
+    Queue<int> reference_queue;
 
-//     smaller_reference_queue.enqueue(7);
-//     smaller_reference_queue.enqueue(8);
+    reference_queue.enqueue(9);
+    reference_queue.enqueue(10);
+    reference_queue.enqueue(11);
+    reference_queue.enqueue(12);
+    reference_queue.dequeue();
+    reference_queue.dequeue();
+    reference_queue.dequeue();
+    reference_queue.dequeue();
 
-//     bigger_reference_queue.enqueue(9);
-//     bigger_reference_queue.enqueue(10);
-//     bigger_reference_queue.enqueue(11);
-//     bigger_reference_queue.enqueue(12);
+    reference_queue.enqueue(9);
+    reference_queue.enqueue(10);
+    reference_queue.enqueue(11);
+    reference_queue.enqueue(12);
 
-//     queue = empty_reference_queue;
-//     EXPECT_TRUE(queue == empty_reference_queue);
+    queue = reference_queue;
+    EXPECT_TRUE(queue == reference_queue);
+}
 
-//     bigger_reference_queue = queue;
-//     EXPECT_TRUE(queue == bigger_reference_queue);
-
-//     queue = smaller_reference_queue;
-//     EXPECT_TRUE(queue == smaller_reference_queue);
-// }
+    //todo: wrapp the buffer over in one, and not wrapp in second -> comparison test
+    //todo: overlapping buffer, different offset -> comparison test

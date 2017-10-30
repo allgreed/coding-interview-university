@@ -22,6 +22,11 @@ My example:
     }
 ```
 
+### Is is a good idea to define class constants as this?
 
+```cpp
+    protected:
+        static constexpr int DEFAULT_SIZE = 5;
+```
 
 ## C++ STL

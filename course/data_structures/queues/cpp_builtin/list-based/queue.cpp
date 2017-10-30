@@ -1,8 +1,5 @@
 #include <algorithm>
 
-// todo: delete after dev
-#include <iostream>
-
 #pragma region Operations
 
 template <typename T>
