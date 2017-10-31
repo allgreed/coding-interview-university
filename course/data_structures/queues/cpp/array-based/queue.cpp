@@ -128,16 +128,15 @@ template <typename T>
 bool Queue<T>::operator==(const Queue<T>& rhs)
 {
 
-    if(_size != rhs._size || _capacity != rhs._capacity)
+    if(_size != rhs._size or _capacity != rhs._capacity)
         return false;
 
     int uncompared_size = _size, lhs_cmp_ptr = _begin_index, rhs_cmp_ptr = rhs._begin_index;
 
-    constexpr bool is_detailed_comparison_required = (
-        std::is_compound<T>::value &&
-        (!std::is_pointer<T>::value)
-        // && has comparison operator implemented
-    );
+    constexpr bool is_detailed_comparison_required =
+        std::is_compound<T>::value and
+        not std::is_pointer<T>::value; // and
+        // has comparison operator implemented ;
 
     while(uncompared_size > 0)
     {
@@ -165,7 +164,7 @@ bool Queue<T>::operator==(const Queue<T>& rhs)
 template <typename T>
 bool Queue<T>::operator!=(const Queue<T>& rhs)
 {
-    return !( *this == rhs );
+    return not (*this == rhs);
 }
 
 #pragma endregion
