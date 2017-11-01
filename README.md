@@ -128,12 +128,14 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 <!-- Todo: Answer all question in lists -->
 <!-- Todo: Answer all question in stacks -->
 <!-- Todo: Answer all question in queues -->
+<!-- Todo: Answer all question in hash tables -->
 
 <!-- Todo: Customized this README -> above -->
 <!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
+<!-- Todo: Do some simple automation of new assignment creation-->
 
-<!-- Rename course to sth else -->
+<!-- Todo: Rename course to sth else -->
 
 <!-- Todo: Unit testing C -->
 <!-- Test case detection -->

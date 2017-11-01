@@ -1,3 +1,5 @@
+# use inside chapter folders (eq. data_structures)
+
 mkdir $1
 cp -r ../templates/* $1/
 # change every $fill this$ to $1
