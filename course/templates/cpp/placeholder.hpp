@@ -1,7 +1,5 @@
 #pragma once
-
 // Warning: this library may throw
-// #include <stdexcept>
 
 // import other types
 

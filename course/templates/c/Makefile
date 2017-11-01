@@ -13,8 +13,7 @@ DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))
 FILES := $(wildcard $(addsuffix $(SOURCESUFFIX), *))
 
 $(PROJECT): $(FILES) $(DEPS)
-	$(CC) $(FILES) $(CFLAGS)
-	./a.out
-
-	@# clean a.out
-	@rm a.out
+	$(CC) $(FILES) $(CFLAGS) -o $@.out
+	@./$(PROJECT).out
+	@printf "\nMemleaks to report:\n"
+	@valgrind --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d'
