@@ -5,12 +5,15 @@
 template <typename T>
 class Queue
 {
-    // protected:
-        // STL structure here
+    protected:
+        static constexpr int DEFAULT_CAPACITY = 5;
+
+    protected:
+        boost::circular_buffer<T> circular_buffer;
 
     public:
         Queue();
-        Queue(int desired_size);
+        Queue(int desired_capacity);
 
         void enqueue(T value);
         T dequeue();
