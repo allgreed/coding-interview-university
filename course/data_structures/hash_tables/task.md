@@ -1,6 +1,6 @@
 ### Hash table
 
-Started @: yyyy-mm-dd hh:mm
+Started @: 2017-11-02 15:44
 Finished @: yyyy-mm-dd hh:mm
 
 - [ ] Videos:
@@ -34,6 +34,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] C
     - [ ] C++
     - [ ] C++ with builtin types
+
+- [ ] Do a benchmark of division method vs multiplication method for hashing for a certain type of keys
 
 <!-- templates -->
     <!-- cpp makefile -> make template not list -->
