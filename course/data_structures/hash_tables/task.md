@@ -23,7 +23,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [Instant Uploads And Storage Optimization In Dropbox (video)](https://www.coursera.org/learn/data-structures/lecture/DvaIb/instant-uploads-and-storage-optimization-in-dropbox)
         - [Distributed Hash Tables (video)](https://www.coursera.org/learn/data-structures/lecture/tvH8H/distributed-hash-tables)
 
-- [ ] implement with array using linear probing
+- [x] implement with array using linear probing
     - hash(k, m) - m is size of hash table
     - add(key, value) - if key already exists, update value
     - exists(key)
@@ -31,11 +31,13 @@ Finished @: yyyy-mm-dd hh:mm
     - remove(key)
 
 - [ ] Implement in:
-    - [ ] C
-    - [ ] C++
-    - [ ] C++ with builtin types
+    - [x] C (division method)
+    - [ ] Do a benchmark to prove it's truly constant time
+    - [ ] C++ (multiplication method)
+    - [ ] C++ with builtin types (built-in hash)
+    - [ ] Do a benchmark vs. STDLib
 
-- [ ] Do a benchmark of division method vs multiplication method for hashing for a certain type of keys
+- [ ] Do a benchmark of division method vs multiplication method for hashing for a certain type of keys (Python)
 
 <!-- templates -->
     <!-- cpp makefile -> make template not list -->
