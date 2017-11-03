@@ -94,6 +94,7 @@ void HashTable_add(HashTable* hash_table, char* key, HashTable_value_t value)
 
     size_t target_index;
 
+    // this is almost identical with _find_target_index, making it DRY not worth it
     for(int trial = 0; trial < hash_table->capacity; trial++)
     {
         target_index = _compute_probe_hash(key, trial, hash_table->capacity);
@@ -116,7 +117,7 @@ void HashTable_add(HashTable* hash_table, char* key, HashTable_value_t value)
 bool HashTable_exists(HashTable* hash_table, char* key)
 {
     if (hash_table->size == 0) return false;
-    
+
     size_t target_index = _find_target_index(hash_table, key);
 
     return !(target_index == -1 || hash_table->data[target_index].state != HASHTABLE_ELEM_OCCUPIED);

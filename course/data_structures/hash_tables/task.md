@@ -34,6 +34,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] C (division method)
     - [ ] Do a benchmark to prove it's truly constant time
     - [ ] C++ (multiplication method)
+    - [ ] Redo C with third hashing method
     - [ ] C++ with builtin types (built-in hash)
     - [ ] Do a benchmark vs. STDLib
 
