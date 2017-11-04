@@ -32,9 +32,9 @@ Finished @: yyyy-mm-dd hh:mm
 
 - [ ] Implement in:
     - [x] C (division method)
-    - [ ] Do a benchmark to prove it's truly constant time
-    - [ ] C++ (multiplication method)
-    - [ ] Redo C with third hashing method
+    - [x] Do a benchmark to prove it's truly constant time
+    - [ ] Redo C with third multiplication method
+    - [ ] C++ (universal hashing) (first video 48:51)
     - [ ] C++ with builtin types (built-in hash)
     - [ ] Do a benchmark vs. STDLib
 
