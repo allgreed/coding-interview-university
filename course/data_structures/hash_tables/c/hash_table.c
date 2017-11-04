@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 // HELPERS
 // *****************
@@ -53,6 +54,10 @@ void HashTable_destroy(HashTable* hash_table)
 
 size_t _compute_probe_hash(char* key, int trial, size_t hash_table_capacity)
 {
+    // via https://courses.csail.mit.edu/6.006/spring11/rec/rec05.pdf
+    // formula is: (sqrt(5.0) - 1) / 2
+    static const double A = 0.6180339887498948;
+
     // pre-hashing
     unsigned int prehash_digest = 0;
     unsigned int key_length = strlen(key);
@@ -61,7 +66,7 @@ size_t _compute_probe_hash(char* key, int trial, size_t hash_table_capacity)
         prehash_digest += (int) key[i];
 
     // hashing
-    size_t hash_digest = prehash_digest % hash_table_capacity;
+    size_t hash_digest = floor(hash_table_capacity * (prehash_digest * A));
 
     // linear probing
     return (hash_digest + trial) % hash_table_capacity;

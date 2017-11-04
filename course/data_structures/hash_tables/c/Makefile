@@ -3,17 +3,18 @@
 PROJECT= hash_table
 
 CC=gcc
-CFLAGS=
+CFLAGS=-lm --std=c11
 HEADERSUFFIX=.h
 SOURCESUFFIX=.c
 
 # main
 
 DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))
-FILES := $(filter-out complexity.c, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
+
+FILES = $(filter-out complexity.c, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
 $(PROJECT): $(FILES) $(DEPS)
-	$(CC) $(FILES) $(CFLAGS) -o $@.out
+	@$(CC) $(FILES) $(CFLAGS) -o $@.out
 	@./$(PROJECT).out
 	@printf "\nMemleaks to report:\n"
 	@valgrind --log-fd=1 ./$(PROJECT).out | sed -e '1,/LEAK SUMMARY/d'
@@ -21,5 +22,5 @@ $(PROJECT): $(FILES) $(DEPS)
 FILES := $(filter-out unit.c, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
 complexity: $(FILES) $(DEPS)
-	$(CC) $(FILES) $(CFLAGS) -o $@.out
-	@./complexity.out
+	@$(CC) $(FILES) $(CFLAGS) -o $@.out
+	@./complexity.out | python3 cluster_reporter.py
