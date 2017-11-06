@@ -63,7 +63,7 @@ void HashTable_destroy(HashTable* hash_table)
 // PRIVATES
 // *****************
 
-size_t _compute_initial_hash(char* key, size_t hash_table_capacity)
+static size_t _compute_initial_hash(char* key, size_t hash_table_capacity)
 {
     // via https://courses.csail.mit.edu/6.006/spring11/rec/rec05.pdf
     // formula is: (sqrt(5.0) - 1) / 2
@@ -82,31 +82,31 @@ size_t _compute_initial_hash(char* key, size_t hash_table_capacity)
     return hash_digest;
 }
 
-size_t _compute_probe_hash(size_t hash_digest, int trial, size_t hash_table_capacity)
+static size_t _compute_probe_hash(size_t hash_digest, int trial, size_t hash_table_capacity)
 {
     // linear probing
     return (hash_digest + trial) % hash_table_capacity;
 }
 
-int _find_target_index(HashTable* hash_table, char* key, bool is_insertion)
+static HashTable_locator _find_target_locator(HashTable* hash_table, char* key, bool is_insertion)
 {
-    size_t target_index;
     size_t hash = _compute_initial_hash(key, hash_table->capacity);
+    size_t trial = 0;
+    size_t target_index = _compute_probe_hash(hash, trial, hash_table->capacity);
 
-    for(int trial = 0; trial < hash_table->capacity; trial++)
+    while(trial < hash_table->capacity 
+        && !(hash_table->data[target_index].state == HASHTABLE_ELEM_EMPTY
+            || (is_insertion && (hash_table->data[target_index].state != HASHTABLE_ELEM_OCCUPIED))
+            || (strcmp(hash_table->data[target_index].key, key) == 0)))
     {
         target_index = _compute_probe_hash(hash, trial, hash_table->capacity);
-
-        if (hash_table->data[target_index].state == HASHTABLE_ELEM_EMPTY
-            || (is_insertion && (hash_table->data[target_index].state != HASHTABLE_ELEM_OCCUPIED))
-            || (strcmp(hash_table->data[target_index].key, key) == 0))
-        {
-            return target_index;
-        }
+        trial++;
     }
 
-    // todo: get rid of this -> redo the check in functions
-    return -1;
+    HashTable_locator retval;
+    retval.to_index = target_index;
+    retval.is_valid = !(trial == hash_table->capacity);
+    return retval;
 }
 
 // FUNCTIONS
@@ -120,7 +120,7 @@ void HashTable_add(HashTable* hash_table, char* key, HashTable_value_t value)
         exit(HASHTABLE_EXIT_FULL_INSERTION);
     }
 
-    size_t target_index = _find_target_index(hash_table, key, true);
+    size_t target_index = _find_target_locator(hash_table, key, true).to_index;
 
     if(hash_table->data[target_index].state != HASHTABLE_ELEM_OCCUPIED)
     {
@@ -136,30 +136,31 @@ bool HashTable_exists(HashTable* hash_table, char* key)
 {
     if (hash_table->size == 0) return false;
 
-    size_t target_index = _find_target_index(hash_table, key, false);
+    HashTable_locator target_locator = _find_target_locator(hash_table, key, false);
 
-    return !(target_index == -1 || hash_table->data[target_index].state != HASHTABLE_ELEM_OCCUPIED);
+    return target_locator.is_valid && hash_table->data[target_locator.to_index].state == HASHTABLE_ELEM_OCCUPIED;
 }
 
 HashTable_value_t HashTable_get(HashTable* hash_table, char* key)
 {
-    size_t target_index = _find_target_index(hash_table, key, false);
+    HashTable_locator target_locator = _find_target_locator(hash_table, key, false);
 
-    if(target_index == -1)
+    if(!target_locator.is_valid)
     {
         fprintf(stderr, "Non-existing key dereference attempt\n");
         exit(HASHTABLE_EXIT_UNEXISTANT_KEY_DEREFERENCE);
     }
 
-    return hash_table->data[target_index].value;
+    return hash_table->data[target_locator.to_index].value;
 }
 
 void HashTable_remove(HashTable* hash_table, char* key)
 {
-    size_t target_index = _find_target_index(hash_table, key, false);
+    HashTable_locator target_locator = _find_target_locator(hash_table, key, false);
 
-    if (target_index != -1)
-        hash_table->data[target_index].state = HASHTABLE_ELEM_DELETED;
-
-    hash_table->size--;
+    if (target_locator.is_valid)
+    {
+        hash_table->data[target_locator.to_index].state = HASHTABLE_ELEM_DELETED;
+        hash_table->size--;
+    }
 }

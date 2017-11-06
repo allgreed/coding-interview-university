@@ -33,11 +33,14 @@ Finished @: yyyy-mm-dd hh:mm
 - [ ] Implement in:
     - [x] C (division method)
     - [x] Do a benchmark to prove it's truly constant time
-    - [ ] Redo C with multiplication method + refactor
+    - [x] Redo C with multiplication method + refactor
+
     - [ ] C++ (universal hashing) (first video 48:51)
-    - [ ] Run C benchmark on Sigma (start from 10, multiplication 10, 6 steps), append results here, process them to a graph
+
     - [ ] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
+    - [ ] Run C benchmark on Sigma (start from 10, multiplication 10, 6 steps), append results here, process them to a graph
     - [ ] Do a C++ benchmark
+
     - [ ] C++ with builtin types (built-in hash)
     - [ ] Do a benchmark vs. STDLib
 

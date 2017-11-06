@@ -23,6 +23,13 @@ typedef enum
 // TYPES
 // *****************
 
+typedef struct HashTable_locator
+{
+    bool is_valid;
+    size_t to_index;
+} HashTable_locator;
+
+
 typedef enum
 {
     HASHTABLE_ELEM_EMPTY,
