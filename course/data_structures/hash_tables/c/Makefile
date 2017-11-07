@@ -19,8 +19,8 @@ $(PROJECT): $(FILES) $(DEPS)
 	@printf "\nMemleaks to report:\n"
 	@valgrind --log-fd=1 ./$(PROJECT).out | sed -e '1,/LEAK SUMMARY/d'
 
-FILES := $(filter-out unit.c, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
+FILES_COMPLEXITY_TEST = $(filter-out unit.c, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
-complexity: $(FILES) $(DEPS)
-	@$(CC) $(FILES) $(CFLAGS) -o $@.out
+complexity: $(FILES_COMPLEXITY_TEST) $(DEPS)
+	@$(CC) $(FILES_COMPLEXITY_TEST) $(CFLAGS) -o $@.out
 	@./complexity.out | python3 cluster_reporter.py

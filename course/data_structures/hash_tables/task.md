@@ -29,7 +29,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] C (division method)
     - [x] Do a benchmark to prove it's truly constant time
     - [x] Redo C with multiplication method + refactor
-    - [ ] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
+    - [x] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
 
     - [ ] C++ (universal hashing) (first video 48:51)
     - [ ] Do a C++ benchmark
