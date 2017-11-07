@@ -29,17 +29,15 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] C (division method)
     - [x] Do a benchmark to prove it's truly constant time
     - [x] Redo C with multiplication method + refactor
+    - [ ] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
 
     - [ ] C++ (universal hashing) (first video 48:51)
-
-    - [ ] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
-    - [ ] Run C benchmark on Sigma (start from 10, multiplication 10, 6 steps), append results here, process them to a graph
     - [ ] Do a C++ benchmark
 
     - [ ] C++ with builtin types (built-in hash)
     - [ ] Do a benchmark vs. STDLib
 
-- [ ] Do a benchmark of division method vs multiplication method for hashing for a certain type of keys (Python)
+- [ ] Do a benchmark of any hashing function for hashing for a certain type of keys, plot distribution to a graph (Python)
 
 <!-- templates -->
     <!-- cpp makefile -> make template not list -->
