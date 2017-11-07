@@ -70,11 +70,13 @@ static size_t _compute_initial_hash(char* key, size_t hash_table_capacity)
     static const double A = 0.6180339887498948;
 
     // pre-hashing
-    unsigned int prehash_digest = 0;
-    unsigned int key_length = strlen(key);
+    long long unsigned prehash_digest = 0;
+    size_t key_length = strlen(key);
 
     for (int i = 0; i < key_length; i++)
-        prehash_digest += (int) key[i];
+        // creates a binary stream out of every char
+        // hashing may occur because of long long unsigned overflow
+        prehash_digest += ((int) key[i]) << i * sizeof key[i] * 8;
 
     // hashing
     size_t hash_digest = floor(hash_table_capacity * (prehash_digest * A));

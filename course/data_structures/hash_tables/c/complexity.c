@@ -75,7 +75,7 @@ int main()
     complexity_test_add(multiplier * multiplier);
     complexity_test_add(multiplier * multiplier * multiplier);
     complexity_test_add(multiplier * multiplier * multiplier * multiplier);
-    // complexity_test_add(multiplier * multiplier * multiplier * multiplier * multiplier);
+    complexity_test_add(multiplier * multiplier * multiplier * multiplier * multiplier);
     // complexity_test_add(multiplier * multiplier * multiplier * multiplier * multiplier * multiplier);
 
     return 0;
