@@ -207,11 +207,69 @@ TEST(Hash_table, Inequality)
 
 }
 
+TEST(Hash_table, copy_assignment)
+{
+    HashTable<int> hash_table;
+    HashTable<int> hash_table_different_capacity(15);
+    HashTable<int> hash_table_reference;
 
-// TEST(Hash_table, TEST_CASE_NAME)
-// {
-//     HashTable<int> hash_table;
-//     // Do the setup
+    hash_table_reference.add("John", 784);
+    hash_table_reference.add("Jane", 513);
+    hash_table_reference.add("Magus", 2);
+    hash_table_reference.add("Tyrannosaurus", 999919999);
 
-//     // Do the assertions
-// }
+    hash_table = hash_table_reference;
+
+    EXPECT_TRUE(hash_table == hash_table_reference);
+
+    hash_table_different_capacity = hash_table_reference;
+    
+    EXPECT_TRUE(hash_table_different_capacity == hash_table_reference);
+}
+
+TEST(Hash_table, copy_constructor)
+{
+    HashTable<int> hash_table_reference;
+
+    hash_table_reference.add("John", 784);
+    hash_table_reference.add("Jane", 513);
+    hash_table_reference.add("Magus", 2);
+    hash_table_reference.add("Tyrannosaurus", 999919999);
+
+    HashTable<int> hash_table = hash_table_reference;
+
+    EXPECT_TRUE(hash_table == hash_table_reference);
+}
+
+TEST(Hash_table, move_assigment)
+{
+    HashTable<int> hash_table;
+    HashTable<int> disposable_hash_table;
+    HashTable<int> hash_table_reference;
+
+    hash_table_reference.add("John", 784);
+    hash_table_reference.add("Jane", -513);
+    hash_table_reference.add("Magus", 2);
+    hash_table_reference.add("Tyrannosaurus", 999919999);
+
+    disposable_hash_table = hash_table_reference;
+    hash_table = std::move(disposable_hash_table);
+
+    EXPECT_TRUE(hash_table == hash_table_reference);
+}
+
+TEST(Hash_table, move_assigment_constructor)
+{
+    HashTable<int> disposable_hash_table;
+    HashTable<int> hash_table_reference;
+
+    hash_table_reference.add("John", 784);
+    hash_table_reference.add("Jane", -513);
+    hash_table_reference.add("Magus", 2);
+    hash_table_reference.add("Tyrannosaurus", 999919999);
+
+    disposable_hash_table = hash_table_reference;
+    HashTable<int> hash_table = std::move(disposable_hash_table);
+
+    EXPECT_TRUE(hash_table == hash_table_reference);
+}

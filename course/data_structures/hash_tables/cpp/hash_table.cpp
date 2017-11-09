@@ -2,6 +2,7 @@
 // #include <cmath>
 #include <cstdlib>
 #include <ctime>
+#include <algorithm>
 
 // todo: delete after dev
 #include <iostream>
@@ -75,31 +76,51 @@ HashTable<T>::~HashTable()
 }
 
 template <typename T>
-HashTable<T>::HashTable(const HashTable<T>& rhs)
+HashTable<T>::HashTable(const HashTable<T>& rhs) : _capacity(0), _data(nullptr)
 {
-    // todo: write test
-    // todo: implement
+    *this = rhs;
 }
 
 template <typename T>
 HashTable<T>& HashTable<T>::operator=(const HashTable<T>& rhs)
 {
-    // todo: write test
-    // todo: implement
+    if (_capacity != rhs._capacity)
+    {
+        delete[] _data;
+        _data = new Element[rhs._capacity];
+        _capacity = rhs._capacity;
+    }
+    else
+    {
+        for(std::size_t i = 0; i < _capacity; i++)
+            _data[i].state = State::empty;
+    }
+
+    _constants = rhs._constants;
+    _size = 0;
+
+    for(std::size_t i = 0; i < _capacity; i++)
+        if(rhs._data[i].state == State::occupied)
+            add(rhs._data[i].key, rhs._data[i].value);
+
+    return *this;
 }
 
 template <typename T>
-HashTable<T>::HashTable(HashTable<T>&& rhs)
+HashTable<T>::HashTable(HashTable<T>&& rhs) : _data(nullptr)
 {
-    // todo: write test
-    // todo: implement
+    *this = std::move(rhs);
 }
 
 template <typename T>
 HashTable<T>& HashTable<T>::operator=(HashTable<T>&& rhs)
 {
-    // todo: write test
-    // todo: implement
+    std::swap(_size, rhs._size);
+    std::swap(_capacity, rhs._capacity);
+    std::swap(_constants, rhs._constants);
+    std::swap(_data, rhs._data);
+
+    return *this;
 }
 
 #pragma endregion

@@ -36,11 +36,11 @@ class HashTable
     protected:
         std::size_t _size;
         std::size_t _capacity;
-        Element* _data;
         struct Hashing_constants
         {
             long long unsigned A, B, P;
         } _constants;
+        Element* _data;
 
     // private functions
     protected:
