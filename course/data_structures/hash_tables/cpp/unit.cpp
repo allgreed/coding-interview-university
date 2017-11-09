@@ -71,28 +71,80 @@ TEST(Hash_table, overwrite)
     EXPECT_EQ(hash_table.get("Tyrannosaurus"), -8);
 }
 
+TEST(Hash_table, collisions)
+{
+    HashTable<int> hash_table(5);
 
-// todo: test addition in different order
-// todo: test for collisions
+    hash_table.add("John", -123);
+    hash_table.add("Jane", -1);
+    hash_table.add("Magus", 0);
+    // Tyrannosaurus should collide with John
+    hash_table.add("Tyrannosaurus", 999999999);
 
-// TEST(Hash_table, insert_and_retrive)
-// {
-//     HashTable<int> hash_table;
+    EXPECT_EQ(hash_table.get("John"), -123);
+    EXPECT_EQ(hash_table.get("Jane"), -1);
+    EXPECT_EQ(hash_table.get("Magus"), 0);
+    EXPECT_EQ(hash_table.get("Tyrannosaurus"), 999999999);
+}
 
-//     // todo: generate collision and redo the asserts
+TEST(Hash_table, insert_and_retrive_many_different_order)
+{
+    HashTable<int> hash_table;
 
-//     // collisions
-//     hash_table.add("John", -123);
-//     hash_table.add("Jane", -1);
-//     hash_table.add("Magus", 0);
-//     hash_table.add("Tyrannosaurus", 999999999);
-//     // HashTable_add(hash_table, "Johnd", 512);
-//     // assert(HashTable_get(hash_table, "John") == -123);
-//     // assert(HashTable_get(hash_table, "Jane") == -1);
-//     // assert(HashTable_get(hash_table, "Magues") == 0);
-//     // assert(HashTable_get(hash_table, "Tyrannosaurus rix") == -8);
-//     // assert(HashTable_get(hash_table, "Johnd") == 512);
-// }
+    hash_table.add("Tyrannosaurus", 999999999);
+    hash_table.add("Jane", -1);
+    hash_table.add("John", -123);
+    hash_table.add("Magus", 0);
+
+    EXPECT_EQ(hash_table.get("John"), -123);
+    EXPECT_EQ(hash_table.get("Jane"), -1);
+    EXPECT_EQ(hash_table.get("Magus"), 0);
+    EXPECT_EQ(hash_table.get("Tyrannosaurus"), 999999999);
+}
+
+TEST(Hash_table, existance)
+{
+    HashTable<int> hash_table;
+    hash_table.add("John", -123);
+    hash_table.add("Jane", -1);
+    hash_table.add("Johnd", 512);
+
+    EXPECT_TRUE(hash_table.exists("John"));
+    EXPECT_TRUE(hash_table.exists("Jane"));
+    EXPECT_TRUE(hash_table.exists("Johnd"));
+    EXPECT_FALSE(hash_table.exists("Kane"));
+    EXPECT_FALSE(hash_table.exists("Main"));
+}
+
+TEST(Hash_table, deletion)
+{
+    HashTable<int> hash_table;
+
+    hash_table.add("John", -123);
+    hash_table.add("Jane", -1);
+    hash_table.add("Johnd", 512);
+
+    hash_table.remove("Jane");
+    hash_table.remove("John");
+
+    EXPECT_FALSE(hash_table.exists("Jane"));
+    EXPECT_FALSE(hash_table.exists("John"));
+    EXPECT_TRUE(hash_table.exists("Johnd"));
+}
+
+TEST(Hash_table, write_after_delete_same)
+{
+    HashTable<int> hash_table;
+
+    hash_table.add("John", -123);
+    hash_table.remove("John");
+    hash_table.add("Johnd", 512);
+
+    EXPECT_FALSE(hash_table.exists("John"));
+    EXPECT_TRUE(hash_table.exists("Johnd"));
+    EXPECT_EQ(hash_table.get("Johnd"), 512);
+}
+
 
 // TEST(Hash_table, TEST_CASE_NAME)
 // {

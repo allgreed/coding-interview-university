@@ -19,6 +19,12 @@ class HashTable
             occupied
         };
 
+        enum class Contractor_t
+        {
+            insertion,
+            other
+        };
+
         struct Element
         {
             T value;
@@ -35,9 +41,8 @@ class HashTable
     // private functions
     protected:
         long long unsigned compute_initial_hash(std::string key);
-        // todo: make sth like probing_index.next()
-        std::size_t compute_probing_index(long long unsigned hash, std::size_t trial);
-        std::size_t find_index_for(std::string key);
+        std::size_t next_probing_index(std::size_t previosIndex);
+        std::size_t find_index_for(std::string key, Contractor_t contractor = Contractor_t::other);
 
     // constructing, assigning, destructing
     public:
@@ -56,7 +61,10 @@ class HashTable
         T get(std::string key);
         void remove(std::string key);
 
-        // todo: comparison operators [to test copy and move constructors]
+    // operators
+    public:
+        bool operator== (const HashTable<T>& rhs);
+        bool operator!= (const HashTable<T>& rhs);
 };
 
 #include "hash_table.cpp"
