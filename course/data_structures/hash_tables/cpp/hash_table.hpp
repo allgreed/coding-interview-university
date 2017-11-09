@@ -3,55 +3,60 @@
 
 #include <string>
 
-// constants
-constexpr size_t DEFAULT_SIZE = 10;
-
-// typedef struct HashTable_locator
-// {
-//     bool is_valid;
-//     size_t to_index;
-// } HashTable_locator;
-
-// typedef enum
-// {
-//     HASHTABLE_ELEM_EMPTY,
-//     HASHTABLE_ELEM_DELETED,
-//     HASHTABLE_ELEM_OCCUPIED
-// } HASHTABLE_ELEM_STATE;
-
-// struct _element
-// {
-//     T value;
-//     std::string key;
-//     // HASHTABLE_ELEM_STATE state;
-// };
-
 template <typename T>
 class HashTable
 {
+    // constants
     protected:
+        static constexpr std::size_t Default_size = 10;
 
-
+    // subclasses and internal structures
     protected:
-        // HashTable_element* data;
-        size_t _capacity;
-        size_t _size;
+        enum class State
+        {
+            empty,
+            deleted,
+            occupied
+        };
 
+        struct Element
+        {
+            T value;
+            std::string key;
+            State state = State::empty;
+        };
+
+    // data members
     protected:
+        Element* _data;
+        std::size_t _capacity;
+        std::size_t _size;
 
+    // private functions
+    protected:
+        long long unsigned compute_initial_hash(std::string key);
+        // todo: make sth like probing_index.next()
+        std::size_t compute_probing_index(long long unsigned hash, std::size_t trial);
+        std::size_t find_index_for(std::string key);
+
+    // constructing, assigning, destructing
     public:
         HashTable();
+        HashTable(std::size_t desired_capacity);
         ~HashTable();
         HashTable(const HashTable<T>& rhs);
         HashTable<T>& operator=(const HashTable<T>& rhs);
         HashTable(HashTable<T>&& rhs);
         HashTable<T>& operator=(HashTable<T>&& rhs);
 
+    // public functions
     public:
         void add(std::string key, T value);
         bool exists(std::string key);
         T get(std::string key);
         void remove(std::string key);
+
+        // todo: comparison operators [to test copy and move constructors]
 };
 
 #include "hash_table.cpp"
