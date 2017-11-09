@@ -9,7 +9,7 @@
 #pragma region Privates
 
 template <typename T>
-long long unsigned HashTable<T>::compute_initial_hash(std::string key)
+long long unsigned HashTable<T>::compute_initial_hash(std::string key) const
 {
     // pre-hashing
     long long unsigned prehash_digest = 0;
@@ -25,7 +25,7 @@ long long unsigned HashTable<T>::compute_initial_hash(std::string key)
 }
 
 template <typename T>
-std::size_t HashTable<T>::next_probing_index(size_t previosIndex)
+std::size_t HashTable<T>::next_probing_index(size_t previosIndex) const
 {
     // linear probing
     return ++previosIndex % _capacity;
@@ -33,7 +33,7 @@ std::size_t HashTable<T>::next_probing_index(size_t previosIndex)
 
 template <typename T>
 template <typename HashTable<T>::Caller _caller>
-std::size_t HashTable<T>::find_index_for(std::string key)
+std::size_t HashTable<T>::find_index_for(std::string key) const
 {
     std::size_t probe_index = compute_initial_hash(key) % _capacity;
 
@@ -125,7 +125,7 @@ void HashTable<T>::add(std::string key, T value)
 }
 
 template <typename T>
-bool HashTable<T>::exists(std::string key)
+bool HashTable<T>::exists(std::string key) const
 {
     try
     {
@@ -139,7 +139,7 @@ bool HashTable<T>::exists(std::string key)
 }
 
 template <typename T>
-T HashTable<T>::get(std::string key)
+T HashTable<T>::get(std::string key) const
 {
     try
     {
@@ -179,15 +179,35 @@ void HashTable<T>::remove(std::string key)
 template <typename T>
 bool HashTable<T>::operator== (const HashTable<T>& rhs)
 {
-    // todo: write test
-    // todo: implement
+    if(_capacity != rhs._capacity)
+        return false;
+
+    if(_size != rhs._size)
+        return false;
+
+    for(std::size_t i = 0; i < _capacity; i++)
+    {
+        if(_data[i].state == State::occupied)
+        {
+            try
+            {
+                if(rhs.get(_data[i].key) != _data[i].value)
+                    return false;
+            }
+            catch (std::runtime_error& exception)
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }
 
 template <typename T>
 bool HashTable<T>::operator!= (const HashTable<T>& rhs)
 {
-    // todo: write test
-    // todo: implement
+    return not (*this == rhs);
 }
 
 #pragma endregion

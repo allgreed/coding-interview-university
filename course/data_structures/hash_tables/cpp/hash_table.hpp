@@ -44,9 +44,9 @@ class HashTable
 
     // private functions
     protected:
-        long long unsigned compute_initial_hash(std::string key);
-        std::size_t next_probing_index(std::size_t previosIndex);
-        template <Caller _caller = Caller::other> std::size_t find_index_for(std::string key);
+        long long unsigned compute_initial_hash(std::string key) const;
+        std::size_t next_probing_index(std::size_t previosIndex) const;
+        template <Caller _caller = Caller::other> std::size_t find_index_for(std::string key) const;
 
     // constructing, assigning, destructing
     public:
@@ -61,8 +61,8 @@ class HashTable
     // public functions
     public:
         void add(std::string key, T value);
-        bool exists(std::string key);
-        T get(std::string key);
+        bool exists(std::string key) const;
+        T get(std::string key) const;
         void remove(std::string key);
 
     // operators
