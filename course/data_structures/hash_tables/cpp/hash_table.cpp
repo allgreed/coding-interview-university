@@ -37,18 +37,16 @@ std::size_t HashTable<T>::next_probing_index(size_t previosIndex)
 }
 
 template <typename T>
-std::size_t HashTable<T>::find_index_for(std::string key, Contractor_t contractor)
+template <typename HashTable<T>::Caller _caller>
+std::size_t HashTable<T>::find_index_for(std::string key)
 {
-    // todo: make this resolve at compile time, maybe via templates
-    bool is_insertion = contractor == Contractor_t::insertion;
-
     std::size_t probe_index = compute_initial_hash(key) % _capacity;
 
     for(std::size_t trial = 0; trial < _capacity; trial++)
     {
         if (_data[probe_index].state == State::empty
-        or (is_insertion and (_data[probe_index].state == State::deleted))
-        or (_data[probe_index].key == key))
+        or (_caller == Caller::insertion and _data[probe_index].state == State::deleted)
+        or _data[probe_index].key == key)
             return probe_index;
 
         probe_index = next_probing_index(probe_index);
@@ -119,7 +117,7 @@ void HashTable<T>::add(std::string key, T value)
     if (_size == _capacity)
         throw std::runtime_error("Insertion attempt on full table");
 
-    std::size_t target_index = find_index_for(key, Contractor_t::insertion);
+    std::size_t target_index = find_index_for<Caller::insertion>(key);
 
     if(not (_data[target_index].state == State::occupied))
     {

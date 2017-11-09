@@ -19,17 +19,17 @@ class HashTable
             occupied
         };
 
-        enum class Contractor_t
-        {
-            insertion,
-            other
-        };
-
         struct Element
         {
             T value;
             std::string key;
             State state = State::empty;
+        };
+
+        enum class Caller
+        {
+            insertion,
+            other
         };
 
     // data members
@@ -42,7 +42,7 @@ class HashTable
     protected:
         long long unsigned compute_initial_hash(std::string key);
         std::size_t next_probing_index(std::size_t previosIndex);
-        std::size_t find_index_for(std::string key, Contractor_t contractor = Contractor_t::other);
+        template <Caller _caller = Caller::other> std::size_t find_index_for(std::string key);
 
     // constructing, assigning, destructing
     public:
