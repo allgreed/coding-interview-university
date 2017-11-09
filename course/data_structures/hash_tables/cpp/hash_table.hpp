@@ -19,6 +19,12 @@ class HashTable
             occupied
         };
 
+        enum class Caller
+        {
+            insertion,
+            other
+        };
+
         struct Element
         {
             T value;
@@ -26,17 +32,15 @@ class HashTable
             State state = State::empty;
         };
 
-        enum class Caller
-        {
-            insertion,
-            other
-        };
-
     // data members
     protected:
-        Element* _data;
-        std::size_t _capacity;
         std::size_t _size;
+        std::size_t _capacity;
+        Element* _data;
+        struct Hashing_constants
+        {
+            long long unsigned A, B, P;
+        } _constants;
 
     // private functions
     protected:

@@ -1,5 +1,7 @@
 #include <stdexcept>
-#include <cmath>
+// #include <cmath>
+#include <cstdlib>
+#include <ctime>
 
 // todo: delete after dev
 #include <iostream>
@@ -9,22 +11,15 @@
 template <typename T>
 long long unsigned HashTable<T>::compute_initial_hash(std::string key)
 {
-    // todo: redo this to universal hashing method
-
     // pre-hashing
     long long unsigned prehash_digest = 0;
     std::size_t key_length = key.length();
 
     for (std::size_t i = 0; i < key_length; i++)
-        // creates a binary stream out of every char
-        // hashing may occur because of long long unsigned overflow
         prehash_digest += ((int) key[i]) << i * sizeof key[i] * 8;
 
-    // via https://courses.csail.mit.edu/6.006/spring11/rec/rec05.pdf
-    static constexpr double A = (sqrt(5.0) - 1) / 2;
-
     // hashing
-    std::size_t hash_digest = floor(_capacity * (prehash_digest * A));
+    std::size_t hash_digest = (_constants.A * prehash_digest + _constants.B) % _constants.P % _capacity;
 
     return hash_digest;
 }
@@ -60,14 +55,14 @@ std::size_t HashTable<T>::find_index_for(std::string key)
 #pragma region Constructors, destructor, assignment operators
 
 template <typename T>
-HashTable<T>::HashTable(std::size_t desired_capacity) : _size(0)
+HashTable<T>::HashTable(std::size_t desired_capacity) :  _size(0), _capacity(desired_capacity)
 {
-    // todo: this should be rounded to the nearest power of 2
-    // todo: shall it?
-    // todo: if not -> move this to initializer list
-    _capacity = desired_capacity;
-
+    srand(time(nullptr));
     _data = new Element[_capacity];
+    // todo: generate this at initialization
+    _constants.P = 409;
+    _constants.A = std::rand() % _constants.P + 1;
+    _constants.B = std::rand() % _constants.P;
 }
 
 template <typename T>
