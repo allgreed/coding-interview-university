@@ -1,5 +1,4 @@
 #include <stdexcept>
-// #include <cmath>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>

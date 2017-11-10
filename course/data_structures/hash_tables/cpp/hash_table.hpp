@@ -38,7 +38,7 @@ class HashTable
     protected:
         std::size_t _size;
         std::size_t _capacity;
-        // todo: move all this to hasher
+        // todo: move all this to hasher, after complexity tests
         // todo: instantiate hasher in the constructor
         struct Hashing_constants
         {
