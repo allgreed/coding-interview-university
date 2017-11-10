@@ -40,8 +40,8 @@ std::size_t HashTable<T>::find_index_for(std::string key) const
 
     for(std::size_t trial = 0; trial < _capacity; trial++)
     {
-        if (_data[probe_index].state == State::empty
-        or (_caller == Caller::insertion and _data[probe_index].state == State::deleted)
+        if (_data[probe_index].state == Element::State::empty
+        or (_caller == Caller::insertion and _data[probe_index].state == Element::State::deleted)
         or _data[probe_index].key == key)
             return probe_index;
 
@@ -145,14 +145,14 @@ HashTable<T>& HashTable<T>::operator=(const HashTable<T>& rhs)
     else
     {
         for(std::size_t i = 0; i < _capacity; i++)
-            _data[i].state = State::empty;
+            _data[i].state = Element::State::empty;
     }
 
     _constants = rhs._constants;
     _size = 0;
 
     for(std::size_t i = 0; i < _capacity; i++)
-        if(rhs._data[i].state == State::occupied)
+        if(rhs._data[i].state == Element::State::occupied)
             add(rhs._data[i].key, rhs._data[i].value);
 
     return *this;
@@ -187,14 +187,14 @@ void HashTable<T>::add(std::string key, T value)
 
     std::size_t target_index = find_index_for<Caller::insertion>(key);
 
-    if(not (_data[target_index].state == State::occupied))
+    if(not (_data[target_index].state == Element::State::occupied))
     {
         _data[target_index].key = key;
         _size++;
     }
 
     _data[target_index].value = value;
-    _data[target_index].state = State::occupied;
+    _data[target_index].state = Element::State::occupied;
 }
 
 template <typename T>
@@ -203,7 +203,7 @@ bool HashTable<T>::exists(std::string key) const
     try
     {
         std::size_t target_index = find_index_for(key);
-        return _data[target_index].state == State::occupied;
+        return _data[target_index].state == Element::State::occupied;
     }
     catch(std::range_error& exception)
     {
@@ -218,7 +218,7 @@ T HashTable<T>::get(std::string key) const
     {
         std::size_t target_index = find_index_for(key);
 
-        if (_data[target_index].state == State::empty)
+        if (_data[target_index].state == Element::State::empty)
             throw std::runtime_error("Non-existing key dereference attempt");
 
         return _data[target_index].value;
@@ -236,10 +236,10 @@ void HashTable<T>::remove(std::string key)
     {
         std::size_t target_index = find_index_for(key);
 
-        if(_data[target_index].state == State::occupied)
+        if(_data[target_index].state == Element::State::occupied)
         {
             _size--;
-            _data[target_index].state = State::deleted;
+            _data[target_index].state = Element::State::deleted;
         }
     }
     catch(std::range_error& exception) {}
@@ -260,7 +260,7 @@ bool HashTable<T>::operator== (const HashTable<T>& rhs)
 
     for(std::size_t i = 0; i < _capacity; i++)
     {
-        if(_data[i].state == State::occupied)
+        if(_data[i].state == Element::State::occupied)
         {
             try
             {

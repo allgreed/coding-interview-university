@@ -12,15 +12,6 @@ class HashTable
 
     // subclasses and internal structures
     protected:
-        // todo: move this inside Element
-        // todo: redo all identifiers
-        enum class State
-        {
-            empty,
-            deleted,
-            occupied
-        };
-
         enum class Caller
         {
             insertion,
@@ -29,6 +20,13 @@ class HashTable
 
         struct Element
         {
+            enum class State
+            {
+                empty,
+                deleted,
+                occupied
+            };
+
             T value;
             std::string key;
             State state = State::empty;
