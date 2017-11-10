@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
+#include <vector>
 
 // todo: delete after dev
 #include <iostream>
@@ -26,10 +27,10 @@ long long unsigned HashTable<T>::compute_initial_hash(std::string key) const
 }
 
 template <typename T>
-std::size_t HashTable<T>::next_probing_index(size_t previosIndex) const
+std::size_t HashTable<T>::next_probing_index(size_t previous_index) const
 {
     // linear probing
-    return ++previosIndex % _capacity;
+    return ++previous_index % _capacity;
 }
 
 template <typename T>
@@ -51,23 +52,75 @@ std::size_t HashTable<T>::find_index_for(std::string key) const
     throw std::range_error("Index non-existent");
 }
 
+template <typename T>
+long long unsigned HashTable<T>::compute_nearest_prime() const
+{
+    // find all primes < _capacity via sieve of Eratosthenes
+    auto* sieve = new bool[_capacity];
+
+    for (std::size_t i = 0; i < _capacity; i++)
+        sieve[i] = true;
+
+    for (size_t i = 2; i < _capacity; i++)
+    {
+        if (sieve[i] == false) continue;
+        for(size_t j = i << 1; j < _capacity; j+=i)
+            sieve[j] = false;
+    }
+
+    auto* prime_vector = new std::vector<long long unsigned>;
+
+    for (size_t i = 3; i < _capacity; i++)
+        if (sieve[i]) prime_vector->push_back(i);
+
+    delete[] sieve;
+
+    long long unsigned prime_candidate = (_capacity & 1) ? _capacity : _capacity - 1;
+    bool is_prime = false;
+
+    while(not is_prime)
+    {
+        is_prime = true;
+        prime_candidate += 2;
+
+        for(auto const& value: *prime_vector)
+        {
+            if(prime_candidate % value == 0)
+            {
+                is_prime = false;
+                break;
+            }
+        }
+    }
+
+    delete prime_vector;
+    return prime_candidate;
+}
+
+template <typename T>
+HashTable<T>::Hashing_constants::Hashing_constants(HashTable<T>* caller)
+{
+    srand(time(nullptr));
+    P = caller->compute_nearest_prime();
+    A = std::rand() % P + 1;
+    B = std::rand() % P;
+}
+
+template <typename T>
+HashTable<T>::Hashing_constants::Hashing_constants() {}
+
 #pragma endregion
 
 #pragma region Constructors, destructor, assignment operators
 
 template <typename T>
-HashTable<T>::HashTable(std::size_t desired_capacity) :  _size(0), _capacity(desired_capacity)
+HashTable<T>::HashTable(std::size_t desired_capacity) :  _size(0), _capacity(desired_capacity), _constants(this)
 {
-    srand(time(nullptr));
     _data = new Element[_capacity];
-    // todo: generate this at initialization
-    _constants.P = 409;
-    _constants.A = std::rand() % _constants.P + 1;
-    _constants.B = std::rand() % _constants.P;
 }
 
 template <typename T>
-HashTable<T>::HashTable() : HashTable(Default_size) {}
+HashTable<T>::HashTable() : HashTable(default_size) {}
 
 template <typename T>
 HashTable<T>::~HashTable()
@@ -115,9 +168,9 @@ HashTable<T>::HashTable(HashTable<T>&& rhs) : _data(nullptr)
 template <typename T>
 HashTable<T>& HashTable<T>::operator=(HashTable<T>&& rhs)
 {
-    std::swap(_size, rhs._size);
-    std::swap(_capacity, rhs._capacity);
-    std::swap(_constants, rhs._constants);
+    _size = rhs._size;
+    _capacity = rhs._capacity;
+    _constants = rhs._constants;
     std::swap(_data, rhs._data);
 
     return *this;

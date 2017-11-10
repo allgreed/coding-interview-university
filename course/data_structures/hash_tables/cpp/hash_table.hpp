@@ -8,10 +8,12 @@ class HashTable
 {
     // constants
     protected:
-        static constexpr std::size_t Default_size = 10;
+        static constexpr std::size_t default_size = 10;
 
     // subclasses and internal structures
     protected:
+        // todo: move this inside Element
+        // todo: redo all identifiers
         enum class State
         {
             empty,
@@ -36,16 +38,22 @@ class HashTable
     protected:
         std::size_t _size;
         std::size_t _capacity;
+        // todo: move all this to hasher
+        // todo: instantiate hasher in the constructor
         struct Hashing_constants
         {
             long long unsigned A, B, P;
+            Hashing_constants();
+            Hashing_constants(HashTable<T>* caller);
         } _constants;
         Element* _data;
 
     // private functions
     protected:
+        // todo: move all this to a hasher, after complexity tests
+        long long unsigned compute_nearest_prime() const;
         long long unsigned compute_initial_hash(std::string key) const;
-        std::size_t next_probing_index(std::size_t previosIndex) const;
+        std::size_t next_probing_index(std::size_t previous_index) const;
         template <Caller _caller = Caller::other> std::size_t find_index_for(std::string key) const;
 
     // constructing, assigning, destructing
