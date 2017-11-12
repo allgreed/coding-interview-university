@@ -47,3 +47,9 @@ Finished @: yyyy-mm-dd hh:mm
 
 <!-- temapltes -->
     <!-- Change "valgrind" to "memeleak" in report section -->
+
+<!-- templates -->
+    <!-- Add complexity test rules for makefile -->
+
+<!-- templates -->
+    <!-- Redo makefile to be more generic -->
