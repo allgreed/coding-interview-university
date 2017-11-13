@@ -32,7 +32,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
 
     - [ ] C++ (universal hashing) (first video 48:51)
-    - [ ] Do a C++ benchmark
+    - [x] Do a C++ benchmark
 
     - [ ] C++ with builtin types (built-in hash)
     - [ ] Do a benchmark vs. STDLib
@@ -53,3 +53,6 @@ Finished @: yyyy-mm-dd hh:mm
 
 <!-- templates -->
     <!-- Redo makefile to be more generic -->
+
+<!-- templates -->
+    <!-- append complexity files with proper instructions -->
