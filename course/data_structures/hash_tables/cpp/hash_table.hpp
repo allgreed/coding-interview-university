@@ -6,16 +6,30 @@
 template <typename T>
 class HashTable
 {
-    // constants
     protected:
         static constexpr std::size_t default_size = 10;
 
-    // subclasses and internal structures
     protected:
         enum class Caller
         {
             insertion,
             other
+        };
+
+        class Hasher
+        {
+            // hashing constants required for computations
+            protected:
+                long long unsigned A, B, P;
+                std::size_t index_boundry;
+
+            public:
+                Hasher(std::size_t table_capacity);
+                Hasher() = default;
+
+            public:
+                inline long long unsigned compute_initial_hash(std::string key) const;
+                inline std::size_t next_probing_index(std::size_t previous_index) const;
         };
 
         struct Element
@@ -32,29 +46,16 @@ class HashTable
             State state = State::empty;
         };
 
-    // data members
     protected:
         std::size_t _size;
         std::size_t _capacity;
-        // todo: move all this to hasher, after complexity tests
-        // todo: instantiate hasher in the constructor
-        struct Hashing_constants
-        {
-            long long unsigned A, B, P;
-            Hashing_constants();
-            Hashing_constants(HashTable<T>* caller);
-        } _constants;
+        Hasher _hasher;
         Element* _data;
 
-    // private functions
     protected:
-        // todo: move all this to a hasher, after complexity tests
-        long long unsigned compute_nearest_prime() const;
-        long long unsigned compute_initial_hash(std::string key) const;
-        std::size_t next_probing_index(std::size_t previous_index) const;
-        template <Caller _caller = Caller::other> std::size_t find_index_for(std::string key) const;
+        template <Caller _caller = Caller::other>
+        std::size_t resolve_to_index(std::string key) const;
 
-    // constructing, assigning, destructing
     public:
         HashTable();
         HashTable(std::size_t desired_capacity);
@@ -64,14 +65,12 @@ class HashTable
         HashTable(HashTable<T>&& rhs);
         HashTable<T>& operator=(HashTable<T>&& rhs);
 
-    // public functions
     public:
         void add(std::string key, T value);
         bool exists(std::string key) const;
         T get(std::string key) const;
         void remove(std::string key);
 
-    // operators
     public:
         bool operator== (const HashTable<T>& rhs);
         bool operator!= (const HashTable<T>& rhs);

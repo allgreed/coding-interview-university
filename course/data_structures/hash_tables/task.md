@@ -31,7 +31,7 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] Redo C with multiplication method + refactor
     - [x] Redo C makefile so that it works as desired (make runs only units, make complexity runs units, than complexity test [maybe parametrize this])
 
-    - [ ] C++ (universal hashing) (first video 48:51)
+    - [x] C++ (universal hashing) (first video 48:51)
     - [x] Do a C++ benchmark
 
     - [ ] C++ with builtin types (built-in hash)
