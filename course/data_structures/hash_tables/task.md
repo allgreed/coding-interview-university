@@ -34,8 +34,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [x] C++ (universal hashing) (first video 48:51)
     - [x] Do a C++ benchmark
 
-    - [ ] C++ with builtin types (built-in hash)
-    - [ ] Do a benchmark vs. STDLib
+    - [x] C++ with builtin types (built-in hash)
+    - [x] Do a benchmark vs. STDLib [mine is faster o.0]
 
 - [ ] Do a benchmark of any hashing function for hashing for a certain type of keys, plot distribution to a graph (Python)
 

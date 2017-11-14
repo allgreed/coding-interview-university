@@ -19,7 +19,7 @@ else
 endif
 
 DEPS += $(addsuffix $(HEADERSUFFIX), $(PROJECT))
-FILES += $(filter-out $(IGNORE_FILES), $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
+FILES += $(filter-out $(IGNORE_FILES) complexity.cpp, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
 
 ### GTEST CONFIG ###
 
@@ -54,8 +54,14 @@ gtest_main.a : gtest-all.o gtest_main.o
 ### MAIN ###
 
 $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
-	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
+	@$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
 	@./$(PROJECT).out
 	@printf "\nMemleak report:\n"
-	@valgrind --leak-check=yes --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d' |\
+	@valgrind --leak-check=yes --log-fd=1 ./$(PROJECT).out | sed -e '1,/LEAK SUMMARY/d' |\
 	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
+
+COMPLEXITY_FILES += $(filter-out $(IGNORE_FILES) unit.cpp, $(wildcard $(addsuffix $(SOURCESUFFIX), *)))
+
+complexity : $(COMPLEXITY_FILES) $(DEPS)
+	@$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(COMPLEXITY_FILES) -o $@.out
+	@./$@.out
