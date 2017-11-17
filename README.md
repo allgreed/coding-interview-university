@@ -1,66 +1,10 @@
-# Coding Interview University
+# Allgreed's Coding Interview University
 
----
+<!-- todo: Make TOC as prepush hook -->
 
-## Table of Contents
+<!-- Todo: Implement below -->
 
-- [How to use it](#how-to-use-it)
-- [Don't feel you aren't smart enough](#dont-feel-you-arent-smart-enough)
-- [Before you Get Started](#before-you-get-started)
-- [The Daily Plan](#the-daily-plan)
-
-- [Prerequisite Knowledge](#prerequisite-knowledge)
-
----
-
-## How to use it
-
-Everything below is an outline, and you should tackle the items in order from top to bottom.
-
-I'm using Github's special markdown flavor, including tasks lists to check progress.
-
-**Create a new branch so you can check items like this, just put an x in the brackets: [x]**
-
-
-    Fork a branch and follow the commands below
-
-`git checkout -b progress`
-
-`git remote add jwasham https://github.com/jwasham/coding-interview-university`
-
-`git fetch --all`
-
-    Mark all boxes with X after you completed your changes
-
-`git add . `
-
-`git commit -m "Marked x" `
-
-`git rebase jwasham/master `
-
-`git push --force `
-
-## Don't feel you aren't smart enough
-- Successful software engineers are smart, but many have an insecurity that they aren't smart enough.
-- [The myth of the Genius Programmer](https://www.youtube.com/watch?v=0SARbwvhupQ)
-- [It's Dangerous to Go Alone: Battling the Invisible Monsters in Tech](https://www.youtube.com/watch?v=1i8ylq4j_EY)
-
-## Before you Get Started
-
-This list grew over many months, and yes, it kind of got out of hand.
-
-Here are some mistakes I made so you'll have a better experience.
-
-### 1. You Won't Remember it All
-
-I watched hours of videos and took copious notes, and months later there was much I didn't remember. I spent 3 days going
-through my notes and making flashcards so I could review.
-
-Read please so you won't make my mistakes:
-
-[Retaining Computer Science Knowledge](https://startupnextdoor.com/retaining-computer-science-knowledge/)
-
-### 2. Use Flashcards
+<!-- ### 2. Use Flashcards
 
 To solve the problem, I made a little flashcards site where I could add flashcards of 2 types: general and code.
 Each card has different formatting.
@@ -82,47 +26,14 @@ your brain.
 An alternative to using my flashcard site is [Anki](http://ankisrs.net/), which has been recommended to me numerous times. It uses a repetition system to help you remember.
 It's user-friendly, available on all platforms and has a cloud sync system. It costs $25 on iOS but is free on other platforms.
 
-My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (thanks [@xiewenya](https://github.com/xiewenya))
+My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (thanks [@xiewenya](https://github.com/xiewenya)) -->
 
-### 3. Review, review, review
+<!-- 
 
-I keep a set of cheat sheets on ASCII, OSI stack, Big-O notations, and more. I study them when I have some spare time.
 
-Take a break from programming problems for a half hour and go through your flashcards.
 
-### 4. Focus
 
-There are a lot of distractions that can take up valuable time. Focus and concentration are hard.
-
-## The Daily Plan
-
-Some subjects take one day, and some will take multiple days. Some are just learning with nothing to implement.
-
-Each day I take one subject from the list below, watch videos about that subject, and write an implementation in:
-- C - using structs and functions that take a struct * and something else as args.
-- C++ - without using built-in types
-- C++ - using built-in types, like STL's std::list for a linked list
-- Python - using built-in types (to keep practicing Python)
-- and write tests to ensure I'm doing it right, sometimes just using simple assert() statements
-- You may do Java or something else, this is just my thing.
-
-You don't need all these. You need only [one language for the interview](#pick-one-language-for-the-interview).
-
-Why code in all of these?
-- Practice, practice, practice, until I'm sick of it, and can do it with no problem (some have many edge cases and bookkeeping details to remember)
-- Work within the raw constraints (allocating/freeing memory without help of garbage collection (except Python))
-- Make use of built-in types so I have experience using the built-in tools for real-world use (not going to write my own linked list implementation in production)
-
-I may not have time to do all of these for every subject, but I'll try.
-
-You can see my code here:
- - [C](https://github.com/jwasham/practice-c)
- - [C++](https://github.com/jwasham/practice-cpp)
- - [Python](https://github.com/jwasham/practice-python)
-
-You don't need to memorize the guts of every algorithm.
-
-Write code on a whiteboard or paper, not a computer. Test with some sample inputs. Then test it out on a computer.
+ -->
 
 <!-- Todo: Answer all question in arrays -->
 <!-- Todo: Answer all question in lists -->
@@ -130,12 +41,8 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 <!-- Todo: Answer all question in queues -->
 <!-- Todo: Answer all question in hash tables -->
 
-<!-- Todo: Customized this README -> above -->
-<!-- Todo: Shoutout for jwasham -->
 <!-- Todo: Say where's what -> code / todos / extras -->
-<!-- Todo: Do some simple automation of new assignment creation-->
-
-<!-- Todo: Rename course to sth else -->
+<!-- Todo: Rename course folder to sth else -->
 
 <!-- Todo: Unit testing C -->
 <!-- Test case detection -->
@@ -143,19 +50,35 @@ Write code on a whiteboard or paper, not a computer. Test with some sample input
 <!-- Assert like behavior, but on failure report also actual value and line -->
 <!-- https://stackoverflow.com/questions/65820/unit-testing-c-code -->
 
-<!-- Todo: Propper generator for assignements -->
+## Shoutout and disclaimer
 
-<!-- Todo: Implementations in other languages? -->
+This repo is a based on [Jwasham's Coding Interview University](https://github.com/jwasham/coding-interview-university).
 
-<!-- Difference from original -->
 I've removed all the non-free links or those that I consider of little value.
 
-## How to create new assignment
+I implement everything in C, C++ and C++ with builtin-types
 
-<!-- Add instructions here -->
+## Prerequisites
+
+**Note: Those are only required to run my code, not to do the course**
 
 <!-- Gtest as a prerequisite to run my tests -> copy repo to /opt/gtest, test makefile, copy makefile, set gtest source to /opt/gtest, customize the makefile, viola! -->
 
 <!-- valgrind as a prerequisite to run my tests -> add installation instructions -->
 
 <!-- Boost as a prerequisite to run complexity tests as well as some c++ builtin solutions -->
+
+## How to use it
+
+0. See Jwasham's repo for great non-technical content related to this course
+2. Fork this repo
+3. Clone the repo
+4. Undo all checks
+5. Code 
+6. Code unit fingers burn and your veins pump raw binary
+7. Then code some more
+
+## How to create new assignment
+
+<!-- Todo: Propper generator for assignements -->
+<!-- Add instructions here -->
