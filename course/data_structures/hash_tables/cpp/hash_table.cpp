@@ -7,7 +7,8 @@
 #pragma region Privates
 
 template <typename T>
-HashTable<T>::Hasher::Hasher(std::size_t table_capacity) : index_boundry(table_capacity)
+HashTable<T>::Hasher::Hasher(std::size_t table_capacity)
+    : index_boundry(table_capacity)
 {
     // find all primes < index_boundry via sieve of Eratosthenes
     auto* sieve = new bool[index_boundry];
@@ -103,13 +104,18 @@ std::size_t HashTable<T>::resolve_to_index(std::string key) const
 #pragma region Constructors, destructor, assignment operators
 
 template <typename T>
-HashTable<T>::HashTable(std::size_t desired_capacity) :  _size(0), _capacity(desired_capacity), _hasher(_capacity)
+HashTable<T>::HashTable(std::size_t desired_capacity)
+    :  _size(0), _capacity(desired_capacity), _hasher(_capacity)
 {
     _data = new Element[_capacity];
 }
 
 template <typename T>
-HashTable<T>::HashTable() : HashTable(default_size) {}
+HashTable<T>::HashTable()
+    : HashTable(default_size) 
+{
+    
+}
 
 template <typename T>
 HashTable<T>::~HashTable()
@@ -118,7 +124,8 @@ HashTable<T>::~HashTable()
 }
 
 template <typename T>
-HashTable<T>::HashTable(const HashTable<T>& rhs) : _capacity(0), _data(nullptr)
+HashTable<T>::HashTable(const HashTable<T>& rhs)
+    : _capacity(0), _data(nullptr)
 {
     *this = rhs;
 }
@@ -149,7 +156,8 @@ HashTable<T>& HashTable<T>::operator=(const HashTable<T>& rhs)
 }
 
 template <typename T>
-HashTable<T>::HashTable(HashTable<T>&& rhs) : _data(nullptr)
+HashTable<T>::HashTable(HashTable<T>&& rhs)
+    : _data(nullptr)
 {
     *this = std::move(rhs);
 }
