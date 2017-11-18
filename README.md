@@ -41,8 +41,8 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 <!-- Todo: Answer all question in queues -->
 <!-- Todo: Answer all question in hash tables -->
 
-<!-- Todo: Say where's what -> code / todos / extras -->
 <!-- Todo: Rename course folder to sth else -->
+<!-- Todo: Rename assignment to sth else -->
 
 <!-- Todo: Unit testing C -->
 <!-- Test case detection -->
@@ -80,6 +80,8 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 6. Code unit fingers burn and your veins pump raw binary
 7. Then code some more
 
+<!-- Todo: Say where's what -> code / todos / extras -->
+
 ## How to create new assignment
 
 Go inside course directory
@@ -97,5 +99,5 @@ Go inside chapter folder / create one
 Trigger script with assignment name
 
 ```
-    ../new_stuff.py [assignment_name_underscores_singular_lowercase]
+    ../new_assignment.py [assignment_name_underscores_singular_lowercase]
 ```
