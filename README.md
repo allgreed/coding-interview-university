@@ -99,5 +99,5 @@ Go inside chapter folder / create one
 Trigger script with assignment name
 
 ```
-    ../new_assignment.py [assignment_name_underscores_singular_lowercase]
+    ../../new_assignment.py [assignment_name_underscores_singular_lowercase]
 ```
