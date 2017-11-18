@@ -52,11 +52,9 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 
 ## Shoutout and disclaimer
 
-This repo is a based on [Jwasham's Coding Interview University](https://github.com/jwasham/coding-interview-university).
-
-I've removed all the non-free links or those that I consider of little value.
-
-I implement everything in C, C++ and C++ with builtin-types
+- This repo is a based on [Jwasham's Coding Interview University](https://github.com/jwasham/coding-interview-university)
+- I implement everything in C, C++ and C++ with builtin-types
+- I've removed all the non-free links or those that I consider of little value
 
 ## Prerequisites
 
@@ -68,17 +66,36 @@ I implement everything in C, C++ and C++ with builtin-types
 
 <!-- Boost as a prerequisite to run complexity tests as well as some c++ builtin solutions -->
 
-## How to use it
+<!-- Add chmod +x on new_stuff.py into setup -->
 
-0. See Jwasham's repo for great non-technical content related to this course
+## How to use it
+<!-- Add cool images here -->
+<!-- Add shell command here -->
+0. See [Jwasham's repo](https://github.com/jwasham/coding-interview-university) for great non-technical content related to this course
 2. Fork this repo
 3. Clone the repo
 4. Undo all checks
+<!-- todo: maybe a script for this? -->
 5. Code 
 6. Code unit fingers burn and your veins pump raw binary
 7. Then code some more
 
 ## How to create new assignment
 
-<!-- Todo: Propper generator for assignements -->
-<!-- Add instructions here -->
+Go inside course directory
+
+```sh
+    cd course
+```
+
+Go inside chapter folder / create one
+
+```sh
+    cd [chapter_name] / mkdir [chapter_name]
+```
+
+Trigger script with assignment name
+
+```
+    ../new_stuff.py [assignment_name_underscores_singular_lowercase]
+```

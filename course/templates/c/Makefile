@@ -1,6 +1,6 @@
 #config
 
-PROJECT=$FILL THIS !!!$
+PROJECT=$ASSIGNMENT_NAME$
 
 CC=gcc
 CFLAGS=

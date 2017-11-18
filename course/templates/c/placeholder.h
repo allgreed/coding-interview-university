@@ -1,5 +1,5 @@
-#ifndef PROJECT_$FILL THIS !!!$_H
-#define PROJECT_$FILL THIS !!!$_H
+#ifndef PROJECT_$ASSIGNEMNT_NAME_UPERCASE$_H
+#define PROJECT_$ASSIGNEMNT_NAME_UPERCASE$_H
 
 // import types
 
@@ -9,4 +9,4 @@
 
 // functions
 
-#endif  // PROJECT_$FILL THIS !!!$_H
+#endif  // PROJECT_$ASSIGNEMNT_NAME_UPERCASE$_H

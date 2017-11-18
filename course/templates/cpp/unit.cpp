@@ -1,4 +1,4 @@
-#include "$FILL THIS !!!$.hpp"
+#include "$ASSIGNMENT_NAME$.hpp"
 #include "gtest/gtest.h"
 
 // ------------------------------------------
@@ -8,7 +8,7 @@
 
 // TODO: Prefill this!
 
-// TEST(PROJECT_TO_UPPERCASE, TEST_CASE_NAME)
+// TEST($ASSIGNMENT_NAME_CLASS_NAME$, TEST_CASE_NAME)
 // {
 //     // Do the construction
 //     // Do the setup

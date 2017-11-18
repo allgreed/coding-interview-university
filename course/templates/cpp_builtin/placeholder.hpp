@@ -1,3 +1,3 @@
 // Remove any private functions
 
-// Just copy ../cpp/$FILL THIS !!!$.hpp here and adjust
+// Just copy ../cpp/$ASSIGNMENT_NAME$.hpp here and adjust

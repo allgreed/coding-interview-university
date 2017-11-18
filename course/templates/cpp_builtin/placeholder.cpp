@@ -1,3 +1,3 @@
 // Import builtins
 
-// Just copy ../cpp/$FILL THIS !!!$.cpp here and adjust
+// Just copy ../cpp/$ASSIGNMENT_NAME$.cpp here and adjust
