@@ -10,7 +10,7 @@
 #include <iomanip>
 
 template <class Function_T>
-long long unsigned time_of (Function_T timed_function)
+long long unsigned time_of (const Function_T& timed_function)
 {
     clock_t start, end;
     start = clock();
@@ -21,7 +21,7 @@ long long unsigned time_of (Function_T timed_function)
 }
 
 template <class T,  class U>
-std::unique_ptr<std::vector<long long unsigned>> time_of_n (std::size_t n, U&& setup_function, T&& timed_function_generator)
+std::unique_ptr<std::vector<long long unsigned>> time_of_n (std::size_t n, const U& setup_function, const T& timed_function_generator)
 {
     auto tested_object_ptr = setup_function(n);
 
@@ -55,7 +55,7 @@ void report_time(std::unique_ptr<std::vector<long long unsigned>> time_vector)
 }
 
 template <class T, class U>
-void test_complexity(std::size_t start, std::size_t end, std::size_t factor, U&& setup_function, T&& test_function_generator, std::string suite_name, std::string case_name)
+void test_complexity(std::size_t start, std::size_t end, std::size_t factor, const U& setup_function, const T& test_function_generator, std::string suite_name, std::string case_name)
 {
     // std::cout << boost::typeindex::type_id<T>().pretty_name() << std::endl;
     // std::cout << boost::typeindex::type_id<U>().pretty_name() << std::endl;
