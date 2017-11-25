@@ -41,9 +41,6 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 <!-- Todo: Answer all question in queues -->
 <!-- Todo: Answer all question in hash tables -->
 
-<!-- Todo: Rename course folder to sth else -->
-<!-- Todo: Rename assignment to sth else -->
-
 <!-- Todo: Unit testing C -->
 <!-- Test case detection -->
 <!-- Test suite per file -->
@@ -82,6 +79,12 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 
 <!-- Todo: Say where's what -> code / todos / extras -->
 
+<!-- Todo: reod this -->
+
+Code -> `./code`
+Chapter -> eg. data_structures
+Case -> inside a chapter -> eg. arrays
+
 ## How to create new assignment
 
 Go inside course directory
@@ -98,6 +101,6 @@ Go inside chapter folder / create one
 
 Trigger script with assignment name
 
-```
-    ../../new_assignment.py [assignment_name_underscores_singular_lowercase]
+```sh
+    ../../new_case.py [assignment_name_underscores_singular_lowercase]
 ```

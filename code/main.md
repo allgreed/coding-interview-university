@@ -13,6 +13,9 @@
 <!-- templates -->
     <!-- append complexity files with proper instructions -->
 
+<!-- templates -->
+    <!-- extract complexity as a library, only use test code in assignment files -->
+
 - [More Knowledge](#more-knowledge)
     - [Binary search](#binary-search)
     - [Bitwise operations](#bitwise-operations)
