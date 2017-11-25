@@ -43,7 +43,9 @@ def main():
     for file in files:
         os.rename(file, file.replace("placeholder", assignment_name))
 
-# todo: trigger make on c and c++ folders
+# future-todo: insert start date
+# future-todo: trigger make on c and c++ folders
+# future-todo: allow more commands (copy cpp to cpp_builtin, end assigment [stamp enddate, commit, etc.])
 
 if __name__ == "__main__":
     main()
