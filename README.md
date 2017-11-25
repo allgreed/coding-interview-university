@@ -57,17 +57,47 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 
 **Note: Those are only required to run my code, not to do the course**
 
-<!-- Gtest as a prerequisite to run my tests -> copy repo to /opt/gtest, test makefile, copy makefile, set gtest source to /opt/gtest, customize the makefile, viola! -->
+### Google test
+
+- clone the repo
+
+```sh
+    git clone git@github.com:google/googletest.git
+```
+
+- go into `./googletest/googletest/make`
+
+```sh
+    cd googletest/googletest/make
+```
+
+- test the Makefile (Gtest output should appear)
+
+```sh
+    make
+    chmod +x sample1_unittest
+    ./sample1_unittest
+```
+
+- copy Makefile to a new project
+- change locating variables, mine are:
+
+```make
+    GTEST_DIR = /opt/gtest/googletest
+    USER_DIR = .
+```
+
+- test copied Makefile again with sample self-written test
+- incorporate that Makefile into your flow
 
 <!-- valgrind as a prerequisite to run my tests -> add installation instructions -->
 
 <!-- Boost as a prerequisite to run complexity tests as well as some c++ builtin solutions -->
 
-<!-- Add chmod +x on new_stuff.py into setup -->
-
 ## How to use it
 <!-- Add cool images here -->
 <!-- Add shell command here -->
+<!-- Add chmod +x on new_stuff.py into setup -->
 0. See [Jwasham's repo](https://github.com/jwasham/coding-interview-university) for great non-technical content related to this course
 2. Fork this repo
 3. Clone the repo
