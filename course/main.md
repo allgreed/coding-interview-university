@@ -4,6 +4,15 @@
 <!-- See readme!!!! -->
 <!-- Do the above finally! -->
 
+<!-- templates -->
+    <!-- Add complexity test rules for makefile -->
+
+<!-- templates -->
+    <!-- Redo makefile to be more generic -->
+
+<!-- templates -->
+    <!-- append complexity files with proper instructions -->
+
 - [More Knowledge](#more-knowledge)
     - [Binary search](#binary-search)
     - [Bitwise operations](#bitwise-operations)
