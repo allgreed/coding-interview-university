@@ -1,6 +1,6 @@
 ### $FILL THIS !!!$
 
-Started @: yyyy-mm-dd hh:mm
+Started @: $START_DATE$
 Finished @: yyyy-mm-dd hh:mm
 
 - [ ] Implement in:
