@@ -55,7 +55,7 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
-	@./$(PROJECT).out
-	@printf "\nValgrind report:\n\n"
-	@valgrind --leak-check=yes --log-fd=1 ./$(PROJECT).out | sed -e '1,/LEAK SUMMARY/d' |\
+	@./$@.out
+	@printf "\nMemleaks:\n"
+	@valgrind --leak-check=yes --log-fd=1 ./$@.out | sed -e '1,/LEAK SUMMARY/d' |\
 	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'

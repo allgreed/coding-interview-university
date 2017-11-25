@@ -1,6 +1,6 @@
 #config
 
-PROJECT=$ASSIGNMENT_NAME$
+PROJECT= $ASSIGNMENT_NAME$
 
 CC=gcc
 CFLAGS=
@@ -14,6 +14,7 @@ FILES := $(wildcard $(addsuffix $(SOURCESUFFIX), *))
 
 $(PROJECT): $(FILES) $(DEPS)
 	$(CC) $(FILES) $(CFLAGS) -o $@.out
-	@./$(PROJECT).out
-	@printf "\nMemleaks to report:\n"
-	@valgrind --log-fd=1 ./queue.out | sed -e '1,/LEAK SUMMARY/d'
+	@./$@.out
+	@printf "\nMemleaks:\n"
+	@valgrind --leak-check=yes --log-fd=1 ./$@.out | sed -e '1,/LEAK SUMMARY/d' |\
+	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
