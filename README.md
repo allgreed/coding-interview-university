@@ -109,7 +109,7 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 
 <!-- Todo: Say where's what -> code / todos / extras -->
 
-<!-- Todo: reod this -->
+<!-- Todo: redo this -->
 
 Code -> `./code`
 Chapter -> eg. data_structures
@@ -120,13 +120,13 @@ Case -> inside a chapter -> eg. arrays
 Go inside course directory
 
 ```sh
-    cd course
+    cd code
 ```
 
 Go inside chapter folder / create one
 
 ```sh
-    cd [chapter_name] / mkdir [chapter_name]
+    cd [chapter_name_underscores_plural_lowercase] / mkdir [chapter_name_underscores_plural_lowercase]
 ```
 
 Trigger script with assignment name

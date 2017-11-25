@@ -14,7 +14,7 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 
 current_stamp_time = datetime.now().strftime('%Y-%m-%d %H:%M')
 
-assignemnt_name_plural = "{}s".format(assignment_name)
+assignemnt_name_plural = assignment_name
 assignment_name_uppercase = assignment_name.upper()
 assignment_name_class_name = assignment_name.title().replace("_", "")
 
