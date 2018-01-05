@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # use inside chapter folders (eq. data_structures)
 # takes 1 argument: assignment_name [singular](eg. hash_table)
 
@@ -27,7 +27,7 @@ replacemenets = {
 }
 
 assignemnt_path = "{}/{}".format(assignment_dir, assignemnt_name_plural)
-template_path = "{}/course/templates".format(script_dir)
+template_path = "{}/code/templates".format(script_dir)
 
 def list_template_files_paths():
     filelists = [["{}/{}".format(root, file) for file in files]
