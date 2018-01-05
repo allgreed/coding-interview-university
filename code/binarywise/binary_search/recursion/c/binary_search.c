@@ -1,8 +1,5 @@
 #include "binary_search.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 static int _search(int* arr, size_t start, size_t end, int value)
 {
     if (start == end)

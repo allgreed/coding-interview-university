@@ -11,3 +11,7 @@ personal-9894.md
 # Prebuilts
 *.o
 *.a
+
+# Vim files
+*.swp
+
