@@ -8,9 +8,9 @@ static int _search(int* arr, size_t start, size_t end, int value)
     int middle = (start + end) / 2;
 
     return 
-        (value <= arr[middle]) 
+        ((value <= arr[middle]) == 1) 
         ? _search(arr, start, middle, value)
-        : _search(arr, middle, end, value);
+        : _search(arr, middle + 1, end, value);
 }
 
 int search(int *arr, size_t length, int value)

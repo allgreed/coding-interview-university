@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-// Test declarations
 void test_even_array()
 {
     int arr[] = { 1, 3, 5, 7 };
@@ -20,28 +19,62 @@ void test_odd_array()
     assert(result == 0);
 }
 
-void test_odd_array_negatives_only()
+void test_even_array_negatives_only()
 {
-    int arr[] = {-50, -30, -20, -10, -5, -1 };
+    int arr[] = { -50, -30, -20, -10, -5, -1 };
     int result = search(arr, 6, -20);
 
     assert(result == 2);
 }
 
-void test_even_array_negatives_only()
+void test_odd_array_negatives_only()
 {
-    int arr[] = {-50, -30, -10, -5, -1 };
+    int arr[] = { -50, -30, -10, -5, -1 };
     int result = search(arr, 5, -1);
 
     assert(result == 4);
 }
-// test odd, even arrays, containing negatives, positives and 0
+
+void test_even_every_number()
+{
+    int arr[] = { -1, 0, 5, 7 };
+    int result = search(arr, 4, 7);
+
+    assert(result == 3);
+
+}
+
+void test_odd_every_number()
+{
+    int arr[] = { -3, -1, 0, 5, 7 };
+    int result = search(arr, 5, 0);
+
+    assert(result == 2);
+
+}
+
+void test_non_existing()
+{
+    int arr[] = { 1, 3, 5, 7 };
+    int result = search(arr, 4, -69);
+
+    assert(result == -1);
+}
 
 int main()
 {
     test_even_array();
     test_odd_array();
 
+    test_even_array_negatives_only();
+    test_odd_array_negatives_only();
+
+    test_odd_every_number();
+    test_even_every_number();
+
+    test_non_existing();
+
     printf("All tests passed!\n");
     return 0;
 }
+

@@ -3,7 +3,7 @@
 PROJECT= binary_search
 
 CC=gcc
-CFLAGS=
+CFLAGS=-g
 HEADERSUFFIX=.h
 SOURCESUFFIX=.c
 

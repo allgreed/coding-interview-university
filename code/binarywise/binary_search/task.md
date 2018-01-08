@@ -18,3 +18,5 @@ Finished @: yyyy-mm-dd hh:mm
         - [ ] C++
         - [ ] C++ with builtin types
 
+<!-- Update makefile for bulding with debug symbols -->
+
