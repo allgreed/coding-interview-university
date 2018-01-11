@@ -41,6 +41,8 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 <!-- Todo: Answer all question in queues -->
 <!-- Todo: Answer all question in hash tables -->
 
+<!-- Todo: Add editorconfig to this project and write about it in the README -->
+
 <!-- Todo: Unit testing C -->
 <!-- Test case detection -->
 <!-- Test suite per file -->
