@@ -7,7 +7,7 @@ search_return_t search(int *arr, size_t length, int value)
     
     while(start != end)
     {
-        int middle = (start + end) / 2;
+        size_t middle = (start + end) / 2;
 
         value <= arr[middle] 
             ? (end = middle) 

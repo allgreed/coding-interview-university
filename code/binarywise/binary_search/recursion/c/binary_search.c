@@ -14,7 +14,7 @@ static search_return_t _search(int* arr, size_t start, size_t end, int value)
         return retval;
     }
 
-    int middle = (start + end) / 2;
+    size_t middle = (start + end) / 2;
 
     return 
         (value <= arr[middle])
