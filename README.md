@@ -64,7 +64,7 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 - clone the repo
 
 ```sh
-#   sudo git clone https://github.com/google/googletest.git /opt/gtest
+$   sudo git clone https://github.com/google/googletest.git /opt/gtest
 ```
 
 - go into `./googletest/googletest/make`
@@ -76,9 +76,9 @@ $   cd googletest/googletest/make
 - test the Makefile (Gtest output should appear)
 
 ```sh
-#   make
-#   chmod +x sample1_unittest
-#   ./sample1_unittest
+$   sudo make
+$   sudo chmod +x sample1_unittest
+$   ./sample1_unittest
 ```
 
 - copy Makefile to a new project
