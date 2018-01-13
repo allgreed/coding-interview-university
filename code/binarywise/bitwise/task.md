@@ -24,8 +24,11 @@ Finished @: yyyy-mm-dd hh:mm
         - [How To Count The Number Of Set Bits In a 32 Bit Integer](http://stackoverflow.com/questions/109023/how-to-count-the-number-of-set-bits-in-a-32-bit-integer)
     - [ ] round to next power of 2:
         - [Round Up To Next Power Of Two](http://bits.stephan-brumme.com/roundUpToNextPowerOfTwo.html)
-    - [x] swap values:
-        - [Swap](http://bits.stephan-brumme.com/swap.html)
+    - [ ] swap values:
+        - [x] [Swap](http://bits.stephan-brumme.com/swap.html)
+        - [ ] Swap string faster than char-by-char
+  
     - [ ] absolute value:
         - [Absolute Integer](http://bits.stephan-brumme.com/absInteger.html)
 
+- Work real hard on that Makefile
