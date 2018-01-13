@@ -89,10 +89,34 @@ $   ./sample1_unittest
     USER_DIR = .
 ```
 
-- test copied Makefile again with sample self-written test
-- incorporate that Makefile into your flow
+- test copied Makefile again with sample self-written test, example:
 
-<!-- valgrind as a prerequisite to run my tests -> add installation instructions -->
+```cpp
+#include "gtest/gtest.h"
+
+TEST(Confirming_setup_ok, dummy)
+{
+    // this should pass
+}
+
+TEST(Confirming_setup_ok, this_passes)
+{
+    EXPECT_EQ(2 + 2, 4);
+}
+
+TEST(Confirming_setup_ok, this_fails)
+{
+    EXPECT_TRUE(false);
+}
+```
+
+- incorporate [and refactor!] that Makefile into your flow
+
+### Valgrind
+
+```sh
+    sudo apt install valgrind
+```
 
 <!-- Boost as a prerequisite to run complexity tests as well as some c++ builtin solutions -->
 
@@ -103,8 +127,7 @@ $   ./sample1_unittest
 0. See [Jwasham's repo](https://github.com/jwasham/coding-interview-university) for great non-technical content related to this course
 2. Fork this repo
 3. Clone the repo
-4. Undo all checks
-<!-- todo: maybe a script for this? -->
+4. Undo all checks <!-- todo: maybe a script for this? -->
 5. Code 
 6. Code unit fingers burn and your veins pump raw binary
 7. Then code some more

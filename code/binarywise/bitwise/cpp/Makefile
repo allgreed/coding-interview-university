@@ -3,7 +3,7 @@
 PROJECT = bitwise
 
 CC = g++
-CFLAGS += --std=c++17
+CFLAGS += --std=c++17 -Wall -Wextra -g
 HEADERSUFFIX = .hpp
 SOURCESUFFIX = .cpp
 IS_TEMPLATE = true
