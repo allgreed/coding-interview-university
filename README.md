@@ -67,19 +67,22 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 $   sudo git clone https://github.com/google/googletest.git /opt/gtest
 ```
 
-- go into `./googletest/googletest/make`
+- go into `/opt/gtest/googletest/make`
 
 ```sh
-$   cd googletest/googletest/make
+$   cd /opt/gtest/googletest/make
 ```
 
-- test the Makefile (Gtest output should appear)
+- test the Makefile
 
 ```sh
 $   sudo make
 $   sudo chmod +x sample1_unittest
 $   ./sample1_unittest
 ```
+- Gtest output should appear with tests passing, if so: you're all set!
+
+#### Writing tests
 
 - copy Makefile to a new project
 - change locating variables, mine are:
