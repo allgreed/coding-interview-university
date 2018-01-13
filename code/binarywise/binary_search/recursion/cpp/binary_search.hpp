@@ -5,10 +5,16 @@
 
 class SearchValueNotFound : public std::runtime_error
 {
-    virtual const char* what() const throw()
-    {
-        return "Empty queue";
-    }
+    public:
+        SearchValueNotFound() : SearchValueNotFound("") { }
+
+        explicit SearchValueNotFound(const std::string& error_message)
+            : std::runtime_error(error_message) { }
+
+        virtual const char* what() const throw()
+        {
+            return "Empty queue";
+        }
 };
 
 // Caution: this function requires T to have defined comparison operators
