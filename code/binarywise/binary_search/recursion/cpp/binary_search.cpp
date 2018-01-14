@@ -1,4 +1,3 @@
-//TODO: Allow for templating
 template <class T>
 static std::size_t _search(T* arr, std::size_t start, std::size_t end, T value)
 {
@@ -22,6 +21,6 @@ static std::size_t _search(T* arr, std::size_t start, std::size_t end, T value)
 template <typename T>
 std::size_t search(T* arr, std::size_t length, T value)
 {
-    return _search<T>(arr, 0, length - 1, value);
+    return _search(arr, 0, length - 1, value);
 }
 

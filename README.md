@@ -162,3 +162,6 @@ Trigger script with assignment name
 ```sh
     ../../new_case.py [assignment_name_underscores_singular_lowercase]
 ```
+
+<!-- Todo: something to do diffs with jwasham to get new assignments, etc. if possible -->
+

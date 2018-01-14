@@ -68,12 +68,12 @@ TEST(BinarySearch, test_not_exist)
     EXPECT_THROW(search(arr, 4, -69), SearchValueNotFound);
 }
 
-//TEST(BinarySearch, test_different_type)
-//{
-//    int arr[] = { -3.2, -1.3, 0.3, 5.2, 7.2 };
-//
-//    EXPECT_NO_THROW(search<double>(arr, 5, 0.3););
-//    std::size_t result = search<double>(arr, 5, 0.3);
-//
-//    EXPECT_EQ(result, 2);
-//}
+TEST(BinarySearch, test_different_type)
+{
+    double arr[] = { -3.2, -1.3, 0.3, 5.2, 7.2 };
+
+    EXPECT_NO_THROW(search<double>(arr, 5, 0.3););
+    std::size_t result = search(arr, 5, 0.3);
+
+    EXPECT_EQ(result, 2);
+}
