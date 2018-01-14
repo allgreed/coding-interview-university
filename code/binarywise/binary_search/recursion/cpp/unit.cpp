@@ -72,7 +72,7 @@ TEST(BinarySearch, test_different_type)
 {
     double arr[] = { -3.2, -1.3, 0.3, 5.2, 7.2 };
 
-    EXPECT_NO_THROW(search<double>(arr, 5, 0.3););
+    EXPECT_NO_THROW(search(arr, 5, 0.3));
     std::size_t result = search(arr, 5, 0.3);
 
     EXPECT_EQ(result, 2);

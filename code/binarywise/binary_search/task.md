@@ -10,15 +10,15 @@ Finished @: yyyy-mm-dd hh:mm
 - binary search (on sorted array of integers)
     - [ ] Implement in:
         - [x] C
-        - [ ] C++
+        - [x] C++
         - [ ] C++ with builtin types
 - binary search using recursion
     - [ ] Implement in:
         - [x] C
-        - [ ] C++
+        - [x] C++
         - [ ] C++ with builtin types
 
-- [ ] do a comparison of c iteration | c recursion vs c++ iteration | c++ recursion
+- [ ] do a comparison of c++ iteration vs c++ recursion
 - [ ] see how that tail-call optimisation really works in c++ (dissasembly both recursion and iteration, compare)
 
 <!-- Update makefile for bulding with debug symbols -->

@@ -2,8 +2,8 @@
 
 search_return_t search(int *arr, size_t length, int value)
 {
-    int start = 0;
-    int end = length - 1;
+    size_t start = 0;
+    size_t end = length - 1;
     
     while(start != end)
     {
