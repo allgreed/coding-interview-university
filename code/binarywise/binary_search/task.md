@@ -8,15 +8,15 @@ Finished @: yyyy-mm-dd hh:mm
 - [ ] [detail](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
 
 - binary search (on sorted array of integers)
-    - [ ] Implement in:
+    - [x] Implement in:
         - [x] C
         - [x] C++
-        - [ ] C++ with builtin types
+        - [x] C++ with builtin types
 - binary search using recursion
-    - [ ] Implement in:
+    - [x] Implement in:
         - [x] C
         - [x] C++
-        - [ ] C++ with builtin types
+        - [x] C++ with builtin types
 
 - [ ] do a comparison of c++ iteration vs c++ recursion
 - [ ] see how that tail-call optimisation really works in c++ (dissasembly both recursion and iteration, compare)
