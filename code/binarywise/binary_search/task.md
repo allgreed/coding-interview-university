@@ -21,4 +21,7 @@ Finished @: yyyy-mm-dd hh:mm
 - [ ] do a comparison of c++ iteration vs c++ recursion
 - [ ] see how that tail-call optimisation really works in c++ (dissasembly both recursion and iteration, compare)
 
+<!-- Same for C++ -->
 <!-- Update makefile for bulding with debug symbols -->
+<!-- Update makefile for much more -->
+<!-- Update makefile for optimized builds -->

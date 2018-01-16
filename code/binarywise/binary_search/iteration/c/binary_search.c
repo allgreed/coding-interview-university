@@ -1,4 +1,5 @@
 #include "binary_search.h"
+#include <stdlib.h>
 
 search_return_t search(int *arr, size_t length, int value)
 {

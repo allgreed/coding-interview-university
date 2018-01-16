@@ -15,6 +15,6 @@ FILES := $(wildcard $(addsuffix $(SOURCESUFFIX), *))
 $(PROJECT): $(FILES) $(DEPS)
 	$(CC) $(FILES) $(CFLAGS) -o $@.out
 	@./$@.out
-	@printf "\nMemleaks:\n"
+	printf "\nMemleaks:\n"
 	@valgrind --leak-check=yes --log-fd=1 ./$@.out | sed -e '1,/LEAK SUMMARY/d' |\
-	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
+	head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
