@@ -26,7 +26,7 @@ $(PROJECT): $(FILES) $(DEPS)
 	python3 -c "import sys;lines = sys.stdin.readlines(); data = lines if lines != [] else 'None\n'; sys.stdout.write(''.join(data))"
 
 
-$(PROJECT): $(FILES) $(DEPS)
+opt: $(FILES) $(DEPS)
 
 	$(CC) $(FILES) --std=$(STANDARD) $(OPTFLAGS) -o $(PROJECT).out
 
