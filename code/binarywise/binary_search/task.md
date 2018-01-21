@@ -3,7 +3,7 @@
 Started @: 2018-01-05 19:43
 Finished @: yyyy-mm-dd hh:mm
 
-- [ ] [Binary Search (video)](https://www.youtube.com/watch?v=D5SrAga1pno)
+- [x] [Binary Search (video)](https://www.youtube.com/watch?v=D5SrAga1pno)
 - [x] [Binary Search (video)](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)
 - [ ] [detail](https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/)
 
