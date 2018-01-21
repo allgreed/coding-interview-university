@@ -19,7 +19,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] C++ with builtin types
 
 - [ ] do a comparison of c++ iteration vs c++ recursion
-- [ ] see how that tail-call optimisation really works in c++ (dissasembly both recursion and iteration, compare)
+- [x] see how that tail-call optimisation really works in c++ (dissasembly both recursion and iteration, compare)
 
 <!-- Same for C++ -->
 <!-- Update makefile for bulding with debug symbols -->
