@@ -8,6 +8,8 @@ HEADERSUFFIX = .hpp
 SOURCESUFFIX = .cpp
 IS_TEMPLATE = true
 
+ASMFLAGS=-g -S -masm=intel -fverbose-asm
+
 ### MY SETUP ###
 main: $(PROJECT)
 
@@ -59,3 +61,6 @@ $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
 	@printf "\nMemleaks:\n"
 	@valgrind --leak-check=yes --log-fd=1 ./$@.out | sed -e '1,/LEAK SUMMARY/d' |\
 	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'
+
+asm : $(FILES) $(DEPS) gtest_main.a
+	$(CC) $(CPPFLAGS) $(ASMFLAGS)  -lpthread $(FILES) gtest_main.a -o $(PROJECT).asm

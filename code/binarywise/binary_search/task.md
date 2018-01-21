@@ -25,3 +25,7 @@ Finished @: yyyy-mm-dd hh:mm
 <!-- Update makefile for bulding with debug symbols -->
 <!-- Update makefile for much more -->
 <!-- Update makefile for optimized builds -->
+<!-- Update makefile for assembly target -->
+<!-- Also do assembly optimized -->
+<!-- Redo the flagsa to make some senese -->
+
