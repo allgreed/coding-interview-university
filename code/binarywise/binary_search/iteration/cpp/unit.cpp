@@ -77,3 +77,13 @@ TEST(BinarySearch, test_different_type)
 
     EXPECT_EQ(result, 2);
 }
+
+TEST(BinarySearch, test_truncatonation)
+{
+    int arr[] = { 1, 3 };
+
+    EXPECT_NO_THROW(search(arr, 2, 3));
+    std::size_t result = search(arr, 2, 3);
+
+    EXPECT_EQ(result, 1);
+}

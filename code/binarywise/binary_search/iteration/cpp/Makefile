@@ -13,8 +13,8 @@ main: $(PROJECT)
 
 ifeq ($(IS_TEMPLATE), true)
 # todo: redo this to get rid of useless variables
-    IGNORE_FILES=$(addsuffix $(SOURCESUFFIX), $(PROJECT))
-    DEPS += $(addsuffix $(SOURCESUFFIX), $(PROJECT))
+    IGNORE_FILES=$(addsuffix $(SOURCESUFFIX), $(PROJECT) main)
+#    DEPS += $(addsuffix $(SOURCESUFFIX), $(PROJECT))
 else
 endif
 
@@ -54,8 +54,8 @@ gtest_main.a : gtest-all.o gtest_main.o
 ### MAIN ###
 
 $(PROJECT) : $(FILES) $(DEPS) gtest_main.a
-	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $@.out
-	@./$@.out
-	@printf "\nMemleaks:\n"
-	@valgrind --leak-check=yes --log-fd=1 ./$@.out | sed -e '1,/LEAK SUMMARY/d' |\
+	$(CC) $(CPPFLAGS) $(CXXFLAGS) $(CFLAGS) -lpthread $(FILES) gtest_main.a -o $(PROJECT).out
+	#@./$(PROJECT).out
+	#@printf "\nMemleaks:\n"
+	#@valgrind --leak-check=yes --log-fd=1 ./$(PROJECT).out | sed -e '1,/LEAK SUMMARY/d' |\
 	 head -n 3 | awk '{$$1= ""; print "    ", substr($$0,2);}'

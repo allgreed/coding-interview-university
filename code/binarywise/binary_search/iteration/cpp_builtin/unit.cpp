@@ -91,3 +91,13 @@ TEST(BinarySearch, test_different_type)
 
     EXPECT_EQ(result, 2);
 }
+
+TEST(BinarySearch, test_truncatonation)
+{
+    std::vector<int> vector = { 1, 3 };
+
+    EXPECT_NO_THROW(search(vector, 3));
+    std::size_t result = search(vector, 3);
+
+    EXPECT_EQ(result, 1);
+}

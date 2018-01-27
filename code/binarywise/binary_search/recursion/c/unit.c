@@ -65,6 +65,15 @@ void test_non_existing()
     assert(result.return_code == RETURN_CODE_NOT_FOUND);
 }
 
+void test_truncatonation()
+{
+    int arr[] = { 1, 3 };
+    search_return_t result = search(arr, 2, 3);
+
+    assert(result.return_code == RETURN_CODE_OK);
+    assert(result.index == 1);
+}
+
 int main()
 {
     test_even_array();
@@ -77,6 +86,7 @@ int main()
     test_even_every_number();
 
     test_non_existing();
+    test_truncatonation();
 
     printf("All tests passed!\n");
     return 0;
