@@ -64,21 +64,21 @@ My flashcard database in Anki format: https://ankiweb.net/shared/info/25173560 (
 - clone the repo
 
 ```sh
-$   sudo git clone https://github.com/google/googletest.git /opt/gtest
+    sudo git clone https://github.com/google/googletest.git /opt/gtest
 ```
 
 - go into `/opt/gtest/googletest/make`
 
 ```sh
-$   cd /opt/gtest/googletest/make
+    cd /opt/gtest/googletest/make
 ```
 
 - test the Makefile
 
 ```sh
-$   sudo make
-$   sudo chmod +x sample1_unittest
-$   ./sample1_unittest
+    sudo make
+    sudo chmod +x sample1_unittest
+    ./sample1_unittest
 ```
 - Gtest output should appear with tests passing, if so: you're all set!
 
@@ -121,7 +121,7 @@ TEST(Confirming_setup_ok, this_fails)
     sudo apt install valgrind
 ```
 
-<!-- Boost as a prerequisite to run complexity tests as well as some c++ builtin solutions -->
+<!-- Boost as a prerequisite to run some c++ builtin solutions -->
 
 ## How to use it
 <!-- Add cool images here -->
@@ -164,4 +164,5 @@ Trigger script with assignment name
 ```
 
 <!-- Todo: something to do diffs with jwasham to get new assignments, etc. if possible -->
+<!-- Todo: Managing todos across the entire repo ??? -->
 
