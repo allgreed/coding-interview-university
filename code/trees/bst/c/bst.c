@@ -97,9 +97,9 @@ void BST_insert(BST* bst, BST_value_t value)
         BST_Node* insertion_node = BST_find_nearest_node(bst, value);
         BST_Node* node_to_be_inserted = BST_Node_create(insertion_node, value);
 
-        (value > insertion_node->value)
-            ? (insertion_node->greater = node_to_be_inserted)
-            : (insertion_node->smaller = node_to_be_inserted);
+        *((value < insertion_node->value)
+            ? &insertion_node->smaller 
+            : &insertion_node->greater) = node_to_be_inserted;
     }
 }
 
@@ -141,3 +141,50 @@ BST_value_t BST_get_max(BST* bst)
     return node->value;
 }
 
+void BST_delete_value(BST* bst, BST_value_t value)
+{
+    BST_Node* target_node = BST_find_nearest_node(bst, value);
+
+    if (target_node->value != value)
+        return;
+
+    if (target_node->smaller == NULL && target_node->greater == NULL)
+    {
+        BST_Node* parent = target_node->parent;
+
+        *((parent->smaller == target_node)
+            ? &parent->smaller 
+            : &parent->greater) = NULL;
+
+        free(target_node);
+
+    }
+    else if (target_node->smaller == NULL ^ target_node->greater == NULL)
+    {
+        //TODO: Code duplication with line 153
+        BST_Node* parent = target_node->parent;
+
+        BST_Node* child = target_node->smaller != NULL
+            ? target_node->smaller
+            : target_node->greater;
+
+        child->parent = target_node->parent;
+
+        //TODO: Code duplication with line 155
+        *((parent->smaller == target_node)
+            ? &parent->smaller 
+            : &parent->greater) = child;
+
+        //TODO: Code duplication with line 159
+        free(target_node);
+    }
+    else
+    {
+        // write test
+        // make this node have value of the min in right subtree
+            // which is actually the value of succesor
+            // or max in the left subtree, which the value of inorder predecesor -> we could optimize for whichever is faster ;)
+        // delete this value from right subtree
+    }
+
+}

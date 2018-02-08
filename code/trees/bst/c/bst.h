@@ -58,6 +58,7 @@ void BST_destroy(BST*);
 
 void BST_insert(BST*, BST_value_t);
 bool BST_is_in_tree(BST*, BST_value_t);
+void BST_delete_value(BST*, BST_value_t);
 
 BST_value_t BST_get_min(BST*);
 BST_value_t BST_get_max(BST*);
