@@ -58,7 +58,7 @@ void test_get_max()
     BST_insert(bst, -69);
     BST_insert(bst, 1e6);
     
-    assert(BST_get_min(bst) == 1e6);
+    assert(BST_get_max(bst) == 1e6);
 
     BST_destroy(bst);
 }

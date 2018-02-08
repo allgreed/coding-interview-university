@@ -18,6 +18,7 @@ typedef enum
 {
     BST_EXIT_OK = 0,
     BST_EXIT_FAILED_ALLOCATION,
+    BST_EMPTY_TREE_DEREFERNCE_ATTEMPT,
 } BST_EXIT_CODES;
 
 // *****************

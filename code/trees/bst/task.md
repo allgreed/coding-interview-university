@@ -43,8 +43,8 @@ Finished @: yyyy-mm-dd hh:mm
     - [ ] Implement:
         - [x] insert    // insert value into tree
         - [x] is_in_tree // returns true if given value exists in the tree
-        - [ ] get_min   // returns the minimum value stored in the tree
-        - [ ] get_max   // returns the maximum value stored in the tree
+        - [x] get_min   // returns the minimum value stored in the tree
+        - [x] get_max   // returns the maximum value stored in the tree
 
         - [ ] delete_value
         - [ ] get_successor // returns next-highest value in tree after given value, -1 if none

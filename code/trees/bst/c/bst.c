@@ -117,16 +117,27 @@ bool BST_is_in_tree(BST* bst, BST_value_t value)
 
 BST_value_t BST_get_min(BST* bst)
 {
-    // TODO: code this 
-    // if the tree is empty -> exit?
+    if(BST_is_tree_empty(bst))
+        exit(BST_EMPTY_TREE_DEREFERNCE_ATTEMPT);
 
+    BST_Node* node = bst->root;
 
+    while(node->smaller != NULL)
+        node = node->smaller;
+
+    return node->value;
 }
 
 BST_value_t BST_get_max(BST* bst)
 {
-    // TODO: code this 
-    // if the tree is empty -> exit?
+    if(BST_is_tree_empty(bst))
+        exit(BST_EMPTY_TREE_DEREFERNCE_ATTEMPT);
 
+    BST_Node* node = bst->root;
+
+    while(node->greater != NULL)
+        node = node->greater;
+
+    return node->value;
 }
 
