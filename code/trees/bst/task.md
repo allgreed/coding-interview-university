@@ -42,8 +42,8 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] is_in_tree // returns true if given value exists in the tree
         - [x] get_min   // returns the minimum value stored in the tree
         - [x] get_max   // returns the maximum value stored in the tree
+        - [x] delete_value
 
-        - [ ] delete_value
         - [ ] get_successor // returns next-highest value in tree after given value, -1 if none
 
         - [ ] get_height // returns the height in nodes (single node's height is 1)

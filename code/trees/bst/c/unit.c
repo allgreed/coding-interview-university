@@ -139,15 +139,11 @@ void test_delete_value_two_children()
     BST_insert(bst, -69);
     BST_insert(bst, 1e6);
 
-    BST_delete_value(bst, 1e6);
+    BST_delete_value(bst, 0);
 
-    assert(BST_is_in_tree(bst, 1e6) == false);
-    
-    // delete node with two childs
-    // assert node not in tree
+    assert(BST_is_in_tree(bst, 0) == false);
     
     assert(BST_is_in_tree(bst, 10) == true);
-    assert(BST_is_in_tree(bst, 0) == true);
     assert(BST_is_in_tree(bst, 5) == true);
     assert(BST_is_in_tree(bst, 6) == true);
     assert(BST_is_in_tree(bst, -69) == true);
@@ -164,7 +160,7 @@ int main()
     test_delete_value_not_in_tree();
     test_delete_value_leaf();
     test_delete_value_one_child();
-    //test_delete_value_two_children();
+    test_delete_value_two_children();
 
     printf("All tests passed!\n");
     return 0;
