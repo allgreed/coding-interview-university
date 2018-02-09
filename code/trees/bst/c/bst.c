@@ -49,16 +49,11 @@ static inline BST_Node* BST_Node_create(BST_Node* parent, BST_value_t value)
     BST_Node* retval = allocate(sizeof(BST_Node));
 
     retval->parent = parent;
-    retval->smaller = NULL;
+    retval->lesser = NULL;
     retval->greater = NULL;
     retval->value = value;
 
     return retval;
-}
-
-static inline bool BST_is_tree_empty(BST* bst)
-{
-    return (bst->root == NULL);
 }
 
 static inline BST_Node* BST_find_nearest_node(BST* bst, BST_value_t value)
@@ -76,7 +71,7 @@ static inline BST_Node* BST_find_nearest_node(BST* bst, BST_value_t value)
 
         next = (value > current->value)
             ? current->greater
-            : current->smaller;
+            : current->lesser;
     } 
 
     return current;
@@ -99,7 +94,7 @@ void BST_insert(BST* bst, BST_value_t value)
         BST_Node* node_to_be_inserted = BST_Node_create(insertion_node, value);
 
         *((value < insertion_node->value)
-            ? &insertion_node->smaller 
+            ? &insertion_node->lesser 
             : &insertion_node->greater) = node_to_be_inserted;
     }
 }
@@ -123,8 +118,8 @@ BST_value_t BST_get_min(BST* bst)
 
     BST_Node* node = bst->root;
 
-    while(node->smaller != NULL)
-        node = node->smaller;
+    while(node->lesser != NULL)
+        node = node->lesser;
 
     return node->value;
 }
@@ -149,51 +144,37 @@ void BST_delete_value(BST* bst, BST_value_t value)
     if (target_node->value != value)
         return;
 
-    if (target_node->smaller == NULL && target_node->greater == NULL)
+    if (target_node->lesser != NULL && target_node->greater != NULL)
     {
-        BST_Node* parent = target_node->parent;
-
-        *((parent->smaller == target_node)
-            ? &parent->smaller 
-            : &parent->greater) = NULL;
-
-        free(target_node);
-
-    }
-    else if (target_node->smaller == NULL ^ target_node->greater == NULL)
-    {
-        //TODO: Code duplication with line 153
-        BST_Node* parent = target_node->parent;
-
-        BST_Node* child = target_node->smaller != NULL
-            ? target_node->smaller
-            : target_node->greater;
-
-        child->parent = target_node->parent;
-
-        //TODO: Code duplication with line 155
-        *((parent->smaller == target_node)
-            ? &parent->smaller 
-            : &parent->greater) = child;
-
-        //TODO: Code duplication with line 159
-        free(target_node);
+        BST subtree = { .root = target_node->lesser };
+        target_node->value = BST_get_max(&subtree);
+        BST_delete_value(&subtree, target_node->value);
     }
     else
     {
-        // make this node have value of the min in right subtree
-            // or max in the left subtree, which the value of inorder predecesor -> we could optimize for whichever is faster ;)
-        
-        BST subtree = { .root = target_node->smaller };
-        BST_value_t new_value = BST_get_max(&subtree);
-        target_node->value = new_value;
-        BST_delete_value(&subtree, new_value);
+        BST_Node* child = target_node->lesser != NULL
+            ? target_node->lesser
+            : target_node->greater;
+
+        if (child)
+            child->parent = target_node->parent;
+
+        *((target_node->parent->lesser == target_node)
+            ? &target_node->parent->lesser 
+            : &target_node->parent->greater) = child;
+
+        free(target_node);
     }
 }
 
 
 BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
 {
+//        BST subtree = { .root = target_node->lesser };
+//        BST_value_t new_value = BST_get_max(&subtree);
+//        target_node->value = new_value;
+//        BST_delete_value(&subtree, new_value);
+
         // find a value
         // create a subtree
         // do a min of the right subtree

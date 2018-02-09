@@ -35,7 +35,7 @@ typedef int BST_value_t;
 typedef struct BST_Node
 {
     struct BST_Node* parent;
-    struct BST_Node* smaller;
+    struct BST_Node* lesser;
     struct BST_Node* greater;
     BST_value_t value;
 } BST_Node;
