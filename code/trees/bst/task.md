@@ -33,6 +33,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] [Delete a node from Binary Search Tree (video)](https://www.youtube.com/watch?v=gcULXE7ViZw&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=36)
         - [x] [Find height of a binary tree (video)](https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31)
         - [ ] [Check if a binary tree is binary search tree or not (video)](https://www.youtube.com/watch?v=yEwSGhSsT0U&index=35&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
+
     - [ ] Implement:
         - [x] insert    // insert value into tree
         - [x] is_in_tree // returns true if given value exists in the tree
@@ -45,6 +46,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [ ] get_node_count // get count of values stored
         - [ ] print_values // prints the values in the tree, from min to max
         - [ ] is_binary_search_tree
+
 - [ ] Implement in:
     - [ ] C
     - [ ] C++

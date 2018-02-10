@@ -209,3 +209,8 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
 
     return -1;
 }
+
+BST_value_t BST_get_height(BST* bst)
+{
+    
+}
