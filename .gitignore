@@ -19,3 +19,6 @@ personal-9894.md
 *.s
 *.asm
 
+# ctags
+tags
+
