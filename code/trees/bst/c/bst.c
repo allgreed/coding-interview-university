@@ -33,11 +33,22 @@ BST* BST_create()
     return retval;
 }
 
+static inline void BST_free(BST_Node* start_node)
+{
+    if (start_node == NULL)
+        return;
+
+    BST_free(start_node->lesser);
+    BST_free(start_node->greater);
+    free(start_node);
+}
+
 void BST_destroy(BST* bst)
 {
+    if (bst->root != NULL)
+        BST_free(bst->root);
+    
     free(bst);
-   //TODO: Implement this 
-   // postorder traversal with node deletion
 }
 
 // *****************
@@ -170,12 +181,27 @@ void BST_delete_value(BST* bst, BST_value_t value)
 
 BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
 {
-//        BST subtree = { .root = target_node->lesser };
-//        BST_value_t new_value = BST_get_max(&subtree);
-//        target_node->value = new_value;
-//        BST_delete_value(&subtree, new_value);
+    // CAUTION! For the purpose of this excercise not checking if is max
+    
+    // find a value
+    BST_Node* target_node = BST_find_nearest_node(bst, value);
 
-        // find a value
-        // create a subtree
-        // do a min of the right subtree
+    //may not be exact match
+
+    if (target_node->greater == NULL)
+    {
+        BST_Node* succesor_candidate = target_node->parent; 
+
+        while(succesor_candidate->value < target_node->value)
+            succesor_candidate = succesor_candidate->parent;
+
+        return succesor_candidate->value;
+    }
+    else
+    {
+        BST subtree = { .root = target_node->greater };
+        return BST_get_min(&subtree);
+    }
+
+    return -1;
 }

@@ -151,6 +151,55 @@ void test_delete_value_two_children()
 
     BST_destroy(bst);
 }
+
+void test_leaf_succesor()
+{
+    BST* bst = BST_create();
+    BST_insert(bst, 10);
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+
+    assert(BST_get_succesor(bst,-69) == 0);
+    assert(BST_get_succesor(bst, 6) == 10);
+
+    BST_destroy(bst);
+}   
+
+void test_right_child_succesor()
+{
+    BST* bst = BST_create();
+    BST_insert(bst, 10);
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 3);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+
+    assert(BST_get_succesor(bst, 0) == 3);
+
+    BST_destroy(bst);
+}
+
+void test_near_succesor()
+{
+    BST* bst = BST_create();
+    BST_insert(bst, 10);
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 3);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+
+    //assert(BST_get_succesor(bst, 0) == 3);
+
+    BST_destroy(bst);
+}
+
 int main()
 {
     test_memleeks();
@@ -161,6 +210,9 @@ int main()
     test_delete_value_leaf();
     test_delete_value_one_child();
     test_delete_value_two_children();
+    test_leaf_succesor();
+    test_right_child_succesor();
+    test_near_succesor();
 
     printf("All tests passed!\n");
     return 0;
