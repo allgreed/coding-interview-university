@@ -181,12 +181,16 @@ void BST_delete_value(BST* bst, BST_value_t value)
 
 BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
 {
-    // CAUTION! For the purpose of this excercise not checking if is max
+    // CAUTION! For the purpose of this excercise not checking if has succesor -> is >= max basically
     
-    // find a value
     BST_Node* target_node = BST_find_nearest_node(bst, value);
 
-    //may not be exact match
+    // may not be exact match
+    // test this
+    // code this
+    // identify pitfalls
+    // test more
+    // code more
 
     if (target_node->greater == NULL)
     {

@@ -196,6 +196,8 @@ void test_near_succesor()
     BST_insert(bst, 1e6);
 
     //assert(BST_get_succesor(bst, 0) == 3);
+    // code this!!!
+    assert(false);
 
     BST_destroy(bst);
 }
