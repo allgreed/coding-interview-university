@@ -195,8 +195,6 @@ void test_get_height()
     BST_insert(bst, -69);
     BST_insert(bst, 1e6);
 
-    //TODO: Debug only
-    printf("%d\n", BST_get_height(bst));
     assert(BST_get_height(bst) == 4);
 
     BST_destroy(bst);
@@ -213,9 +211,9 @@ void test_near_succesor()
     BST_insert(bst, -69);
     BST_insert(bst, 1e6);
 
-    //assert(BST_get_succesor(bst, 0) == 3);
-    // code this!!!
-    assert(false);
+    assert(BST_get_succesor(bst, 3) == 5);
+    assert(BST_get_succesor(bst, -80) == -69);
+    assert(BST_get_succesor(bst, 7) == 10);
 
     BST_destroy(bst);
 }

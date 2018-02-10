@@ -185,13 +185,6 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
     
     BST_Node* target_node = BST_find_nearest_node(bst, value);
 
-    // may not be exact match
-    // test this
-    // code this
-    // identify pitfalls
-    // test more
-    // code more
-
     if (target_node->greater == NULL)
     {
         BST_Node* succesor_candidate = target_node->parent; 
@@ -206,11 +199,22 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
         BST subtree = { .root = target_node->greater };
         return BST_get_min(&subtree);
     }
-
-    return -1;
 }
 
-BST_value_t BST_get_height(BST* bst)
+size_t BST_get_node_height(BST_Node* node)
 {
-    
+    if (node == NULL)
+        return 0;
+
+    size_t left_height = BST_get_node_height(node->greater);
+    size_t right_height = BST_get_node_height(node->lesser);
+
+    return 1 + (left_height > right_height
+                     ? left_height
+                     : right_height);
+}
+
+size_t BST_get_height(BST* bst)
+{
+    return BST_get_node_height(bst->root);
 }
