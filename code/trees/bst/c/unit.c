@@ -218,6 +218,37 @@ void test_near_succesor()
     BST_destroy(bst);
 }
 
+void test_node_count()
+{
+    BST* bst = BST_create();
+    assert(BST_get_node_count(bst) == 0);
+
+    BST_insert(bst, 10);
+    assert(BST_get_node_count(bst) == 1);
+
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 3);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+
+    assert(BST_get_node_count(bst) == 7);
+
+    BST_delete_value(bst, 0);
+    assert(BST_get_node_count(bst) == 6);
+
+    BST_delete_value(bst, 0);
+    assert(BST_get_node_count(bst) == 6);
+
+    BST_delete_value(bst, 5);
+    BST_delete_value(bst, 3);
+    BST_delete_value(bst, 6);
+    assert(BST_get_node_count(bst) == 3);
+
+    BST_destroy(bst);
+}
+
 int main()
 {
     test_memleeks();
@@ -230,8 +261,9 @@ int main()
     test_delete_value_two_children();
     test_leaf_succesor();
     test_right_child_succesor();
-    //test_near_succesor();
+//    test_near_succesor();
     test_get_height();
+    test_node_count();
 
     printf("All tests passed!\n");
     return 0;

@@ -88,7 +88,6 @@ static inline BST_Node* BST_find_nearest_node(BST* bst, BST_value_t value)
     return current;
 }
 
-
 // *****************
 // FUNCTIONS
 // *****************
@@ -185,6 +184,8 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
     
     BST_Node* target_node = BST_find_nearest_node(bst, value);
 
+    //TODO: Some work TBD for non-extact matches
+
     if (target_node->greater == NULL)
     {
         BST_Node* succesor_candidate = target_node->parent; 
@@ -201,20 +202,37 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
     }
 }
 
-size_t BST_get_node_height(BST_Node* node)
+static size_t BST_get_height_wrapper(BST_Node* node)
 {
     if (node == NULL)
         return 0;
 
-    size_t left_height = BST_get_node_height(node->greater);
-    size_t right_height = BST_get_node_height(node->lesser);
+    size_t left_height = BST_get_height_wrapper(node->greater);
+    size_t right_height = BST_get_height_wrapper(node->lesser);
 
     return 1 + (left_height > right_height
                      ? left_height
                      : right_height);
 }
 
+static size_t BST_get_node_count_wrapper(BST_Node* node)
+{
+    if (node == NULL)
+        return 0;
+
+    return 1 + BST_get_node_count_wrapper(node->greater) + BST_get_node_count_wrapper(node->lesser);
+ 
+}
+// *****************
+// RECURSION WRAPPERS
+// *****************
+
 size_t BST_get_height(BST* bst)
 {
-    return BST_get_node_height(bst->root);
+    return BST_get_height_wrapper(bst->root);
+}
+
+size_t BST_get_node_count(BST* bst)
+{
+    return BST_get_node_count_wrapper(bst->root);
 }

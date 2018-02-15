@@ -40,17 +40,16 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] get_min   // returns the minimum value stored in the tree
         - [x] get_max   // returns the maximum value stored in the tree
         - [x] delete_value
-        - [x] get_successor // returns next-highest value in tree after given value, -1 if none
+        - [ ] get_successor // returns next-highest value in tree after given value, -1 if none
         - [x] get_height // returns the height in nodes (single node's height is 1)
-
-        - [ ] get_node_count // get count of values stored
+        - [x] get_node_count // get count of values stored
         - [ ] print_values // prints the values in the tree, from min to max
         - [ ] is_binary_search_tree
 
-- [ ] Implement in:
-    - [ ] C
-    - [ ] C++
-    - [ ] C++ with builtin types
+    - [ ] Implement in:
+        - [ ] C
+        - [ ] C++
+        - [ ] C++ with builtin types
 
 <!-- Redo C template -->
 

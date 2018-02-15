@@ -5,12 +5,6 @@
 #include <stddef.h>
 
 // *****************
-// CONSTS
-// *****************
-
-//static const size_t HASHTABLE_DEFAULT_SIZE = 10;
-
-// *****************
 // EXIT CODES
 // *****************
 
@@ -64,5 +58,6 @@ BST_value_t BST_get_min(BST*);
 BST_value_t BST_get_max(BST*);
 BST_value_t BST_get_succesor(BST*, BST_value_t);
 size_t BST_get_height(BST*);
+size_t BST_get_node_count(BST*);
 
 #endif  // PROJECT_BST_H
