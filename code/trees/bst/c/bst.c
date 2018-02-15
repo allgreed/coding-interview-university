@@ -184,13 +184,12 @@ BST_value_t BST_get_succesor(BST* bst, BST_value_t value)
     
     BST_Node* target_node = BST_find_nearest_node(bst, value);
 
-    //TODO: Some work TBD for non-extact matches
-
     if (target_node->greater == NULL)
     {
-        BST_Node* succesor_candidate = target_node->parent; 
+        // Starting from the node itself, instead of the parent for succesors of nodes not in tree
+        BST_Node* succesor_candidate = target_node; 
 
-        while(succesor_candidate->value < target_node->value)
+        while(succesor_candidate->value <= value)
             succesor_candidate = succesor_candidate->parent;
 
         return succesor_candidate->value;

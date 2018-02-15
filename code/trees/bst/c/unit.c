@@ -261,7 +261,7 @@ int main()
     test_delete_value_two_children();
     test_leaf_succesor();
     test_right_child_succesor();
-//    test_near_succesor();
+    test_near_succesor();
     test_get_height();
     test_node_count();
 
