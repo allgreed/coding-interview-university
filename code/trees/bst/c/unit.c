@@ -249,6 +249,25 @@ void test_node_count()
     BST_destroy(bst);
 }
 
+void test_print_values()
+{
+    BST* bst = BST_create();
+
+    BST_insert(bst, 10);
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 3);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+
+    BST_print_values(bst);
+    // No assert here, just compare the diff visually
+    printf("-69 0 3 5 6 10 1000000\n");
+
+    BST_destroy(bst);
+}
+
 int main()
 {
     test_memleeks();
@@ -264,6 +283,7 @@ int main()
     test_near_succesor();
     test_get_height();
     test_node_count();
+    test_print_values();
 
     printf("All tests passed!\n");
     return 0;

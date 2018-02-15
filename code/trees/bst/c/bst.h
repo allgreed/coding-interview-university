@@ -57,7 +57,10 @@ void BST_delete_value(BST*, BST_value_t);
 BST_value_t BST_get_min(BST*);
 BST_value_t BST_get_max(BST*);
 BST_value_t BST_get_succesor(BST*, BST_value_t);
+
 size_t BST_get_height(BST*);
 size_t BST_get_node_count(BST*);
+
+void BST_print_values(BST*);
 
 #endif  // PROJECT_BST_H

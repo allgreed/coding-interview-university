@@ -43,7 +43,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] get_successor // returns next-highest value in tree after given value, -1 if none
         - [x] get_height // returns the height in nodes (single node's height is 1)
         - [x] get_node_count // get count of values stored
-        - [ ] print_values // prints the values in the tree, from min to max
+        - [x] print_values // prints the values in the tree, from min to max
         - [ ] is_binary_search_tree
 
     - [ ] Implement in:

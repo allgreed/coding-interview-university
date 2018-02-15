@@ -222,6 +222,16 @@ static size_t BST_get_node_count_wrapper(BST_Node* node)
     return 1 + BST_get_node_count_wrapper(node->greater) + BST_get_node_count_wrapper(node->lesser);
  
 }
+
+static void BST_print_values_wrapper(BST_Node* node)
+{
+    if (node == NULL)
+        return;
+
+    BST_print_values_wrapper(node->lesser);
+    printf("%d ", node->value);
+    BST_print_values_wrapper(node->greater);
+}
 // *****************
 // RECURSION WRAPPERS
 // *****************
@@ -234,4 +244,10 @@ size_t BST_get_height(BST* bst)
 size_t BST_get_node_count(BST* bst)
 {
     return BST_get_node_count_wrapper(bst->root);
+}
+
+void BST_print_values(BST* bst)
+{
+   BST_print_values_wrapper(bst->root);
+   printf("\n");
 }
