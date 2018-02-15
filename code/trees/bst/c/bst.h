@@ -60,7 +60,7 @@ BST_value_t BST_get_succesor(BST*, BST_value_t);
 
 size_t BST_get_height(BST*);
 size_t BST_get_node_count(BST*);
-
+bool is_binary_search_tree(BST*);
 void BST_print_values(BST*);
 
 #endif  // PROJECT_BST_H

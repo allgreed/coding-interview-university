@@ -268,6 +268,19 @@ void test_print_values()
     BST_destroy(bst);
 }
 
+void test_is_binary_search_tree()
+{
+    //CAUTION! - This one depends on the implementation
+    
+    // single node -> true
+    
+    // manually insert 50, 10 as lower, 100 as higher -> test -> true
+    
+    // manually insert 50, 10 as higher , 100 as lower -> test -> false
+    
+    // test tree -> true
+}
+
 int main()
 {
     test_memleeks();
@@ -284,6 +297,7 @@ int main()
     test_get_height();
     test_node_count();
     test_print_values();
+    test_is_binary_search_tree();
 
     printf("All tests passed!\n");
     return 0;

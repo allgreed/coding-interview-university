@@ -232,6 +232,15 @@ static void BST_print_values_wrapper(BST_Node* node)
     printf("%d ", node->value);
     BST_print_values_wrapper(node->greater);
 }
+
+bool is_binary_search_tree(BST* bst)
+{
+    //if it's a single node tree -> it's True
+    
+    // check for tree invariant (lower < value < bigger)
+    // return this-invariant && lower-invariant && bigger-invariant
+}
+
 // *****************
 // RECURSION WRAPPERS
 // *****************
