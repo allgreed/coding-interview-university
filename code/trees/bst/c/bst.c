@@ -154,7 +154,7 @@ void BST_delete_value(BST* bst, BST_value_t value)
     if (target_node->value != value)
         return;
 
-    if (target_node->lesser != NULL && target_node->greater != NULL)
+    if (target_node->lesser && target_node->greater)
     {
         BST subtree = { .root = target_node->lesser };
         target_node->value = BST_get_max(&subtree);
@@ -169,9 +169,17 @@ void BST_delete_value(BST* bst, BST_value_t value)
         if (child)
             child->parent = target_node->parent;
 
-        *((target_node->parent->lesser == target_node)
-            ? &target_node->parent->lesser 
-            : &target_node->parent->greater) = child;
+        if (target_node->parent)
+        {
+            *((target_node->parent->lesser == target_node)
+                ? &target_node->parent->lesser 
+                : &target_node->parent->greater) = child;
+        }
+        // deleting root value, edge case
+        else
+        {
+            bst->root = NULL;
+        }
 
         free(target_node);
     }
@@ -235,10 +243,22 @@ static void BST_print_values_wrapper(BST_Node* node)
 
 bool is_binary_search_tree(BST* bst)
 {
-    //if it's a single node tree -> it's True
+    if (!bst->root || !(bst->root->lesser && bst->root->greater))
+        return true;
     
-    // check for tree invariant (lower < value < bigger)
-    // return this-invariant && lower-invariant && bigger-invariant
+    bool this_invariant =   
+    ((!bst->root->lesser
+         ||
+     bst->root->lesser->value < bst->root->value)
+    &&
+    (!bst->root->greater
+         ||
+     bst->root->greater->value > bst->root->value));
+
+    BST lesser_subtree = { .root = bst->root->lesser };
+    BST greater_subtree = { .root = bst->root->greater };
+
+    return this_invariant && is_binary_search_tree(&lesser_subtree) && is_binary_search_tree(&greater_subtree);
 }
 
 // *****************

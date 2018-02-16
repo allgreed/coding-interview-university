@@ -268,17 +268,68 @@ void test_print_values()
     BST_destroy(bst);
 }
 
+void test_delete_root_edge_case()
+{
+    BST* bst = BST_create();
+
+    BST_insert(bst, 10);
+    BST_delete_value(bst, 10);
+
+    BST_destroy(bst);
+}
+
+// This is used by the test below
+static inline BST_Node* BST_Node_create(BST_Node* parent, BST_value_t value)
+{
+    BST_Node* retval = allocate(sizeof(BST_Node));
+
+    retval->parent = parent;
+    retval->lesser = NULL;
+    retval->greater = NULL;
+    retval->value = value;
+
+    return retval;
+}
+
 void test_is_binary_search_tree()
 {
     //CAUTION! - This one depends on the implementation
     
-    // single node -> true
+    BST* bst_single_node = BST_create();
+    BST* bst_manual_good = BST_create();
+    BST* bst_manual_wrong= BST_create();
+    BST* bst = BST_create();
+
+    BST_insert(bst_single_node, 10);
+    assert(is_binary_search_tree(bst_single_node));
     
-    // manually insert 50, 10 as lower, 100 as higher -> test -> true
+    BST_insert(bst_manual_good, 50);
+    BST_Node* lower = BST_Node_create(bst_manual_good->root, 10);
+    BST_Node* higher = BST_Node_create(bst_manual_good->root, 100);
+    bst_manual_good->root->lesser = lower;
+    bst_manual_good->root->greater = higher;
+    assert(is_binary_search_tree(bst_manual_good));
+
+    BST_insert(bst_manual_wrong, 50);
+    BST_Node* _lower = BST_Node_create(bst_manual_wrong->root, 10);
+    BST_Node* _higher = BST_Node_create(bst_manual_wrong->root, 100);
+    bst_manual_wrong->root->greater = _lower;
+    bst_manual_wrong->root->lesser = _higher;
+    assert(is_binary_search_tree(bst_manual_wrong) == false);
     
-    // manually insert 50, 10 as higher , 100 as lower -> test -> false
+    BST_insert(bst, 10);
+    BST_insert(bst, 0);
+    BST_insert(bst, 5);
+    BST_insert(bst, 3);
+    BST_insert(bst, 6);
+    BST_insert(bst, -69);
+    BST_insert(bst, 1e6);
+    assert(is_binary_search_tree(bst));
     
-    // test tree -> true
+    BST_destroy(bst_single_node);
+    BST_destroy(bst_manual_good);
+    BST_destroy(bst_manual_wrong);
+    BST_destroy(bst);
 }
 
 int main()
@@ -297,6 +348,7 @@ int main()
     test_get_height();
     test_node_count();
     test_print_values();
+    test_delete_root_edge_case();
     test_is_binary_search_tree();
 
     printf("All tests passed!\n");

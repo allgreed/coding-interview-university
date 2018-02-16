@@ -39,6 +39,9 @@ typedef struct BST
    BST_Node* root; 
 } BST;
 
+// some dirty haxxx to make the tests work
+void* allocate(size_t bytes);
+
 // *****************
 // CONSTRUCTOR, DESTRUCTOR
 // *****************

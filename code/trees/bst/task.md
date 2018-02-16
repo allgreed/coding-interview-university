@@ -34,7 +34,7 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] [Find height of a binary tree (video)](https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31)
         - [ ] [Check if a binary tree is binary search tree or not (video)](https://www.youtube.com/watch?v=yEwSGhSsT0U&index=35&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)
 
-    - [ ] Implement:
+    - [x] Implement:
         - [x] insert    // insert value into tree
         - [x] is_in_tree // returns true if given value exists in the tree
         - [x] get_min   // returns the minimum value stored in the tree
@@ -44,10 +44,10 @@ Finished @: yyyy-mm-dd hh:mm
         - [x] get_height // returns the height in nodes (single node's height is 1)
         - [x] get_node_count // get count of values stored
         - [x] print_values // prints the values in the tree, from min to max
-        - [ ] is_binary_search_tree
+        - [x] is_binary_search_tree
 
     - [ ] Implement in:
-        - [ ] C
+        - [x] C
         - [ ] C++
         - [ ] C++ with builtin types
 
