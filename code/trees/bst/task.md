@@ -4,8 +4,6 @@ Started @: 2018-02-02 18:51
 Finished @: yyyy-mm-dd hh:mm
 
 - ### Trees - Notes & Background
-    - [ ] [Series: Core Trees (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/ovovP/core-trees)
-    - [ ] [Series: Trees (video)](https://www.coursera.org/learn/data-structures/lecture/95qda/trees)
     - basic tree construction
     - traversal
     - manipulation algorithms
