@@ -43,8 +43,6 @@ void BST<T>::insert(T value)
             : insertion_node->greater = new Node(value, insertion_node, sentinel); 
     }
 
-    std::cout << insertion_node->value << std::endl;
-
     node_count++;
 }
 

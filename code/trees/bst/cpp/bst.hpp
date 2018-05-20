@@ -44,7 +44,6 @@ private:
             }
     };
 
-    //TODO: Why inheritance does not work? o.0
     class Sentinel : public Node
     {
         public:
