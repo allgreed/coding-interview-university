@@ -1,0 +1,45 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+VECTOR_DEFAULT_CAPACITY	vector.hpp	/^const int VECTOR_DEFAULT_CAPACITY = 16;$/;"	v
+VECTOR_GROWTH_FACTOR	vector.hpp	/^const int VECTOR_GROWTH_FACTOR = 2;$/;"	v
+VECTOR_SHRINK_TRIGGER	vector.hpp	/^const int VECTOR_SHRINK_TRIGGER = 4;$/;"	v
+Vector	vector.cpp	/^template <typename T> Vector<T>::Vector() : Vector(16)$/;"	f	class:Vector
+Vector	vector.cpp	/^template <typename T> Vector<T>::Vector(int desiredCapacity)$/;"	f	class:Vector
+Vector	vector.hpp	/^class Vector$/;"	c
+at	vector.cpp	/^template <typename T> T Vector<T>::at(int index)$/;"	f	class:Vector
+capacity	vector.hpp	/^    int capacity;$/;"	m	class:Vector
+data	vector.hpp	/^    T* data = nullptr;$/;"	m	class:Vector
+deleteTest	unit.cpp	/^void deleteTest()$/;"	f
+delete_at	vector.cpp	/^template <typename T> void Vector<T>::delete_at(int index)$/;"	f	class:Vector
+endIndex	vector.cpp	/^template <typename T> int Vector<T>::endIndex()$/;"	f	class:Vector
+find	vector.cpp	/^template <typename T> int Vector<T>::find(T value)$/;"	f	class:Vector
+findTest	unit.cpp	/^void findTest()$/;"	f
+init_of_size_test	unit.cpp	/^void init_of_size_test()$/;"	f
+init_test	unit.cpp	/^void init_test()$/;"	f
+insertTest	unit.cpp	/^void insertTest()$/;"	f
+insert_at	vector.cpp	/^template <typename T> void Vector<T>::insert_at(int index, T value)$/;"	f	class:Vector
+isEmpty	vector.cpp	/^template <typename T> bool Vector<T>::isEmpty()$/;"	f	class:Vector
+isEmptyTest	unit.cpp	/^void isEmptyTest()$/;"	f
+main	unit.cpp	/^int main()$/;"	f
+pop	vector.cpp	/^template <typename T> T Vector<T>::pop()$/;"	f	class:Vector
+popTest	unit.cpp	/^void popTest()$/;"	f
+prepend	vector.cpp	/^template <typename T> void Vector<T>::prepend(T value)$/;"	f	class:Vector
+prependTest	unit.cpp	/^void prependTest()$/;"	f
+push	vector.cpp	/^template <typename T> void Vector<T>::push(T value)$/;"	f	class:Vector
+pushTest	unit.cpp	/^void pushTest()$/;"	f
+remove	vector.cpp	/^template <typename T> void Vector<T>::remove(T value)$/;"	f	class:Vector
+removeTest	unit.cpp	/^void removeTest()$/;"	f
+resize	vector.cpp	/^template <typename T> void Vector<T>::resize(int desiredCapacity)$/;"	f	class:Vector
+resizeTest	unit.cpp	/^void resizeTest()$/;"	f
+runIndexChecks	vector.cpp	/^template <typename T> void Vector<T>::runIndexChecks(int index)$/;"	f	class:Vector
+size	vector.hpp	/^    int size = 0;$/;"	m	class:Vector
+updateTest	unit.cpp	/^void updateTest()$/;"	f
+update_at	vector.cpp	/^template <typename T> void Vector<T>::update_at(int index, T value)$/;"	f	class:Vector
+whatCapacity	vector.cpp	/^template <typename T> int Vector<T>::whatCapacity()$/;"	f	class:Vector
+whatSize	vector.cpp	/^template <typename T> int Vector<T>::whatSize()$/;"	f	class:Vector
+zeroCapacityUsabilityTest	unit.cpp	/^void zeroCapacityUsabilityTest()$/;"	f
+~Vector	vector.cpp	/^template <typename T> Vector<T>::~Vector()$/;"	f	class:Vector

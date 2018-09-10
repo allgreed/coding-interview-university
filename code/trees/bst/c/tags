@@ -1,0 +1,65 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BST	bst.h	/^typedef struct BST$/;"	s
+BST	bst.h	/^} BST;$/;"	t	typeref:struct:BST
+BST_EMPTY_TREE_DEREFERNCE_ATTEMPT	bst.h	/^    BST_EMPTY_TREE_DEREFERNCE_ATTEMPT,$/;"	e	enum:__anon1
+BST_EXIT_CODES	bst.h	/^} BST_EXIT_CODES;$/;"	t	typeref:enum:__anon1
+BST_EXIT_FAILED_ALLOCATION	bst.h	/^    BST_EXIT_FAILED_ALLOCATION,$/;"	e	enum:__anon1
+BST_EXIT_OK	bst.h	/^    BST_EXIT_OK = 0,$/;"	e	enum:__anon1
+BST_Node	bst.h	/^typedef struct BST_Node$/;"	s
+BST_Node	bst.h	/^} BST_Node;$/;"	t	typeref:struct:BST_Node
+BST_Node_create	bst.c	/^static inline BST_Node* BST_Node_create(BST_Node* parent, BST_value_t value)$/;"	f	file:
+BST_create	bst.c	/^BST* BST_create()$/;"	f
+BST_delete_value	bst.c	/^void BST_delete_value(BST* bst, BST_value_t value)$/;"	f
+BST_destroy	bst.c	/^void BST_destroy(BST* bst)$/;"	f
+BST_find_nearest_node	bst.c	/^static inline BST_Node* BST_find_nearest_node(BST* bst, BST_value_t value)$/;"	f	file:
+BST_free	bst.c	/^static inline void BST_free(BST_Node* start_node)$/;"	f	file:
+BST_get_height	bst.c	/^size_t BST_get_height(BST* bst)$/;"	f
+BST_get_height_wrapper	bst.c	/^static size_t BST_get_height_wrapper(BST_Node* node)$/;"	f	file:
+BST_get_max	bst.c	/^BST_value_t BST_get_max(BST* bst)$/;"	f
+BST_get_min	bst.c	/^BST_value_t BST_get_min(BST* bst)$/;"	f
+BST_get_node_count	bst.c	/^size_t BST_get_node_count(BST* bst)$/;"	f
+BST_get_node_count_wrapper	bst.c	/^static size_t BST_get_node_count_wrapper(BST_Node* node)$/;"	f	file:
+BST_get_succesor	bst.c	/^BST_value_t BST_get_succesor(BST* bst, BST_value_t value)$/;"	f
+BST_insert	bst.c	/^void BST_insert(BST* bst, BST_value_t value)$/;"	f
+BST_is_in_tree	bst.c	/^bool BST_is_in_tree(BST* bst, BST_value_t value)$/;"	f
+BST_print_values	bst.c	/^void BST_print_values(BST* bst)$/;"	f
+BST_print_values_wrapper	bst.c	/^static void BST_print_values_wrapper(BST_Node* node)$/;"	f	file:
+BST_value_t	bst.h	/^typedef int BST_value_t;$/;"	t
+CC	Makefile	/^CC=clang$/;"	m
+DEPS	Makefile	/^DEPS = $(addsuffix $(HEADERSUFFIX), $(PROJECT))$/;"	m
+DEVFLAGS	Makefile	/^DEVFLAGS=-g -Wall -Wextra -pedantic$/;"	m
+FILES	Makefile	/^FILES := $(wildcard $(addsuffix $(SOURCESUFFIX), *))$/;"	m
+HEADERSUFFIX	Makefile	/^HEADERSUFFIX=.h$/;"	m
+OPTFLAGS	Makefile	/^OPTFLAGS= -O3 -march=native$/;"	m
+PROJECT	Makefile	/^PROJECT= bst$/;"	m
+PROJECT_BST_H	bst.h	2;"	d
+SOURCESUFFIX	Makefile	/^SOURCESUFFIX=.c$/;"	m
+STANDARD	Makefile	/^STANDARD=c11$/;"	m
+allocate	bst.c	/^void* allocate(size_t bytes)$/;"	f
+greater	bst.h	/^    struct BST_Node* greater;$/;"	m	struct:BST_Node	typeref:struct:BST_Node::BST_Node
+is_binary_search_tree	bst.c	/^bool is_binary_search_tree(BST* bst)$/;"	f
+lesser	bst.h	/^    struct BST_Node* lesser;$/;"	m	struct:BST_Node	typeref:struct:BST_Node::BST_Node
+main	unit.c	/^int main()$/;"	f
+parent	bst.h	/^    struct BST_Node* parent;$/;"	m	struct:BST_Node	typeref:struct:BST_Node::BST_Node
+root	bst.h	/^   BST_Node* root; $/;"	m	struct:BST
+test_delete_value_leaf	unit.c	/^void test_delete_value_leaf()$/;"	f
+test_delete_value_not_in_tree	unit.c	/^void test_delete_value_not_in_tree()$/;"	f
+test_delete_value_one_child	unit.c	/^void test_delete_value_one_child()$/;"	f
+test_delete_value_two_children	unit.c	/^void test_delete_value_two_children()$/;"	f
+test_get_height	unit.c	/^void test_get_height()$/;"	f
+test_get_max	unit.c	/^void test_get_max()$/;"	f
+test_get_min	unit.c	/^void test_get_min()$/;"	f
+test_insert_and_retrive	unit.c	/^void test_insert_and_retrive()$/;"	f
+test_is_binary_search_tree	unit.c	/^void test_is_binary_search_tree()$/;"	f
+test_leaf_succesor	unit.c	/^void test_leaf_succesor()$/;"	f
+test_memleeks	unit.c	/^void test_memleeks()$/;"	f
+test_near_succesor	unit.c	/^void test_near_succesor()$/;"	f
+test_node_count	unit.c	/^void test_node_count()$/;"	f
+test_print_values	unit.c	/^void test_print_values()$/;"	f
+test_right_child_succesor	unit.c	/^void test_right_child_succesor()$/;"	f
+value	bst.h	/^    BST_value_t value;$/;"	m	struct:BST_Node
