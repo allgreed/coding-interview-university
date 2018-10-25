@@ -41,3 +41,5 @@ input++;
 ```cpp
 vector.erase( std::remove( vector.begin(), vector.end(), value ), vector.end() );
 ```
+
+Remove copies the values to the end and returns an iterator, erase deletes the values.
